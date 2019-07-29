@@ -1,0 +1,22 @@
+{
+  "name": "aout3-samples",
+  "version": "1.0.0",
+  "description": "Code Samples for Art of Unit Testing 3rd Editino",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/royosherove/aout3-samples.git"
+  },
+  "author": "Roy Osherove",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/royosherove/aout3-samples/issues"
+  },
+  "homepage": "https://github.com/royosherove/aout3-samples#readme",
+  "devDependencies": {
+    "colors": "^1.3.3"
+  }
+}
