@@ -11,6 +11,11 @@ const parser = numbers => {
     return Number.parseInt(a) + Number.parseInt(b);
 };
 
+/**
+ * A Test helper function for a simple assertion
+ * @param actual (any type)
+ * @param expected (any type)
+ */
 const assertEquals = (actual,expected) =>{
     if (actual!==expected){
         throw new Error(`expected ${expected} but was ${actual}`);
@@ -18,7 +23,7 @@ const assertEquals = (actual,expected) =>{
 };
 
 /**
- *
+ * A Test Helper Function - I named it 'check' so it doesn't get confused with other frameworks.
  * @param {string} name
  * @param {function} cb
  */
@@ -34,6 +39,10 @@ const check = (name,cb) =>{
     }
 };
 
+/**
+ * Our actual tests begin here
+ * To run: "node ch1/custom-test-phase2.js
+ */
 check("parser with 2 numbers", () => {
     let res = parser("1,2");
     assertEquals(3,res);
@@ -43,15 +52,4 @@ check("parser with 2 other numbers", () => {
     assertEquals(5,res);
 });
 
-// const parserTest = () => {
-//     try {
-//         let res = parser("1,2");
-//         assertEquals(3,res);
-//         console.log(res);
-//     } catch (e) {
-//         console.error(e.stack)
-//     }
-// };
-
-// parserTest();
 

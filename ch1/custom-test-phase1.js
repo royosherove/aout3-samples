@@ -11,7 +11,7 @@ const parser = numbers => {
 
 
 /**
- * Our "Test"
+ * Our "Test" definition.
  */
 const parserTest = () => {
     try {
@@ -25,4 +25,6 @@ const parserTest = () => {
     }
 };
 
+// our actual test run:
+// To run: "node ch1/custom-test-phase1.js
 parserTest();
