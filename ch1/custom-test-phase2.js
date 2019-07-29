@@ -1,15 +1,5 @@
-let colors = require('colors');
-
-/**
- * Our "production" code to be tested.
- * @param {string} numbers
- * @returns {number}
- */
-const parser = numbers => {
-    let [a, b
-    ] = numbers.split(",");
-    return Number.parseInt(a) + Number.parseInt(b);
-};
+let NumberParser = require('./number-parser');
+require('colors');
 
 /**
  * A Test helper function for a simple assertion
@@ -18,7 +8,7 @@ const parser = numbers => {
  */
 const assertEquals = (actual,expected) =>{
     if (actual!==expected){
-        throw new Error(`expected ${expected} but was ${actual}`);
+        throw new Error(`Expected ${expected} but was ${actual}`);
     }
 };
 
@@ -31,11 +21,11 @@ const check = (name,cb) =>{
     try{
         cb();
         // console.log(FgGreen,`${name} passed`);
-        console.log(`${name} passed`.green);
+        console.log(`"${name}" passed`.green);
     }
     catch (e) {
         // console.error(FgRed,`${name} FAILED`);
-        console.error(`${name} FAILED`.red);
+        console.error(`"${name}" FAILED`.red, e.stack);
     }
 };
 
@@ -43,13 +33,13 @@ const check = (name,cb) =>{
  * Our actual tests begin here
  * To run: "node ch1/custom-test-phase2.js
  */
-check("parser with 2 numbers", () => {
-    let res = parser("1,2");
+check("sum with 2 numbers should sum them up", () => {
+    let res = new NumberParser().sum("1,2");
     assertEquals(3,res);
 });
-check("parser with 2 other numbers", () => {
-    let res = parser("2,4");
-    assertEquals(5,res);
+check("sum with mulitple digit numbers should sum them up", () => {
+    let res = new NumberParser().sum("1,3");
+    assertEquals(4,res);
 });
 
 
