@@ -1,5 +1,5 @@
+//our production code (Suite Under Test - SUT)
 let NumberParser = require('./number-parser');
-require('colors');
 
 /**
  * A Test helper function for a simple assertion
@@ -15,17 +15,15 @@ const assertEquals = (actual,expected) =>{
 /**
  * A Test Helper Function - I named it 'check' so it doesn't get confused with other frameworks.
  * @param {string} name
- * @param {function} cb
+ * @param {function} implementation
  */
-const check = (name,cb) =>{
+const check = (name,implementation) =>{
     try{
-        cb();
-        // console.log(FgGreen,`${name} passed`);
-        console.log(`"${name}" passed`.green);
+        implementation();
+        console.log(`"${name}" passed`);
     }
     catch (e) {
-        // console.error(FgRed,`${name} FAILED`);
-        console.error(`"${name}" FAILED`.red, e.stack);
+        console.error(`"${name}" FAILED`, e.stack);
     }
 };
 
@@ -37,6 +35,7 @@ check("sum with 2 numbers should sum them up", () => {
     let res = new NumberParser().sum("1,2");
     assertEquals(3,res);
 });
+
 check("sum with mulitple digit numbers should sum them up", () => {
     let res = new NumberParser().sum("1,3");
     assertEquals(4,res);
