@@ -1,7 +1,7 @@
 let colors = require('colors');
 
 /**
- *
+ * Our "production" code to be tested.
  * @param {string} numbers
  * @returns {number}
  */
