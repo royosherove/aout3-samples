@@ -1,8 +1,4 @@
-/*
-I'm using the module.exports for compatability with Node syntax for modules.
- This way we won't have to use any transpilers to run this code.
-*/
-module.exports = class NumberParser {
+class NumberParser {
     /**
      * Our "production" code to be tested.
      * @param {string} numbers
@@ -14,3 +10,9 @@ module.exports = class NumberParser {
             Number.parseInt(b);
     }
 }
+
+/*
+I'm using the module.exports for comparability with Node syntax for modules.
+ This way we won't have to use any transpiler to run this code.
+*/
+module.exports = NumberParser;
