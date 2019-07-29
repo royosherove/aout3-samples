@@ -13,7 +13,9 @@ const assertEquals = (actual,expected) =>{
 };
 
 /**
- * A Test Helper Function - I named it 'check' so it doesn't get confused with other frameworks.
+ * A Test Helper Function
+ * I named it 'check' so it doesn't get confused with other frameworks.
+ * Wraps my code in try-catch and outputs things nicely to the console.
  * @param {string} name
  * @param {function} implementation
  */
