@@ -6,8 +6,8 @@ class NumberParser {
      */
     sum(numbers) {
         let [a, b] = numbers.split(",");
-        return Number.parseInt(a) +
-            Number.parseInt(b);
+        let result = Number.parseInt(a) + Number.parseInt(b);
+        return result;
     }
 
 }

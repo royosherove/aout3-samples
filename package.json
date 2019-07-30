@@ -19,5 +19,8 @@
   "homepage": "https://github.com/royosherove/aout3-samples#readme",
   "devDependencies": {
     "colors": "^1.3.3"
+  },
+  "dependencies": {
+    "winston": "^3.2.1"
   }
 }
