@@ -1,22 +1,10 @@
-
-
-
 class NumberParser {
-    constructor() {
-        this.wasCalled = false;
-    }
-
-    wasSumCalled() {
-        return this.wasCalled;
-    }
-
     /**
      * Our "production" code to be tested.
      * @param {string} numbers
      * @returns {number}
      */
     sum(numbers) {
-        this.wasCalled = true;
         let [a, b] = numbers.split(",");
         return Number.parseInt(a) +
             Number.parseInt(b);
