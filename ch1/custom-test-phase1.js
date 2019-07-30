@@ -1,6 +1,5 @@
-//this is how I would import the class in pure ES6.
-// import {NumberParser} from "./number-parser";
-//I'm using this syntax so be compatible with node.js, so we won't need transpilers.
+//I'm using 'require' to be compatible with node.js,
+// so we won't need a transpiler like babel.
 let NumberParser = require('./number-parser');
 
 /**
@@ -20,6 +19,4 @@ const parserTest = () => {
   }
 };
 
-// our actual test run:
-// To run: "node ch1/custom-test-phase1.js
 parserTest();
