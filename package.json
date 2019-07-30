@@ -4,7 +4,8 @@
   "description": "Code Samples for Art of Unit Testing 3rd Editino",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "ch1": "node ./ch1/custom-test-phase1.js && node ./ch1/custom-test-phase2.js"
   },
   "repository": {
     "type": "git",
