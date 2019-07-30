@@ -1,11 +1,13 @@
 
 
 
-class NumberParser {
-    constructor() {
-        this.wasCalled = false;
-    }
+class NumberParser2 {
+    wasCalled =false;
 
+    /**
+     *
+     * @returns {boolean}
+     */
     wasSumCalled() {
         return this.wasCalled;
     }
@@ -28,4 +30,4 @@ class NumberParser {
 I'm using the module.exports for comparability with Node syntax for modules.
  This way we won't have to use any transpiler to run this code.
 */
-module.exports = NumberParser;
+module.exports = NumberParser2;
