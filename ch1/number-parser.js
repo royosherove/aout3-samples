@@ -1,11 +1,12 @@
 /**
- * Our "production" code to be tested.
+ * Our System Under Test (SUT)
  * @param {string} numbers
  * @returns {number}
  */
 const sum = (numbers) => {
-    let [a, b] = numbers.split(",");
-    let result = Number.parseInt(a) + Number.parseInt(b);
+    const [a, b] = numbers.split(',');
+    const result = Number.parseInt(a,10) +
+        Number.parseInt(b,10);
     return result;
 };
 

@@ -1,8 +1,5 @@
-
-
-
 class NumberParser2 {
-    wasCalled =false;
+    wasCalled = false;
 
     /**
      *
@@ -19,12 +16,14 @@ class NumberParser2 {
      */
     sum(numbers) {
         this.wasCalled = true;
-        let [a, b] = numbers.split(",");
-        return Number.parseInt(a) +
-            Number.parseInt(b);
+        const [a, b] = numbers.split(',');
+        const result = Number.parseInt(a, 10) +
+            Number.parseInt(b, 10);
+        return result;
     }
-
 }
+
+
 
 /*
 I'm using the module.exports for comparability with Node syntax for modules.

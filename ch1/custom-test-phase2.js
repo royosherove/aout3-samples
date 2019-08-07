@@ -6,7 +6,7 @@ const {sum} = require('./number-parser');
  * @param actual (any type)
  * @param expected (any type)
  */
-const assertEquals = (actual,expected) =>{
+const assertEquals = (expected, actual) =>{
     if (actual!==expected){
         throw new Error(`Expected ${expected} but was ${actual}`);
     }
@@ -22,10 +22,10 @@ const assertEquals = (actual,expected) =>{
 const check = (name,implementation) =>{
     try{
         implementation();
-        console.log(`"${name}" passed`);
+        console.log(`${name} passed`);
     }
     catch (e) {
-        console.error(`"${name}" FAILED`, e.stack);
+        console.error(`${name} FAILED`, e.stack);
     }
 };
 
@@ -33,13 +33,13 @@ const check = (name,implementation) =>{
  * Our actual tests begin here
  * To run: "node ch1/custom-test-phase2.js
  */
-check("sum with 2 numbers should sum them up", () => {
+check('sum with 2 numbers should sum them up', () => {
     let res = sum("1,2");
     assertEquals(3,res);
 });
 
-check("sum with mulitple digit numbers should sum them up", () => {
-    let res = sum("1,3");
+check('sum with mulitple digit numbers should sum them up', () => {
+    let res = sum('1,3');
     assertEquals(4,res);
 });
 

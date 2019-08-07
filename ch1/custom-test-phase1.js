@@ -7,11 +7,11 @@ const {sum} = require('./number-parser');
  */
 const parserTest = () => {
   try {
-    let result = sum("1,2");
+    let result = sum('1,2');
     if (result === 3) {
-      console.log("parserTest example 1 PASSED");
+      console.log('parserTest example 1 PASSED');
     } else {
-      throw new Error("parserTest: expected 3 but was ${result}");
+      throw new Error(`parserTest: expected 3 but was ${result}`);
     }
   } catch (e) {
     console.error(e.stack);

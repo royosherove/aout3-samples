@@ -6,7 +6,7 @@ let NumberParser2 = require('./number-parser2');
  * @param actual (any type)
  * @param expected (any type)
  */
-const assertEquals = (actual,expected) =>{
+const assertEquals = (expected, actual) =>{
     if (actual!==expected){
         throw new Error(`Expected ${expected} but was ${actual}`);
     }
@@ -22,10 +22,10 @@ const assertEquals = (actual,expected) =>{
 const check = (name,implementation) =>{
     try{
         implementation();
-        console.log(`"${name}" passed`);
+        console.log(`${name} passed`);
     }
     catch (e) {
-        console.error(`"${name}" FAILED`, e.stack);
+        console.error(`${name} FAILED`, e.stack);
     }
 };
 
@@ -33,13 +33,13 @@ const check = (name,implementation) =>{
  * Our actual tests begin here
  * To run: "node ch1/custom-test-phase2.js
  */
-check("wasSumCalled by Default is False", () => {
+check('wasSumCalled by Default is False', () => {
     let np = new NumberParser2();
     assertEquals(false, np.wasSumCalled());
 });
-check("wasSumCalled after summing is true", () => {
+check('wasSumCalled after summing is true', () => {
     let np = new NumberParser2();
-    np.sum("1,2");
+    np.sum('1,2');
     assertEquals(true,np.wasSumCalled());
 });
 
