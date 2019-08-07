@@ -1,5 +1,5 @@
 //our production code (Suite Under Test - SUT)
-let NumberParser = require('./number-parser');
+const {sum} = require('./number-parser');
 
 /**
  * A Test helper function for a simple assertion
@@ -34,12 +34,12 @@ const check = (name,implementation) =>{
  * To run: "node ch1/custom-test-phase2.js
  */
 check("sum with 2 numbers should sum them up", () => {
-    let res = new NumberParser().sum("1,2");
+    let res = sum("1,2");
     assertEquals(3,res);
 });
 
 check("sum with mulitple digit numbers should sum them up", () => {
-    let res = new NumberParser().sum("1,3");
+    let res = sum("1,3");
     assertEquals(4,res);
 });
 
