@@ -1,4 +1,4 @@
-const wasCalled = false;
+let wasCalled = false;
 
 /**
      *
@@ -14,7 +14,7 @@ const wasSumCalled = () => {
      * @returns {number}
      */
 const sum = (numbers) => {
-  this.wasCalled = true;
+  wasCalled = true;
   const [a, b] = numbers.split(',');
   const result = Number.parseInt(a, 10) +
             Number.parseInt(b, 10);

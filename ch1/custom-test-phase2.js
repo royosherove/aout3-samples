@@ -1,5 +1,5 @@
 // our production code (Suite Under Test - SUT)
-import { sum } from './number-parser';
+const { sum } = require('./number-parser');
 
 /**
  * A Test helper function for a simple assertion
