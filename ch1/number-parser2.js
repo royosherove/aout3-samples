@@ -1,32 +1,31 @@
-class NumberParser2 {
-    wasCalled = false;
+const wasCalled = false;
 
-    /**
+/**
      *
      * @returns {boolean}
      */
-    wasSumCalled() {
-        return this.wasCalled;
-    }
+const wasSumCalled = () => {
+  return wasCalled;
+};
 
-    /**
+/**
      * Our "production" code to be tested.
      * @param {string} numbers
      * @returns {number}
      */
-    sum(numbers) {
-        this.wasCalled = true;
-        const [a, b] = numbers.split(',');
-        const result = Number.parseInt(a, 10) +
+const sum = (numbers) => {
+  this.wasCalled = true;
+  const [a, b] = numbers.split(',');
+  const result = Number.parseInt(a, 10) +
             Number.parseInt(b, 10);
-        return result;
-    }
-}
-
-
+  return result;
+};
 
 /*
 I'm using the module.exports for comparability with Node syntax for modules.
  This way we won't have to use any transpiler to run this code.
 */
-module.exports = NumberParser2;
+module.exports = {
+  sum,
+  wasSumCalled
+};

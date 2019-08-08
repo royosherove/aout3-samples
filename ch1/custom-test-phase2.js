@@ -1,15 +1,15 @@
-//our production code (Suite Under Test - SUT)
-const {sum} = require('./number-parser');
+// our production code (Suite Under Test - SUT)
+import { sum } from './number-parser';
 
 /**
  * A Test helper function for a simple assertion
  * @param actual (any type)
  * @param expected (any type)
  */
-const assertEquals = (expected, actual) =>{
-    if (actual!==expected){
-        throw new Error(`Expected ${expected} but was ${actual}`);
-    }
+const assertEquals = (expected, actual) => {
+  if (actual !== expected) {
+    throw new Error(`Expected ${expected} but was ${actual}`);
+  }
 };
 
 /**
@@ -19,14 +19,13 @@ const assertEquals = (expected, actual) =>{
  * @param {string} name
  * @param {function} implementation
  */
-const check = (name,implementation) =>{
-    try{
-        implementation();
-        console.log(`${name} passed`);
-    }
-    catch (e) {
-        console.error(`${name} FAILED`, e.stack);
-    }
+const check = (name, implementation) => {
+  try {
+    implementation();
+    console.log(`${name} passed`);
+  } catch (e) {
+    console.error(`${name} FAILED`, e.stack);
+  }
 };
 
 /**
@@ -34,13 +33,11 @@ const check = (name,implementation) =>{
  * To run: "node ch1/custom-test-phase2.js
  */
 check('sum with 2 numbers should sum them up', () => {
-    let res = sum("1,2");
-    assertEquals(3,res);
+  const res = sum('1,2');
+  assertEquals(3, res);
 });
 
 check('sum with mulitple digit numbers should sum them up', () => {
-    let res = sum('1,3');
-    assertEquals(4,res);
+  const res = sum('1,3');
+  assertEquals(4, res);
 });
-
-

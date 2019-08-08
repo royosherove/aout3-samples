@@ -1,15 +1,15 @@
-//our production code (Suite Under Test - SUT)
-let NumberParser2 = require('./number-parser2');
+// our production code (Suite Under Test - SUT)
+const NumberParser2 = require('./number-parser2');
 
 /**
  * A Test helper function for a simple assertion
  * @param actual (any type)
  * @param expected (any type)
  */
-const assertEquals = (expected, actual) =>{
-    if (actual!==expected){
-        throw new Error(`Expected ${expected} but was ${actual}`);
-    }
+const assertEquals = (expected, actual) => {
+  if (actual !== expected) {
+    throw new Error(`Expected ${expected} but was ${actual}`);
+  }
 };
 
 /**
@@ -19,14 +19,13 @@ const assertEquals = (expected, actual) =>{
  * @param {string} name
  * @param {function} implementation
  */
-const check = (name,implementation) =>{
-    try{
-        implementation();
-        console.log(`${name} passed`);
-    }
-    catch (e) {
-        console.error(`${name} FAILED`, e.stack);
-    }
+const check = (name, implementation) => {
+  try {
+    implementation();
+    console.log(`${name} passed`);
+  } catch (e) {
+    console.error(`${name} FAILED`, e.stack);
+  }
 };
 
 /**
@@ -34,14 +33,11 @@ const check = (name,implementation) =>{
  * To run: "node ch1/custom-test-phase2.js
  */
 check('wasSumCalled by Default is False', () => {
-    let np = new NumberParser2();
-    assertEquals(false, np.wasSumCalled());
+  const np = new NumberParser2();
+  assertEquals(false, np.wasSumCalled());
 });
 check('wasSumCalled after summing is true', () => {
-    let np = new NumberParser2();
-    np.sum('1,2');
-    assertEquals(true,np.wasSumCalled());
+  const np = new NumberParser2();
+  np.sum('1,2');
+  assertEquals(true, np.wasSumCalled());
 });
-
-
-

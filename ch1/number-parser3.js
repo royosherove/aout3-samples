@@ -1,38 +1,37 @@
-const winston = require("winston");
+const winston = require('winston');
 
-class NumberParser3 {
-  constructor() {
-    this.wasCalled = false;
-    this.logger = this.makeLogger();
-  }
+const makeLogger = () => {
+  return winston
+    .createLogger({
+      level: 'info',
+      transports: new winston.transports.Console()
+    });
+};
 
-  /**
+const logger = makeLogger();
+let wasCalled = false;
+
+/**
    *
    * @returns {boolean}
    */
-  wasSumCalled() {
-    return this.wasCalled;
-  }
+const wasSumCalled = () => {
+  return wasCalled;
+};
 
-  makeLogger = () => {
-    return winston
-        .createLogger({
-                        level: "info",
-                        transports: new winston.transports.Console()
-                      });
-    };
+const sum = (numbers) => {
+  wasCalled = true;
+  const [a, b] = numbers.split(',');
+  logger.info(
+    'this is a very important log output',
+    { firstNumWas: a, secondNumWas: b });
 
-  sum(numbers) {
-    this.wasCalled = true;
-    let [a, b] = numbers.split(",");
-    this.logger.info(
-        "this is a very important log output",
-        { firstNumWas: a, secondNumWas: b });
+  return Number.parseInt(a, 10) + Number.parseInt(b, 10);
+};
 
-    return Number.parseInt(a) + Number.parseInt(b);
-  }
-}
-
-module.exports = NumberParser3;
-//run this file with node (name of this file) to see the logging
-new NumberParser3().sum("10,20");
+module.exports = {
+  wasSumCalled,
+  sum
+};
+// run this file with node (name of this file) to see the logging
+sum('10,20');

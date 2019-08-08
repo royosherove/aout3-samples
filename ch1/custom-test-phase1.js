@@ -1,13 +1,13 @@
-//I'm using 'require' to be compatible with node.js,
+// I'm using 'require' to be compatible with node.js,
 // so we won't need a transpiler like babel.
-const {sum} = require('./number-parser');
+const { sum } = require('./number-parser');
 
 /**
  * Our "Test" definition.
  */
 const parserTest = () => {
   try {
-    let result = sum('1,2');
+    const result = sum('1,2');
     if (result === 3) {
       console.log('parserTest example 1 PASSED');
     } else {
