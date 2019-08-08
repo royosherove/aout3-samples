@@ -1,7 +1,7 @@
 {
   "name": "aout3-samples",
   "version": "1.0.0",
-  "description": "Code Samples for Art of Unit Testing 3rd Editino",
+  "description": "Code Samples for Art of Unit Testing 3rd Edition",
   "main": "index.js",
   "scripts": {
     "test": "jest",
