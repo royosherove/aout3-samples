@@ -1,3 +1,5 @@
+'use strict';
+
 // our production code (Suite Under Test - SUT)
 const { sum, wasSumCalled } = require('./number-parser2');
 

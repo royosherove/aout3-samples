@@ -1,3 +1,5 @@
+'use strict';
+
 // I'm using 'require' to be compatible with node.js,
 // so we won't need a transpiler like babel.
 const { sum } = require('./number-parser');

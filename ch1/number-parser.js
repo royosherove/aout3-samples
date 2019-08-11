@@ -1,3 +1,5 @@
+'use strict';
+
 /**
  * Our System Under Test (SUT)
  * @param {string} numbers
@@ -10,8 +12,4 @@ const sum = (numbers) => {
   return result;
 };
 
-/*
-I'm using the module.exports for comparability with Node syntax for modules.
- This way we won't have to use any transpiler to run this code.
-*/
 module.exports.sum = sum;
