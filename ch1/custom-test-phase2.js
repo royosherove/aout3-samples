@@ -35,11 +35,11 @@ const check = (name, implementation) => {
  * To run: "node ch1/custom-test-phase2.js
  */
 check('sum with 2 numbers should sum them up', () => {
-  const res = sum('1,2');
-  assertEquals(3, res);
+  const result = sum('1,2');
+  assertEquals(3, result);
 });
 
-check('sum with mulitple digit numbers should sum them up', () => {
-  const res = sum('1,3');
-  assertEquals(4, res);
+check('sum with multiple digit numbers should sum them up', () => {
+  const result = sum('10,20');
+  assertEquals(30, result);
 });
