@@ -1,13 +1,13 @@
 'use strict';
 
-let wasCalled = false;
+let total = 0;
 
 /**
      *
-     * @returns {boolean}
+     * @returns {number}
      */
-const wasSumCalled = () => {
-  return wasCalled;
+const totalSoFar = () => {
+  return total;
 };
 
 /**
@@ -16,14 +16,14 @@ const wasSumCalled = () => {
      * @returns {number}
      */
 const sum = (numbers) => {
-  wasCalled = true;
   const [a, b] = numbers.split(',');
   const result = Number.parseInt(a, 10) +
             Number.parseInt(b, 10);
+  total += result;
   return result;
 };
 
 module.exports = {
   sum,
-  wasSumCalled
+  totalSoFar
 };

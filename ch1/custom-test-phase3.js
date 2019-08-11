@@ -1,7 +1,7 @@
 'use strict';
 
 // our production code (Suite Under Test - SUT)
-const { sum, wasSumCalled } = require('./number-parser2');
+const { sum, totalSoFar } = require('./number-parser2');
 
 /**
  * A Test helper function for a simple assertion
@@ -34,10 +34,11 @@ const check = (name, implementation) => {
  * Our actual tests begin here
  * To run: "node ch1/custom-test-phase2.js
  */
-check('wasSumCalled by Default is False', () => {
-  assertEquals(false, wasSumCalled());
+check('totalSoFar by Default is 0', () => {
+  assertEquals(0, totalSoFar());
 });
-check('wasSumCalled after summing is true', () => {
+check('totalSoFar after summing is bigger', () => {
   sum('1,2');
-  assertEquals(true, wasSumCalled());
+  sum('1,2');
+  assertEquals(6, totalSoFar());
 });
