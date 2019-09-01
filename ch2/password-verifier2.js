@@ -14,8 +14,9 @@ module.exports = class PasswordVerifier2 {
   ruleReducer ({ input, errors }, rule) {
     const result = rule(input);
     if (result.passed === false) {
-      const newErrors = [...errors].push(result.reason);
-      return { input, newErrors };
+      const newErrors = [...errors];
+      newErrors.push(result.reason);
+      return { input, errors:newErrors };
     }
     return { input, errors };
   }
