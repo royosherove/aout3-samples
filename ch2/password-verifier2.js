@@ -16,7 +16,7 @@ module.exports = class PasswordVerifier2 {
     if (result.passed === false) {
       const newErrors = [...errors];
       newErrors.push(result.reason);
-      return { input, errors:newErrors };
+      return { input, errors: newErrors };
     }
     return { input, errors };
   }

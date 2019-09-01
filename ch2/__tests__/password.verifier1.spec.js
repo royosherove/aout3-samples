@@ -2,6 +2,7 @@ const PasswordVerifier1 = require('../password-verifier1');
 
 test('the first test', () => {
   const verifier = new PasswordVerifier1();
+
   const fakeRule = input => ({ passed: false, reason: `${input} fake reason` });
 
   verifier.addRule(fakeRule);
