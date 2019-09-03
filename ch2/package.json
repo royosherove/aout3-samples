@@ -1,0 +1,14 @@
+{
+  "name": "aout-password-verifier",
+  "version": "1.0.0",
+  "description": "",
+  "main": "password-verifier2.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^24.9.0"
+  }
+}
