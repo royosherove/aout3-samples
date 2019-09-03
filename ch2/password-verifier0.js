@@ -3,7 +3,7 @@ const verifyPassword = (input, rules) => {
     rules.forEach(rule => {
         const result = rule(input);
         if (result.passed === false) {
-            errors.push(result.reason);
+            errors.push('error ' + result.reason);
         }
     });
     return errors;
