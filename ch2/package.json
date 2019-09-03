@@ -4,7 +4,8 @@
   "description": "",
   "main": "password-verifier2.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "testw": "jest --watch"
   },
   "author": "",
   "license": "ISC",
