@@ -28,6 +28,7 @@ describe('Password Verifier', () => {
     const failingRule = (rule) => ({ passed: false, reason: 'fake reason' });
     test('it has errors', () => {
       const verifier = makeVerifier();
+
       verifier.addRule(failingRule);
       const errors = verifier.verify('any value');
 
