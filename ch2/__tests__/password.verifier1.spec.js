@@ -4,8 +4,10 @@ describe('PasswordVerifier', () => {
   describe('with a failing rule', () => {
     it('has an error message based on the rule.reason', () => {
       const verifier = new PasswordVerifier1();
-      const fakeRule = input => ({passed: false,
-                                  reason: 'fake reason'});
+      const fakeRule = input => ({
+        passed: false,
+        reason: 'fake reason'
+      });
 
       verifier.addRule(fakeRule);
       const errors = verifier.verify('any value');
@@ -19,8 +21,10 @@ describe('v2 PasswordVerifier', () => {
   describe('with a failing rule', () => {
     it('has an error message based on the rule.reason', () => {
       const verifier = new PasswordVerifier1();
-      const fakeRule = input => ({passed: false,
-        reason: 'fake reason'});
+      const fakeRule = input => ({
+        passed: false,
+        reason: 'fake reason'
+      });
 
       verifier.addRule(fakeRule);
       const errors = verifier.verify('any value');
@@ -35,8 +39,10 @@ describe('v3 PasswordVerifier', () => {
   describe('with a failing rule', () => {
     it('has an error message based on the rule.reason', () => {
       const verifier = new PasswordVerifier1();
-      const fakeRule = input => ({passed: false,
-        reason: 'fake reason'});
+      const fakeRule = input => ({
+        passed: false,
+        reason: 'fake reason'
+      });
 
       verifier.addRule(fakeRule);
       const errors = verifier.verify('any value');
@@ -45,8 +51,10 @@ describe('v3 PasswordVerifier', () => {
     });
     it('has exactly one error', () => {
       const verifier = new PasswordVerifier1();
-      const fakeRule = input => ({passed: false,
-        reason: 'fake reason'});
+      const fakeRule = input => ({
+        passed: false,
+        reason: 'fake reason'
+      });
 
       verifier.addRule(fakeRule);
       const errors = verifier.verify('any value');
@@ -62,7 +70,7 @@ describe('v4 PasswordVerifier', () => {
   describe('with a failing rule', () => {
     let fakeRule, errors;
     beforeEach(() => {
-      fakeRule = input => ({passed: false, reason: 'fake reason'});
+      fakeRule = input => ({ passed: false, reason: 'fake reason' });
       verifier.addRule(fakeRule);
     });
     it('has an error message based on the rule.reason', () => {
@@ -84,7 +92,7 @@ describe('v5 PasswordVerifier', () => {
   describe('with a failing rule', () => {
     let fakeRule, errors;
     beforeEach(() => {
-      fakeRule = input => ({passed: false, reason: 'fake reason'});
+      fakeRule = input => ({ passed: false, reason: 'fake reason' });
       verifier.addRule(fakeRule);
       errors = verifier.verify('any value');
     });
@@ -97,14 +105,13 @@ describe('v5 PasswordVerifier', () => {
   });
 });
 
-
 describe('v6 PasswordVerifier', () => {
   let verifier;
   beforeEach(() => verifier = new PasswordVerifier1());
   describe('with a failing rule', () => {
     let fakeRule, errors;
     beforeEach(() => {
-      fakeRule = input => ({passed: false, reason: 'fake reason'});
+      fakeRule = input => ({ passed: false, reason: 'fake reason' });
       verifier.addRule(fakeRule);
       errors = verifier.verify('any value');
     });
@@ -118,7 +125,7 @@ describe('v6 PasswordVerifier', () => {
   describe('with a passing rule', () => {
     let fakeRule, errors;
     beforeEach(() => {
-      fakeRule = input => ({passed: true, reason: ''});
+      fakeRule = input => ({ passed: true, reason: '' });
       verifier.addRule(fakeRule);
       errors = verifier.verify('any value');
     });
@@ -127,10 +134,10 @@ describe('v6 PasswordVerifier', () => {
     });
   });
   describe('with a failing and a passing rule', () => {
-    let fakeRulePass,fakeRuleFail, errors;
+    let fakeRulePass, fakeRuleFail, errors;
     beforeEach(() => {
-      fakeRulePass = input => ({passed: true, reason: 'fake success'});
-      fakeRuleFail = input => ({passed: false, reason: 'fake reason'});
+      fakeRulePass = input => ({ passed: true, reason: 'fake success' });
+      fakeRuleFail = input => ({ passed: false, reason: 'fake reason' });
       verifier.addRule(fakeRulePass);
       verifier.addRule(fakeRuleFail);
       errors = verifier.verify('any value');
@@ -185,23 +192,20 @@ describe('v7 PasswordVerifier', () => {
     });
   });
 
-  //These methods are inside the describe block
+  // These methods are inside the describe block
   // so that they can live alongside the helpers in the next example.
   const makeFailingRule = (reason) => {
     return (input) => {
-      return {passed: false, reason: reason}
+      return { passed: false, reason: reason };
     };
   };
   const passingRule = (input) => {
-    return {passed: true, reason: ''}
+    return { passed: true, reason: '' };
   };
 });
 
-
-
-
 const makeVerifier = () => new PasswordVerifier1();
-const passingRule = (input) => ({passed: true, reason: ''});
+const passingRule = (input) => ({ passed: true, reason: '' });
 
 const makeVerifierWithPassingRule = () => {
   const verifier = makeVerifier();
@@ -211,7 +215,7 @@ const makeVerifierWithPassingRule = () => {
 
 const makeVerifierWithFailedRule = (reason) => {
   const verifier = makeVerifier();
-  const fakeRule = input => ({passed: false, reason: reason});
+  const fakeRule = input => ({ passed: false, reason: reason });
   verifier.addRule(fakeRule);
   return verifier;
 };
@@ -252,3 +256,34 @@ describe('v8 PasswordVerifier', () => {
   });
 });
 
+// v9 tests
+test('pass verifier, with failed rule, ' +
+          'has an error message based on the rule.reason', () => {
+  const verifier = makeVerifierWithFailedRule('fake reason');
+  const errors = verifier.verify('any input');
+  expect(errors[0]).toContain('fake reason');
+});
+test('pass verifier, with failed rule, has exactly one error', () => {
+  const verifier = makeVerifierWithFailedRule('fake reason');
+  const errors = verifier.verify('any input');
+  expect(errors.length).toBe(1);
+});
+test('pass verifier, with passing rule, has no errors', () => {
+  const verifier = makeVerifierWithPassingRule();
+  const errors = verifier.verify('any input');
+  expect(errors.length).toBe(0);
+});
+test('pass verifier, with passing  and failing rule,' +
+          ' has one error', () => {
+  const verifier = makeVerifierWithFailedRule('fake reason');
+  verifier.addRule(passingRule);
+  const errors = verifier.verify('any input');
+  expect(errors.length).toBe(1);
+});
+test('pass verifier, with passing  and failing rule,' +
+          ' error text belongs to failed rule', () => {
+  const verifier = makeVerifierWithFailedRule('fake reason');
+  verifier.addRule(passingRule);
+  const errors = verifier.verify('any input');
+  expect(errors[0]).toContain('fake reason');
+});
