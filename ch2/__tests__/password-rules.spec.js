@@ -36,7 +36,7 @@ describe('v3 one upppercase rule', function () {
     ${'Abc'} | ${true}
     ${'aBc'} | ${true}
     ${'abc'} | ${false}
-    `('given one uppercase, it passes', ({ input, expected }) => {
+    `('given $input', ({ input, expected }) => {
     const result = rules.oneUpperCaseRule(input);
     expect(result.passed).toEqual(expected);
   });
