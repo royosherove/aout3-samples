@@ -1,10 +1,11 @@
-const rules = {
-  oneUpperCaseRule: (input) => {
+const oneUpperCaseRule = (input) => {
     return {
-      passed: (input.toLowerCase() !== input),
-      reason: 'at least one upper case needed'
+        passed: (input.toLowerCase() !== input),
+        reason: 'at least one upper case needed'
     };
-  }
 };
 
-module.exports = rules;
+
+module.exports = {
+  oneUpperCaseRule
+};
