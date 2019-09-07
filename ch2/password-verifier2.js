@@ -8,8 +8,8 @@ module.exports = class PasswordVerifier2 {
   }
 
   verify (input) {
-    const payLoad = { input, errors: [] };
-    const resultPayLoad = this.__rules.reduce(this.ruleReducer, payLoad);
+    const payload = { input, errors: [] };
+    const resultPayLoad = this.__rules.reduce(this.ruleReducer, payload);
     return resultPayLoad.errors;
   }
 
