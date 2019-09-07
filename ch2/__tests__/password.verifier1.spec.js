@@ -287,3 +287,19 @@ test('pass verifier, with passing  and failing rule,' +
   const errors = verifier.verify('any input');
   expect(errors[0]).toContain('fake reason');
 });
+
+test('verify, with no rules, throws exception', () => {
+  const verifier = makeVerifier();
+  try {
+    verifier.verify('any input');
+    fail('error was expected but not thrown');
+  } catch (e) {
+    expect(e.message).toContain('no rules configured');
+  }
+});
+
+test('verify, with no rules, throws exception', () => {
+  const verifier = makeVerifier();
+  expect(() => verifier.verify('any input'))
+    .toThrowError(/no rules configured/);
+});

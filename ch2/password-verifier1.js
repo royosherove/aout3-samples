@@ -8,6 +8,9 @@ module.exports = class PasswordVerifier1 {
   }
 
   verify (input) {
+    if (this.__rules.length === 0) {
+      throw new Error('There are no rules configured');
+    }
     const errors = [];
     this.__rules.forEach(rule => {
       const result = rule(input);
