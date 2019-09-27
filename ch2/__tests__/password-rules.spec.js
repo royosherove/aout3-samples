@@ -1,6 +1,6 @@
 const rules = require('../password-rules');
 
-describe('one uppercase rule', function () {
+describe('one uppercase rule',  ()=> {
   test('given no uppercase, it fails', () => {
     const result = rules.oneUpperCaseRule('abc');
     expect(result.passed).toEqual(false);
@@ -15,7 +15,7 @@ describe('one uppercase rule', function () {
   });
 });
 
-describe('v2 one uppercase rule', function () {
+describe('v2 one uppercase rule', ()=> {
   test('given no uppercase, it fails', () => {
     const result = rules.oneUpperCaseRule('abc');
     expect(result.passed).toEqual(false);
@@ -30,14 +30,14 @@ describe('v2 one uppercase rule', function () {
   });
 });
 
-describe('v3 one uppercase rule', function () {
+describe('v3 one uppercase rule',  ()=> {
   test.each`
     input | expected
     ${'Abc'} | ${true}
     ${'aBc'} | ${true}
     ${'abc'} | ${false}
     `('given $input', ({ input, expected }) => {
-    const result = rules.oneUpperCaseRule(input);
-    expect(result.passed).toEqual(expected);
+      const result = rules.oneUpperCaseRule(input);
+      expect(result.passed).toEqual(expected);
   });
 });
