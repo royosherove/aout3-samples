@@ -20,17 +20,26 @@ describe('v2 one uppercase rule', ()=> {
     const result = rules.oneUpperCaseRule('abc');
     expect(result.passed).toEqual(false);
   });
-  test.each`
-    input
-    ${'Abc'}
-    ${'aBc'}
-    `('given one uppercase, it passes', (params) => {
-    const result = rules.oneUpperCaseRule(params.input);
+
+  test.each(['Abc',
+             'aBc'])
+  ('given one uppercase, it passes', (input) => {
+    const result = rules.oneUpperCaseRule(input);
     expect(result.passed).toEqual(true);
   });
 });
 
 describe('v3 one uppercase rule',  ()=> {
+  test.each([ ['Abc',true],
+              ['aBc', true],
+              ['abc', false] ])
+  ('given %s, %s ', ( input, expected ) => {
+    const result = rules.oneUpperCaseRule(input);
+    expect(result.passed).toEqual(expected);
+  });
+});
+
+describe('v4 one uppercase rule, with the fancy jest table input',  ()=> {
   test.each`
     input | expected
     ${'Abc'} | ${true}

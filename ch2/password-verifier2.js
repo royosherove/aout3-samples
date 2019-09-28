@@ -1,15 +1,15 @@
 module.exports = class PasswordVerifier2 {
   constructor () {
-    this.__rules = [];
+    this.rules = [];
   }
 
   addRule (rule) {
-    this.__rules.push(rule);
+    this.rules.push(rule);
   }
 
   verify (input) {
     const payload = { input, errors: [] };
-    const resultPayLoad = this.__rules.reduce(this.ruleReducer, payload);
+    const resultPayLoad = this.rules.reduce(this.ruleReducer, payload);
     return resultPayLoad.errors;
   }
 
