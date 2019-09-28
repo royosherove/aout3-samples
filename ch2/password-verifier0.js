@@ -1,4 +1,4 @@
-// ch2/password-verifier0.js
+// ch2/machine-scanner0.js
 
 const verifyPassword = (input, rules) => {
   const errors = [];
