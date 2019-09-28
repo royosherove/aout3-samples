@@ -10,9 +10,7 @@ test('the first test', () => {
   expect(result[0]).toContain('fake reason');
 });
 
-function makeVerifier () {
-  return new PasswordVerifier2();
-}
+const makeVerifier = () => new PasswordVerifier2();
 
 describe('Password Verifier', () => {
   describe('by default', () => {
