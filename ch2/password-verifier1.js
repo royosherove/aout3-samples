@@ -22,4 +22,5 @@ class PasswordVerifier1 {
   }
 }
 
-module.exports = PasswordVerifier1;
+module.exports = { PasswordVerifier1 };
+

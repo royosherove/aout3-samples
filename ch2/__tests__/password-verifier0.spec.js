@@ -1,4 +1,4 @@
-const verifyPassword = require('../password-verifier0');
+const {verifyPassword} = require('../password-verifier0');
 
 test('v1: the first test', () => {
   const fakeRule = input => ({ passed: false, reason: 'fake reason' });

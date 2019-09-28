@@ -1,4 +1,4 @@
-const PasswordVerifier1 = require('../password-verifier1');
+const { PasswordVerifier1 } = require('../password-verifier1');
 
 describe('PasswordVerifier', () => {
   describe('with a failing rule', () => {
@@ -170,7 +170,7 @@ describe('v7 PasswordVerifier', () => {
   describe('with a passing rule', () => {
     let errors;
     beforeEach(() => {
-      verifier.addRule(passingRule);
+      verifier.addRule(makePassingRule());
       errors = verifier.verify('any value');
     });
     it('has no errors', () => {
@@ -180,7 +180,7 @@ describe('v7 PasswordVerifier', () => {
   describe('with a failing and a passing rule', () => {
     let errors;
     beforeEach(() => {
-      verifier.addRule(passingRule);
+      verifier.addRule(makePassingRule());
       verifier.addRule(makeFailingRule('fake reason'));
       errors = verifier.verify('any value');
     });
@@ -199,7 +199,7 @@ describe('v7 PasswordVerifier', () => {
       return { passed: false, reason: reason };
     };
   };
-  const passingRule = (input) => {
+  const makePassingRule = ()=> (input) => {
     return { passed: true, reason: '' };
   };
 });
