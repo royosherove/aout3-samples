@@ -1,13 +1,13 @@
 class PasswordVerifier1 {
-  constructor() {
+  constructor () {
     this.rules = [];
   }
 
-  addRule(rule) {
+  addRule (rule) {
     this.rules.push(rule);
   }
 
-  verify(input) {
+  verify (input) {
     if (this.rules.length === 0) {
       throw new Error('There are no rules configured');
     }
@@ -21,7 +21,5 @@ class PasswordVerifier1 {
     return errors;
   }
 }
-
-
 
 module.exports = PasswordVerifier1;
