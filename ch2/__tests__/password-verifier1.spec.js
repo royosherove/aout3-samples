@@ -199,7 +199,7 @@ describe('v7 PasswordVerifier', () => {
       return { passed: false, reason: reason };
     };
   };
-  const makePassingRule = ()=> (input) => {
+  const makePassingRule = () => (input) => {
     return { passed: true, reason: '' };
   };
 });

@@ -23,4 +23,3 @@ class PasswordVerifier1 {
 }
 
 module.exports = { PasswordVerifier1 };
-
