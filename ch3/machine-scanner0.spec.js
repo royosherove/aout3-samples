@@ -9,8 +9,7 @@ describe('findRecentlyRebooted', () => {
     expect(result.length).toBe(0);
   });
 
-
-  test('given one machine over than threhold, it is ignored', () => {
+  test('given one machine over than threshold, it is ignored', () => {
     const twoDaysAgo = moment().subtract(2, 'days');
     const machines = [{ lastBootTime: twoDaysAgo, name: 'machine1' }];
 
@@ -20,20 +19,18 @@ describe('findRecentlyRebooted', () => {
   });
 
   test('given one of two machines under the threshold, it is found', () => {
-    const twoDaysAgo = moment().subtract(2, 'days').calendar();
-    const machines = [
-      { lastBootTime: twoDaysAgo, name: 'should-be-ignored' },
-      { lastBootTime: Date.now(), name: 'should-be-found' }
-    ];
+    const twoDaysAgo = moment().subtract(2, 'days');
+    const machines = [ { lastBootTime: twoDaysAgo, name: 'ignored' },
+                      { lastBootTime: Date.now(),name: 'found' } ];
 
     const result = findRecentlyRebooted(machines, 1);
 
     expect(result.length).toBe(1);
-    expect(result[0].name).toContain('should-be-found');
+    expect(result[0].name).toContain('found');
   });
 
-  test('given one machine less than threhold, returns its name and boot time', () => {
-    const machines = [{ lastBootTime: Date.now(), name: 'machine1' }];
+  test('given one machine less than threshold, returns its name and boot time', () => {
+    const machines = [{ lastBootTime: Date.now(),name: 'any-name' }];
 
     const result = findRecentlyRebooted(machines, 1);
 
