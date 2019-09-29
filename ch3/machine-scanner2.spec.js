@@ -1,7 +1,7 @@
 
-const { findRecentlyRebooted } = require('./machine-scanner1');
+const { findRecentlyRebooted } = require('./machine-scanner2');
 
-describe('v2 findRecentlyRebooted', () => {
+describe('v3 findRecentlyRebooted', () => {
   test('given no machines, returns empty results', () => {
     const someDate = new Date('01 01 2000');
 
@@ -15,7 +15,7 @@ describe('v2 findRecentlyRebooted', () => {
     const rebootTwoDaysEarly = new Date('01 01 2000');
     const machines = [{ lastBootTime: rebootTwoDaysEarly, name: 'machine1' }];
 
-    const result = findRecentlyRebooted(machines, 1, fromDate);
+    const result = findRecentlyRebooted(machines, 1, () => fromDate);
 
     expect(result.length).toBe(0);
   });
@@ -26,7 +26,7 @@ describe('v2 findRecentlyRebooted', () => {
     const machines = [{ lastBootTime: rebootTwoDaysEarly, name: 'ignored' },
       { lastBootTime: fromDate, name: 'found' }];
 
-    const result = findRecentlyRebooted(machines, 1, fromDate);
+    const result = findRecentlyRebooted(machines, 1, () => fromDate);
 
     expect(result.length).toBe(1);
     expect(result[0].name).toContain('found');
@@ -36,7 +36,7 @@ describe('v2 findRecentlyRebooted', () => {
     const fromDate = new Date('01 01 2000');
     const machines = [{ lastBootTime: fromDate, name: 'any-name' }];
 
-    const result = findRecentlyRebooted(machines, 1, fromDate);
+    const result = findRecentlyRebooted(machines, 1, () => fromDate);
 
     expect(result.length).toBe(1);
   });

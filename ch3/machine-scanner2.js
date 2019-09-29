@@ -2,9 +2,9 @@ const moment = require('moment');
 
 const daysFrom = (from, to) => moment(from).diff(to, 'days');
 
-const findRecentlyRebooted = (machines, maxDays, fromDate) =>
+const findRecentlyRebooted = (machines, maxDays, fromDateCallback = Date.now) =>
   machines.filter(machine =>
-    daysFrom(fromDate, machine.lastBootTime) < maxDays);
+    daysFrom(fromDateCallback(), machine.lastBootTime) < maxDays);
 
 module.exports = {
   findRecentlyRebooted
