@@ -39,7 +39,7 @@ describe('findRecentlyRebooted', () => {
 });
 
 describe('v0.1 with fake global date', () => {
-  test('given one machine less than threshold, returns its name and boot time', () => {
+  test('findRecentlyRebooted, given one machine less than threshold, returns its name and boot time', () => {
     const fakeTime = new Date('01 01 2000').getTime();
     const realNowFn = Date.now;
     Date.now = () => fakeTime;
@@ -55,8 +55,9 @@ describe('v0.1 with fake global date', () => {
 });
 
 describe('v0.2 with jest fake global date', () => {
-  test('given one machine less than threshold, returns its name and boot time', () => {
+  test('findRecentlyRebooted, given one machine less than threshold, returns its name and boot time', () => {
     const fakeTime = new Date('01 01 2000').getTime();
+    //huge issue if running tests in parallel
     const realNowFn = Date.now;
     Date.now = jest.fn(() => fakeTime);
     console.log(Date.now()); // always outputs '946677600000'
@@ -65,12 +66,13 @@ describe('v0.2 with jest fake global date', () => {
     const result = findRecentlyRebooted(machines, 1);
 
     expect(result.length).toBe(1);
+    //we don't get here if the expect failed.
     Date.now = realNowFn;
     console.log(Date.now()); // dynamically changing output
   });
 });
 
-describe('v0.3 refactored with before& afterEach: with jest fake global date', () => {
+describe('findRecentlyRebooted, v0.3 refactored with before& afterEach: with jest fake global date', () => {
   let realNowFn;
   beforeEach(() => {
     realNowFn = Date.now;
@@ -86,7 +88,7 @@ describe('v0.3 refactored with before& afterEach: with jest fake global date', (
     console.log(Date.now()); // always outputs '946677600000'
   };
 
-  test('given one machine less than threshold, returns its name and boot time', () => {
+  test('findRecentlyRebooted, given one machine less than threshold, returns its name and boot time', () => {
     fakeGlobalTime(new Date('01 01 2000'));
     const machines = [{ lastBootTime: Date.now(), name: 'any-name' }];
 

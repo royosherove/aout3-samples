@@ -50,3 +50,19 @@ describe('v4 one uppercase rule, with the fancy jest table input', () => {
     expect(result.passed).toEqual(expected);
   });
 });
+
+describe('v5 one uppercase rule, with vanila JS test.each', () => {
+
+  const tests = {
+    'Abc': true,
+    'aBc': true,
+    'abc': false,
+  };
+
+  for (const [input, expected] of Object.entries(tests)) {
+    test(`given ${input}, ${expected}`, () => {
+      const result = oneUpperCaseRule(input);
+      expect(result.passed).toEqual(expected);
+    });
+  }
+});
