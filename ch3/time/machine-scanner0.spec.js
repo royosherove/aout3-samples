@@ -2,7 +2,9 @@ const moment = require('moment');
 
 const { findRecentlyRebooted } = require('./machine-scanner0');
 
+//we fake global time later on in this file!
 describe('findRecentlyRebooted', () => {
+  //a very basic test
   test('given no machines, returns empty results', () => {
     const result = findRecentlyRebooted([], 0);
 
@@ -38,6 +40,7 @@ describe('findRecentlyRebooted', () => {
   });
 });
 
+//FAKE GLOBALS
 describe('v0.1 with fake global date', () => {
   test('findRecentlyRebooted, given one machine less than threshold, returns its name and boot time', () => {
     const fakeTime = new Date('01 01 2000').getTime();
@@ -84,7 +87,10 @@ describe('findRecentlyRebooted, v0.3 refactored with before& afterEach: with jes
 
   const fakeGlobalTime = dateObj => {
     //huge issue if running tests in parallel
-    Date.now = jest.fn(() => dateObj.getTime());
+    Date.now = () => dateObj.getTime();
+    //we use jest.fn() if we want it to be a mock. Otherwise it's a stub!!
+    // Date.now = jest.fn(() => dateObj.getTime());
+
     console.log(Date.now()); // always outputs '946677600000'
   };
 

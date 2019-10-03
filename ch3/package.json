@@ -2,7 +2,7 @@
   "name": "ch3",
   "version": "1.0.0",
   "description": "",
-  "main": "machine-scanner0.js",
+  "main": "time/machine-scanner0.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
