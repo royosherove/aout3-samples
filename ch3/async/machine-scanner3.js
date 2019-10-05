@@ -9,12 +9,12 @@ const findRebootedPerInterval = (getMachinesCallback, foundCallback, intervalSec
     if (rebootsFound.length > 0) {
       foundCallback(rebootsFound);
     }
-  }, intervalSeconds)
+  }, intervalSeconds);
 };
 
 const findRecentlyRebooted = (machines, maxDays, fromDateCallback = Date.now) =>
-    machines.filter(machine =>
-        daysFrom(fromDateCallback(), machine.lastBootTime) < maxDays);
+  machines.filter(machine =>
+    daysFrom(fromDateCallback(), machine.lastBootTime) < maxDays);
 
 module.exports = {
   findRecentlyRebooted,

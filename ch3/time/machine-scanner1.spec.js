@@ -1,7 +1,7 @@
 
 const { findRecentlyRebooted } = require('./machine-scanner1');
 
-//we are using hard coded time, also fromDate parameter
+// we are using hard coded time, also fromDate parameter
 describe('v2 findRecentlyRebooted', () => {
   test('given no machines, returns empty results', () => {
     const someDate = new Date('01 01 2000');
