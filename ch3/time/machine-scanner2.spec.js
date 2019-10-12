@@ -1,4 +1,3 @@
-
 const { findRecentlyRebooted } = require('./machine-scanner2');
 
 describe('v3 findRecentlyRebooted', () => {
@@ -26,8 +25,8 @@ describe('v3 findRecentlyRebooted', () => {
     const machines = [{ lastBootTime: rebootTwoDaysEarly, name: 'ignored' },
       { lastBootTime: fromDate, name: 'found' }];
 
-    // using a callback that fethes our hardcoded date
-    /// WHAT HAPPENS when you want to control date on multipel components or functions at same time
+    // using a callback that fetches our hardcoded date
+    /// WHAT HAPPENS when you want to control date on multiple components or functions at same time
     // and you forget one?
     // is it OK to make the value a default value?
     const result = findRecentlyRebooted(machines, 1, () => fromDate);
