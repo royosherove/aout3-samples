@@ -43,6 +43,7 @@ describe('findRecentlyRebooted', () => {
       {lastBootTime: rebootTwoDaysEarly, name: 'ignored'},
       {lastBootTime: fromDate, name: 'found'}
     ]);
+    const { findRecentlyRebooted } = require('./machine-scanner4');
     const result = findRecentlyRebooted(1, fromDate);
 
     expect(result.length).toBe(1);
@@ -54,6 +55,7 @@ describe('findRecentlyRebooted', () => {
     const machines = [ { lastBootTime: fromDate, name: 'any-name' }];
     setFakeData(machines);
 
+    const { findRecentlyRebooted } = require('./machine-scanner4');
     const result = findRecentlyRebooted(1, fromDate);
 
     expect(result.length).toBe(1);
