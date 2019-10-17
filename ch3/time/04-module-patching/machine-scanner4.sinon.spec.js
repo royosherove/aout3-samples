@@ -1,14 +1,18 @@
 const dataModule = require('./my-data-module');
 const sinon = require('sinon');
+let sandbox;
 
-describe('4 findRecentlyRebooted', () => {
-  // beforeEach(() => jest.resetModules());
+describe('4 sinon sandbox findRecentlyRebooted', () => {
+  beforeEach(() => {
+    sandbox = sinon.createSandbox();
+    console.log(sandbox);
+  });
+  afterEach(() => sandbox.restore());
 
   test('given no machines, returns empty results', () => {
     const someDate = new Date('01 01 2000');
-    sinon.stub(dataModule, 'getAllMachines').returns([]);
+    sandbox.stub(dataModule, 'getAllMachines').returns([]);
     const { findRecentlyRebooted } = require('./machine-scanner4');
-    // require('./my-data-module');
 
     const result = findRecentlyRebooted( 0, someDate);
 
@@ -18,7 +22,7 @@ describe('4 findRecentlyRebooted', () => {
   test('given one machine over the threshold, it is ignored', () => {
     const fromDate = new Date('01 03 2000');
     const rebootTwoDaysEarly = new Date('01 01 2000');
-    sinon.stub(dataModule, 'getAllMachines').returns([
+    sandbox.stub(dataModule, 'getAllMachines').returns([
       {lastBootTime: rebootTwoDaysEarly, name: 'machine1'},
     ]);
 
@@ -31,7 +35,7 @@ describe('4 findRecentlyRebooted', () => {
   test('given one of two machines under the threshold, it is found', () => {
     const fromDate = new Date('01 03 2000');
     const rebootTwoDaysEarly = new Date('01 01 2000');
-    sinon.stub(dataModule, 'getAllMachines').returns([
+    sandbox.stub(dataModule, 'getAllMachines').returns([
       {lastBootTime: rebootTwoDaysEarly, name: 'ignored'},
       {lastBootTime: fromDate, name: 'found'}
     ]);
@@ -44,7 +48,7 @@ describe('4 findRecentlyRebooted', () => {
 
   test('given 1 machine less than threshold, returns its name and boot time', () => {
     const fromDate = new Date('01 01 2000');
-    sinon.stub(dataModule, 'getAllMachines').returns([
+    sandbox.stub(dataModule, 'getAllMachines').returns([
       { lastBootTime: fromDate, name: 'any-name' }
     ]);
 

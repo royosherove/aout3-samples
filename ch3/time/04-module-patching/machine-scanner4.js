@@ -6,9 +6,6 @@ const daysFrom = (from, to) => {
 };
 
 const findRecentlyRebooted = (maxDays, fromDate) => {
-  console.log('IN FIND RECENT');
-
-  console.log(require.cache);
   const machines = getAllMachines();
   return machines.filter(machine =>
       daysFrom(fromDate, machine.lastBootTime) < maxDays);
