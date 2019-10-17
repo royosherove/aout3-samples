@@ -1,20 +1,15 @@
 const { findRecentlyRebooted } = require('./machine-scanner4');
-const {setFakeData} = require('./my-data-module');
+const dataModule = require('./my-data-module');
+const td = require('testdouble');
 
-jest.mock('./my-data-module', () => ({
-  setFakeData: data => {
-    this.data = data;
-  },
+describe('4 findRecentlyRebooted', () => {
+  // beforeEach(() => jest.resetModules());
 
-  getAllMachines: () => {
-    return this.data;
-  }
-}));
-
-describe('findRecentlyRebooted', () => {
   test('given no machines, returns empty results', () => {
     const someDate = new Date('01 01 2000');
-    setFakeData([ ]);
+    sinon.stub(dataModule, 'getAllMachines').returns([]);
+
+    // require('./my-data-module');
 
     const result = findRecentlyRebooted( 0, someDate);
 
