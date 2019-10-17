@@ -1,4 +1,4 @@
-const { findRecentlyRebooted } = require('./machine-scanner00');
+const { findRecentlyRebooted } = require('../00-begin/machine-scanner00');
 
 describe('v1 findRecentlyRebooted', () => {
   test('given 1 of 2 machines under threshold, it is found', () => {

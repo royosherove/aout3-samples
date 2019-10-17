@@ -1,9 +1,20 @@
 const { findRecentlyRebooted } = require('./machine-scanner4');
+const {setFakeData} = require('./my-data-module');
 
-// we are using hard coded time, also fromDate parameter
+jest.mock('./my-data-module', () => ({
+  setFakeData: data => {
+    this.data = data;
+  },
+
+  getAllMachines: () => {
+    return this.data;
+  }
+}));
+
 describe('findRecentlyRebooted', () => {
   test('given no machines, returns empty results', () => {
     const someDate = new Date('01 01 2000');
+    setFakeData([ ]);
 
     const result = findRecentlyRebooted( 0, someDate);
 
@@ -15,6 +26,7 @@ describe('findRecentlyRebooted', () => {
     const rebootTwoDaysEarly = new Date('01 01 2000');
     const machines = [
       { lastBootTime: rebootTwoDaysEarly, name: 'machine1' }];
+    setFakeData(machines);
 
     const result = findRecentlyRebooted( 1, fromDate);
 
@@ -24,22 +36,22 @@ describe('findRecentlyRebooted', () => {
   test('given one of two machines under the threshold, it is found', () => {
     const fromDate = new Date('01 03 2000');
     const rebootTwoDaysEarly = new Date('01 01 2000');
-    const machines = [
-      { lastBootTime: rebootTwoDaysEarly, name: 'ignored' },
-      { lastBootTime: fromDate, name: 'found' }];
-
-    const result = findRecentlyRebooted(machines, 1, fromDate);
+    setFakeData([
+      {lastBootTime: rebootTwoDaysEarly, name: 'ignored'},
+      {lastBootTime: fromDate, name: 'found'}
+    ]);
+    const result = findRecentlyRebooted(1, fromDate);
 
     expect(result.length).toBe(1);
     expect(result[0].name).toContain('found');
   });
 
-  test('given one machine less than threshold, returns its name and boot time', () => {
+  test('given 1 machine less than threshold, returns its name and boot time', () => {
     const fromDate = new Date('01 01 2000');
-    const machines = [
-      { lastBootTime: fromDate, name: 'any-name' }];
+    const machines = [ { lastBootTime: fromDate, name: 'any-name' }];
+    setFakeData(machines);
 
-    const result = findRecentlyRebooted(machines, 1, fromDate);
+    const result = findRecentlyRebooted(1, fromDate);
 
     expect(result.length).toBe(1);
   });

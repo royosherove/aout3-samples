@@ -1,5 +1,5 @@
-const {getAllMachines} = require('../my-data-module');
-
+const {getAllMachines} = require('./my-data-module');
+console.log(require.cache);
 const daysFrom = (from, to) => {
   const ms = from.getTime() - new Date(to).getTime();
   return (ms / 1000) * 60 * 60 * 24; // secs * min * hrs
@@ -7,7 +7,7 @@ const daysFrom = (from, to) => {
 
 const findRecentlyRebooted = (maxDays, fromDate) => {
   const machines = getAllMachines();
-  machines.filter(machine =>
+  return machines.filter(machine =>
       daysFrom(fromDate, machine.lastBootTime) < maxDays);
 };
 
