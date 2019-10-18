@@ -5,7 +5,7 @@ class machineScanner {
 
   daysFrom (from, to) {
     const ms = from.getTime() - new Date(to).getTime();
-    return (ms / 1000) * 60 * 60 * 24; // secs * min * hrs
+    return (ms / 1000) / 60 / 60 / 24; // secs * min * hrs
   }
 
   findRecentlyRebooted (machines, maxDays) {
