@@ -12,6 +12,11 @@ const fakeDataFromModule = fakeData => {
     });
 };
 
+const requireAndCall_findRecentlyRebooted = (maxDays, fromDate) => {
+    const {findRecentlyRebooted} = require('./machine-scanner4');
+    return  findRecentlyRebooted(maxDays,fromDate);
+};
+
 describe('4 findRecentlyRebooted', () => {
     beforeEach(resetAndRequireModules);
 
@@ -20,9 +25,7 @@ describe('4 findRecentlyRebooted', () => {
         const someDate = new Date('01 01 2000');
         fakeDataFromModule([]);
 
-        const { findRecentlyRebooted } = require('./machine-scanner4');
-        const result = findRecentlyRebooted( 0, someDate);
-
+        const result = requireAndCall_findRecentlyRebooted(1, someDate);
         expect(result.length).toBe(0);
     });
 
@@ -33,8 +36,7 @@ describe('4 findRecentlyRebooted', () => {
             {lastBootTime: rebootTwoDaysEarly, name: 'machine1'},
         ]);
 
-        const { findRecentlyRebooted } = require('./machine-scanner4');
-        const result = findRecentlyRebooted( 1, fromDate);
+        const result = requireAndCall_findRecentlyRebooted(1, fromDate);
 
         expect(result.length).toBe(0);
     });
@@ -47,8 +49,7 @@ describe('4 findRecentlyRebooted', () => {
                 {lastBootTime: fromDate, name: 'found'}
         ]);
 
-        const { findRecentlyRebooted } = require('./machine-scanner4');
-        const result = findRecentlyRebooted(1, fromDate);
+        const result = requireAndCall_findRecentlyRebooted(1, fromDate);
 
         expect(result.length).toBe(1);
         expect(result[0].name).toContain('found');
@@ -60,8 +61,7 @@ describe('4 findRecentlyRebooted', () => {
             {lastBootTime: fromDate, name: 'any-name'}
         ]);
 
-        const { findRecentlyRebooted } = require('./machine-scanner4');
-        const result = findRecentlyRebooted(1, fromDate);
+        const result = requireAndCall_findRecentlyRebooted(1, fromDate);
 
         expect(result.length).toBe(1);
     });
