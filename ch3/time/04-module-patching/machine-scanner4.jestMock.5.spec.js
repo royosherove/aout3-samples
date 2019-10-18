@@ -1,8 +1,14 @@
-function fakeDataFromModule(fakeData) {
+//          Before-Arrange-Act Module patching
+//          ----------------------------------
+//Before:   Clear all modules (under test and fake)
+//Arrange:  Fake module
+//Act:      Re-Require & call unit of work under test before calling it
+
+const fakeDataFromModule = fakeData => {
   jest.doMock('./my-data-module', () => ({
     getAllMachines: () => fakeData
   }));
-}
+};
 
 const requireAndCall_findRecentlyRebooted = (maxDays, fromDate) => {
   const {findRecentlyRebooted} = require('./machine-scanner4');

@@ -2,13 +2,18 @@ const {getAllMachines} = require('./my-data-module');
 
 const daysFrom = (from, to) => {
   const ms = from.getTime() - new Date(to).getTime();
-  return (ms / 1000) * 60 * 60 * 24; // secs * min * hrs
+  const diff =(ms / 1000) / 60 / 60 / 24; // secs * min * hrs
+  console.log(diff);
+  return diff;
 };
 
 const findRecentlyRebooted = (maxDays, fromDate) => {
   const machines = getAllMachines();
-  return machines.filter(machine =>
-      daysFrom(fromDate, machine.lastBootTime) < maxDays);
+  return machines.filter(machine =>{
+    const daysDiff = daysFrom(fromDate, machine.lastBootTime);
+    console.log(`days diffed: ${daysDiff} vs max:${maxDays}`);
+    return daysDiff < maxDays;
+  })
 };
 
 module.exports = {
