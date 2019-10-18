@@ -1,10 +1,6 @@
 
 describe('findRecentlyRebooted', () => {
   beforeEach(jest.resetModules);
-  test('', () => {
-
-  });
-
 
   test('given no machines, returns empty results', () => {
     jest.doMock('./my-data-module', () => ({

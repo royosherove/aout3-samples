@@ -1,7 +1,9 @@
-const {setFakeData} = require('./my-data-module');
+// requiring the data injection helper from fake module
+const {fakeDataFromModule} = require('./my-data-module');
 
 jest.mock('./my-data-module', () => ({
-  setFakeData: data => {
+  //injecting a stub helper function:
+  fakeDataFromModule: data => {
     this.data = data;
   },
 
@@ -15,7 +17,7 @@ describe('findRecentlyRebooted', () => {
 
   test('given no machines, returns empty results', () => {
     const someDate = new Date('01 01 2000');
-    setFakeData([ ]);
+    fakeDataFromModule([ ]);
 
     const { findRecentlyRebooted } = require('./machine-scanner4');
     const result = findRecentlyRebooted( 0, someDate);
@@ -28,7 +30,7 @@ describe('findRecentlyRebooted', () => {
     const rebootTwoDaysEarly = new Date('01 01 2000');
     const machines = [
       { lastBootTime: rebootTwoDaysEarly, name: 'machine1' }];
-    setFakeData(machines);
+    fakeDataFromModule(machines);
 
     const { findRecentlyRebooted } = require('./machine-scanner4');
     const result = findRecentlyRebooted( 1, fromDate);
@@ -39,7 +41,7 @@ describe('findRecentlyRebooted', () => {
   test('given one of two machines under the threshold, it is found', () => {
     const fromDate = new Date('01 03 2000');
     const rebootTwoDaysEarly = new Date('01 01 2000');
-    setFakeData([
+    fakeDataFromModule([
       {lastBootTime: rebootTwoDaysEarly, name: 'ignored'},
       {lastBootTime: fromDate, name: 'found'}
     ]);
@@ -53,7 +55,7 @@ describe('findRecentlyRebooted', () => {
   test('given 1 machine less than threshold, returns its name and boot time', () => {
     const fromDate = new Date('01 01 2000');
     const machines = [ { lastBootTime: fromDate, name: 'any-name' }];
-    setFakeData(machines);
+    fakeDataFromModule(machines);
 
     const { findRecentlyRebooted } = require('./machine-scanner4');
     const result = findRecentlyRebooted(1, fromDate);

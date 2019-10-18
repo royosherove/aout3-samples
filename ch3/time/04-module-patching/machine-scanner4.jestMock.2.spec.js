@@ -1,5 +1,6 @@
 const { findRecentlyRebooted } = require('./machine-scanner4');
 
+//happens once and globally
 jest.mock('./my-data-module', () => ({
   getAllMachines: () => {
     const rebootTwoDaysEarly = new Date("01 01 2000");
@@ -12,7 +13,7 @@ jest.mock('./my-data-module', () => ({
 }));
 
 describe('findRecentlyRebooted', () => {
-  beforeEach(() => jest.resetModuleRegistry());
+  beforeEach(() => jest.resetModules());
 
   test('given 1 of 2 machines under the threshold, it is found', () => {
     const result = findRecentlyRebooted(1, new Date("01 03 2000"));
