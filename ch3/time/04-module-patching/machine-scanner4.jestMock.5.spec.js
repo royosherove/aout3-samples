@@ -1,8 +1,8 @@
 //          Before-Arrange-Act Module patching
 //          ----------------------------------
-//Before:   Clear all modules (under test and fake)
-//Arrange:  Fake module
-//Act:      Re-Require & call unit of work under test before calling it
+// Before:   Clear all modules (under test and fake)
+// Arrange:  Fake module
+// Act:      Re-Require & call unit of work under test before calling it
 
 const fakeDataFromModule = fakeData => {
   jest.doMock('./my-data-module', () => ({
@@ -11,8 +11,8 @@ const fakeDataFromModule = fakeData => {
 };
 
 const requireAndCall_findRecentlyRebooted = (maxDays, fromDate) => {
-  const {findRecentlyRebooted} = require('./machine-scanner4');
-  return  findRecentlyRebooted(maxDays,fromDate);
+  const { findRecentlyRebooted } = require('./machine-scanner4');
+  return findRecentlyRebooted(maxDays, fromDate);
 };
 
 describe('findRecentlyRebooted', () => {
@@ -31,7 +31,7 @@ describe('findRecentlyRebooted', () => {
     const fromDate = new Date('01 03 2000');
     const rebootTwoDaysEarly = new Date('01 01 2000');
     fakeDataFromModule([
-      {lastBootTime: rebootTwoDaysEarly, name: 'machine1'}
+      { lastBootTime: rebootTwoDaysEarly, name: 'machine1' }
     ]);
 
     const result = requireAndCall_findRecentlyRebooted(1, fromDate);
@@ -43,8 +43,8 @@ describe('findRecentlyRebooted', () => {
     const fromDate = new Date('01 03 2000');
     const rebootTwoDaysEarly = new Date('01 01 2000');
     fakeDataFromModule([
-      {lastBootTime: rebootTwoDaysEarly, name: 'ignored'},
-      {lastBootTime: fromDate, name: 'found'}
+      { lastBootTime: rebootTwoDaysEarly, name: 'ignored' },
+      { lastBootTime: fromDate, name: 'found' }
     ]);
     const result = requireAndCall_findRecentlyRebooted(1, fromDate);
 

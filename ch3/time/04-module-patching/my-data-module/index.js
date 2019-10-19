@@ -1,7 +1,7 @@
-function getAllMachines() {
-    throw new Error("This module has not been implemented yet");
-};
+function getAllMachines () {
+  throw new Error('This module has not been implemented yet');
+}
 
 module.exports = {
-    getAllMachines,
+  getAllMachines
 };

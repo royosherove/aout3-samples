@@ -26,8 +26,8 @@ describe('v2 machineScanner', () => {
       const scanner = makeScanner(fromDate);
       const rebootTwoDaysEarly = new Date('01 01 2000');
       const machines = [
-          { lastBootTime: rebootTwoDaysEarly, name: 'ignored' },
-          { lastBootTime: fromDate, name: 'found' }];
+        { lastBootTime: rebootTwoDaysEarly, name: 'ignored' },
+        { lastBootTime: fromDate, name: 'found' }];
 
       const result = scanner.findRecentlyRebooted(machines, 1);
 

@@ -4,12 +4,12 @@ describe('findRecentlyRebooted', () => {
 
   test('given no machines, returns empty results', () => {
     jest.doMock('./my-data-module', () => ({
-      getAllMachines: () => [],
+      getAllMachines: () => []
     }));
     const { findRecentlyRebooted } = require('./machine-scanner4');
 
     const someDate = new Date('01 01 2000');
-    const result = findRecentlyRebooted( 0, someDate);
+    const result = findRecentlyRebooted(0, someDate);
 
     expect(result.length).toBe(0);
   });
@@ -21,10 +21,10 @@ describe('findRecentlyRebooted', () => {
     jest.doMock('./my-data-module', () => ({
       getAllMachines: () => [
         { lastBootTime: rebootTwoDaysEarly, name: 'machine1' }
-      ],
+      ]
     }));
     const { findRecentlyRebooted } = require('./machine-scanner4');
-    const result = findRecentlyRebooted( 1, fromDate);
+    const result = findRecentlyRebooted(1, fromDate);
 
     expect(result.length).toBe(0);
   });
@@ -34,9 +34,9 @@ describe('findRecentlyRebooted', () => {
     const rebootTwoDaysEarly = new Date('01 01 2000');
     jest.doMock('./my-data-module', () => ({
       getAllMachines: () => [
-        {lastBootTime: rebootTwoDaysEarly, name: 'ignored'},
-        {lastBootTime: fromDate, name: 'found'}
-      ],
+        { lastBootTime: rebootTwoDaysEarly, name: 'ignored' },
+        { lastBootTime: fromDate, name: 'found' }
+      ]
     }));
     const { findRecentlyRebooted } = require('./machine-scanner4');
     const result = findRecentlyRebooted(1, fromDate);
@@ -51,7 +51,7 @@ describe('findRecentlyRebooted', () => {
     jest.doMock('./my-data-module', () => ({
       getAllMachines: () => [
         { lastBootTime: fromDate, name: 'any-name' }
-      ],
+      ]
     }));
     const { findRecentlyRebooted } = require('./machine-scanner4');
     const result = findRecentlyRebooted(1, fromDate);

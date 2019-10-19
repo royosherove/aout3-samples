@@ -3,7 +3,7 @@ let dataModule;
 
 const fakeDataFromModule = fakeData => {
   sinon.stub(dataModule, 'getAllMachines')
-      .returns(fakeData);
+    .returns(fakeData);
 };
 
 const resetAndRequireModules = () => {
@@ -12,15 +12,12 @@ const resetAndRequireModules = () => {
 };
 
 const requireAndCall_findRecentlyRebooted = (maxDays, someDate) => {
-  const {findRecentlyRebooted} = require('./machine-scanner4');
+  const { findRecentlyRebooted } = require('./machine-scanner4');
   return findRecentlyRebooted(maxDays, someDate);
 };
 
 describe('4  sinon sandbox findRecentlyRebooted', () => {
-
-  beforeEach( resetAndRequireModules);
-
-
+  beforeEach(resetAndRequireModules);
 
   test('given no machines, returns empty results', () => {
     const someDate = new Date('01 01 2000');
@@ -33,7 +30,7 @@ describe('4  sinon sandbox findRecentlyRebooted', () => {
     const fromDate = new Date('01 03 2000');
     const rebootTwoDaysEarly = new Date('01 01 2000');
     fakeDataFromModule([
-      {lastBootTime: rebootTwoDaysEarly, name: 'machine1'}
+      { lastBootTime: rebootTwoDaysEarly, name: 'machine1' }
     ]);
 
     const result = requireAndCall_findRecentlyRebooted(1, fromDate);
@@ -45,8 +42,8 @@ describe('4  sinon sandbox findRecentlyRebooted', () => {
     const fromDate = new Date('01 03 2000');
     const rebootTwoDaysEarly = new Date('01 01 2000');
     fakeDataFromModule([
-      {lastBootTime: rebootTwoDaysEarly, name: 'ignored'},
-      {lastBootTime: fromDate, name: 'found'}
+      { lastBootTime: rebootTwoDaysEarly, name: 'ignored' },
+      { lastBootTime: fromDate, name: 'found' }
     ]);
     const result = requireAndCall_findRecentlyRebooted(1, fromDate);
 
@@ -54,13 +51,13 @@ describe('4  sinon sandbox findRecentlyRebooted', () => {
     expect(result[0].name).toContain('found');
   });
 
-  test('given 1 machine less than threshold, returns its name and boot time',()=> {
+  test('given 1 machine less than threshold, returns its name and boot time', () => {
     const fromDate = new Date('01 02 2000');
     fakeDataFromModule([
-      { lastBootTime: new Date("01 01 2000"), name: 'any-name' }
+      { lastBootTime: new Date('01 01 2000'), name: 'any-name' }
     ]);
 
-    const result = requireAndCall_findRecentlyRebooted(2,fromDate);
+    const result = requireAndCall_findRecentlyRebooted(2, fromDate);
 
     expect(result.length).toBe(1);
   });
