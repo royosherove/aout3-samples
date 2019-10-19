@@ -5,6 +5,7 @@ const daysFrom = (from, to) => moment(from).diff(to, 'days');
 const findRebootedPerInterval = (getMachinesCallback, onFound,  maxDays, getDate) => {
   setInterval(() => {
     const rebootsFound = findRecentlyRebooted(getMachinesCallback(), maxDays, getDate);
+
     if (rebootsFound.length > 0) {
       onFound(rebootsFound);
     }
