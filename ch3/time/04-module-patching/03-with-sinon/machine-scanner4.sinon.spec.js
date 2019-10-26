@@ -8,11 +8,11 @@ const fakeDataFromModule = fakeData => {
 
 const resetAndRequireModules = () => {
   jest.resetModules();
-  dataModule = require('./my-data-module');
+  dataModule = require('../my-data-module');
 };
 
 const requireAndCall_findRecentlyRebooted = (maxDays, someDate) => {
-  const { findRecentlyRebooted } = require('./machine-scanner4');
+  const { findRecentlyRebooted } = require('../machine-scanner4');
   return findRecentlyRebooted(maxDays, someDate);
 };
 

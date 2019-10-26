@@ -24,7 +24,7 @@ const requireAndCall_findRecentlyRebooted = (maxDays, fromDate) => {
 // this test will fail in Jest
 // because jest ignores require.cache internally
 // It should pass with other test frameworks such as Jasmine
-// You can also execute the following vanilla js command to test it:
+// to run it:
 // 'node  ch3/time/04-module-patching/require-cache-patching/machine-scanner4.test-with-require-cache.js'
 check('given 1 of 2 machines under the threshold, it is found', () => {
   const rebootTwoDaysEarly = new Date('01 01 2000');
