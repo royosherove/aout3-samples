@@ -1,4 +1,3 @@
-// const dataModule = require('./my-data-module');
 let td;
 
 const resetAndRequireModules = () => {
@@ -6,6 +5,7 @@ const resetAndRequireModules = () => {
   td = require('testdouble');
   require('testdouble-jest')(td, jest);
 };
+
 const fakeDataFromModule = fakeData => {
   td.replace('../my-data-module', {
     getAllMachines: () => fakeData

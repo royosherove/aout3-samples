@@ -24,8 +24,10 @@ describe('4  sinon sandbox findRecentlyRebooted', () => {
     fakeDataFromModule([]);
 
     const result = requireAndCall_findRecentlyRebooted(2, someDate);
+
     expect(result.length).toBe(0);
   });
+
   test('given one machine over the threshold, it is ignored', () => {
     const fromDate = new Date('01 03 2000');
     const rebootTwoDaysEarly = new Date('01 01 2000');
@@ -45,6 +47,7 @@ describe('4  sinon sandbox findRecentlyRebooted', () => {
       { lastBootTime: rebootTwoDaysEarly, name: 'ignored' },
       { lastBootTime: fromDate, name: 'found' }
     ]);
+
     const result = requireAndCall_findRecentlyRebooted(1, fromDate);
 
     expect(result.length).toBe(1);
