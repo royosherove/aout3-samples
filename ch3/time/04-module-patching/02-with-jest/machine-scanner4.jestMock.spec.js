@@ -39,10 +39,10 @@ describe('findRecentlyRebooted', () => {
   test('given one of two machines under the threshold, it is found', () => {
     const fromDate = new Date('01 03 2000');
     const rebootTwoDaysEarly = new Date('01 01 2000');
-    // fakeDataFromModule([
-    //   { lastBootTime: rebootTwoDaysEarly, name: 'ignored' },
-    //   { lastBootTime: fromDate, name: 'found' }
-    // ]);
+    fakeDataFromModule([
+      { lastBootTime: rebootTwoDaysEarly, name: 'ignored' },
+      { lastBootTime: fromDate, name: 'found' }
+    ]);
     const result = findRecentlyRebooted(1, fromDate);
 
     expect(result.length).toBe(1);
