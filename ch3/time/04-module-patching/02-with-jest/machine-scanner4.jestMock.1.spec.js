@@ -1,7 +1,7 @@
 const { findRecentlyRebooted } = require('../machine-scanner4');
 
 // happens once and globally
-jest.mock('./my-data-module', () => ({
+jest.mock('../my-data-module', () => ({
   getAllMachines: () => {
     const rebootTwoDaysEarly = new Date('01 01 2000');
     const fromDate = new Date('01 03 2000');

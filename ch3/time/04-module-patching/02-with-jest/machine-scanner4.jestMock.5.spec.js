@@ -5,7 +5,7 @@
 // Act:      Re-Require & call unit of work under test before calling it
 
 const fakeDataFromModule = fakeData => {
-  jest.doMock('./my-data-module', () => ({
+  jest.doMock('../my-data-module', () => ({
     getAllMachines: () => fakeData
   }));
 };

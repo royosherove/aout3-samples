@@ -3,7 +3,7 @@ describe('findRecentlyRebooted', () => {
   beforeEach(jest.resetModules);
 
   test('given no machines, returns empty results', () => {
-    jest.doMock('./my-data-module', () => ({
+    jest.doMock('../my-data-module', () => ({
       getAllMachines: () => []
     }));
     const { findRecentlyRebooted } = require('../machine-scanner4');
@@ -18,7 +18,7 @@ describe('findRecentlyRebooted', () => {
     const fromDate = new Date('01 03 2000');
     const rebootTwoDaysEarly = new Date('01 01 2000');
 
-    jest.doMock('./my-data-module', () => ({
+    jest.doMock('../my-data-module', () => ({
       getAllMachines: () => [
         { lastBootTime: rebootTwoDaysEarly, name: 'machine1' }
       ]
@@ -32,7 +32,7 @@ describe('findRecentlyRebooted', () => {
   test('given one of two machines under the threshold, it is found', () => {
     const fromDate = new Date('01 03 2000');
     const rebootTwoDaysEarly = new Date('01 01 2000');
-    jest.doMock('./my-data-module', () => ({
+    jest.doMock('../my-data-module', () => ({
       getAllMachines: () => [
         { lastBootTime: rebootTwoDaysEarly, name: 'ignored' },
         { lastBootTime: fromDate, name: 'found' }
@@ -48,7 +48,7 @@ describe('findRecentlyRebooted', () => {
   test('given 1 machine less than threshold, returns its name and boot time', () => {
     const fromDate = new Date('01 01 2000');
 
-    jest.doMock('./my-data-module', () => ({
+    jest.doMock('../my-data-module', () => ({
       getAllMachines: () => [
         { lastBootTime: fromDate, name: 'any-name' }
       ]
