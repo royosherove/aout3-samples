@@ -1,14 +1,13 @@
-
-const { findRecentlyRebooted, findRebootedPerInterval } = require('./machine-scanner-interval');
+const {findRebootedPerInterval } = require('./machine-scanner-interval');
 
 const originalSetInterval = setInterval;
 const restoreSetInterval = () => {
   setInterval = originalSetInterval;
 };
 
-const makeSetIntervalRunImmediately = () => {
+const fakeSetInterval = () => {
   //will only execute the callback once
-  setInterval = (callback, ms) => callback();
+  setInterval = (callback,ms) => callback();
 };
 
 
@@ -16,7 +15,7 @@ describe('findRebootedPerInterval', () => {
   beforeEach(restoreSetInterval);
 
   test('findRebootedPerInterval, when found, triggers onFound callback', () => {
-    makeSetIntervalRunImmediately();
+    fakeSetInterval();
     const machines = [
         { lastBootTime: new Date('01 01 2000'), name: 'ignored' },
         { lastBootTime: new Date('01 03 2000'), name: 'found' }];

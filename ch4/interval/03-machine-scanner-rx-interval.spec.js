@@ -1,4 +1,4 @@
-const {  findRebootedPerInterval } = require('./machine-scanner-interval');
+const {findRebootedPerInterval} = require('./machine-scanner-rx-interval');
 
 
 describe('findRebootedPerInterval', () => {
@@ -12,9 +12,10 @@ describe('findRebootedPerInterval', () => {
     let found = false;
     jest.useFakeTimers();
     findRebootedPerInterval(getFakeMachines,
-                          () =>  {
+                          (val) =>  {
                             found = true;
-                            // console.log('FOUND');
+                              console.log(val);
+                              // console.log('FOUND');
                           } ,             //onFound callback
 
                           2,                                // maxDays
