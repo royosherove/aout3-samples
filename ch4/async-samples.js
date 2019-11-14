@@ -12,7 +12,7 @@ const calculate2 = (x, y) => {
 };
 
 const calculate3 = async (x, y) => {
-    await setTimeout(10000);
+    await setTimeout(null,10000);
     return x + y;
 };
 

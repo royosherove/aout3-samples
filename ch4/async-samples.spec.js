@@ -23,11 +23,16 @@ describe('calculate3 - Await', () => {
     beforeEach(jest.clearAllTimers);
     beforeEach(jest.useFakeTimers);
 
-    test('fake timeout with Promise', done => {
+    test('fake timeout with await v1', done => {
         Samples.calculate3(1, 2).then(
-            result =>  expect(result).toBe(3) & done());
-                                                    // ^ done() is still needed
-        // this is not needed anymore
-        // jest.advanceTimersToNextTimer();
+            result => expect(result).toBe(3) & done());
+        // jest.advanceTimersToNextTimer(); is not needed
+    });
+
+    test('fake timeout with await', async() => {
+        const result = await Samples.calculate3(1, 2);
+        expect(result).toBe(3)
+        // done() is not needed
+        // jest.advanceTimersToNextTimer(); is not needed
     });
 });
