@@ -48,5 +48,12 @@ describe('calculate 4 with intervals', () => {
             result => expect(result).toBe(3) & done());
         jest.advanceTimersToNextTimer();
     });
+    test('calculate 5 with input and output functions for intervals', done => {
+        const inputFn = () => ({x: 1, y: 2});
+        Samples.calculate5(inputFn)
+            .subscribe(result => expect(result).toBe(3) & done());
+
+        jest.advanceTimersToNextTimer();
+    });
 
 });

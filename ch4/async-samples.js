@@ -32,7 +32,7 @@ const calculate4 =  (getInputsFn, resultFn) => {
  * @returns {(source: Observable<any>) => Observable<any>}
  */
 const calculate5 =  getInputsFn => {
-    return Observable.interval(1000)
+    return Observable.interval(10000)
         .pipe(
             map(() => {
                 const {x, y} = getInputsFn();
