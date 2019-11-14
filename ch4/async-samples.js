@@ -26,11 +26,6 @@ const calculate4 =  (getInputsFn, resultFn) => {
     }, 1000);
 };
 
-/**
- *
- * @param getInputsFn
- * @returns {(source: Observable<any>) => Observable<any>}
- */
 const calculate5 =  getInputsFn => {
     return Observable.interval(10000)
         .pipe(
@@ -41,9 +36,9 @@ const calculate5 =  getInputsFn => {
         );
 };
 
-const usesObservableThatCompletes = async(obs) => {
+const calculate6 = async(obs$) => {
     let sum =0;
-    await obs.subscribe(val => sum += val);
+    await obs$.subscribe(val => sum += val);
     return sum;
 };
 
@@ -55,5 +50,5 @@ module.exports = {
     calculate3,
     calculate4,
     calculate5,
-    usesObservableThatCompletes,
+    calculate6,
 };

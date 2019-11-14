@@ -1,3 +1,5 @@
+const {Observable, Subject} = require('rxjs');
+
 const Samples = require('./async-samples');
 
 describe('calculate1 - callbacks', () => {
@@ -76,9 +78,11 @@ describe('calculate 5 with Observable intervals', () => {
     });
 });
 describe('usesObservableThatCompletes', () => {
-    test('send a fake observable', () => {
-        // expect(true).toBeFalsy();
-        //FIX THIS TEST
+    test('send a fake observable', async () => {
+        const inputs$ = new Observable.from([1, 2]);
+        const result = await Samples.calculate6(inputs$);
+        expect(result).toBe(3);
     });
+
 });
 
