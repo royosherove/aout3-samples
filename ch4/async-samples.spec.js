@@ -38,7 +38,7 @@ describe('calculate3 - Await', () => {
     });
 });
 
-describe('calculate 4 with intervals', () => {
+describe('calculate with intervals', () => {
     beforeEach(jest.clearAllTimers);
     beforeEach(jest.useFakeTimers);
 
@@ -46,9 +46,16 @@ describe('calculate 4 with intervals', () => {
         const inputFn = () => ({x: 1, y: 2});
         Samples.calculate4(inputFn,
             result => expect(result).toBe(3) & done());
+
         jest.advanceTimersToNextTimer();
     });
-    test('calculate 5 with input and output functions for intervals', done => {
+});
+
+describe('calculate 5 with Observable intervals', () => {
+    beforeEach(jest.clearAllTimers);
+    beforeEach(jest.useFakeTimers);
+
+    test('calculate5 with single interval on observable can be asserted', done => {
         const inputFn = () => ({x: 1, y: 2});
         Samples.calculate5(inputFn)
             .subscribe(result => expect(result).toBe(3) & done());
@@ -56,4 +63,15 @@ describe('calculate 4 with intervals', () => {
         jest.advanceTimersToNextTimer();
     });
 
+    test('calculate5 with two intervals on observable can be asserted', () => {
+        const inputFn = () => ({x: 1, y: 2});
+        let accumulator = 0;
+        Samples.calculate5(inputFn)
+            .subscribe(result => accumulator += result);
+
+        jest.advanceTimersToNextTimer();
+        jest.advanceTimersToNextTimer();
+        expect(accumulator).toBe(6);
+    });
 });
+
