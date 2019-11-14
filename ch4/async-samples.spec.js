@@ -37,3 +37,16 @@ describe('calculate3 - Await', () => {
         // jest.advanceTimersToNextTimer(); is not needed
     });
 });
+
+describe('calculate 4 with intervals', () => {
+    beforeEach(jest.clearAllTimers);
+    beforeEach(jest.useFakeTimers);
+
+    test('calculate 4 with input and output functions for intervals', done => {
+        const inputFn = () => ({x: 1, y: 2});
+        Samples.calculate4(inputFn,
+            result => expect(result).toBe(3) & done());
+        jest.advanceTimersToNextTimer();
+    });
+
+});
