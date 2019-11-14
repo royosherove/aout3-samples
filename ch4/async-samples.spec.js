@@ -19,6 +19,7 @@ describe('calculate2 - Promises', () => {
         jest.advanceTimersToNextTimer();
     });
 });
+
 describe('calculate3 - Await', () => {
     beforeEach(jest.clearAllTimers);
     beforeEach(jest.useFakeTimers);
