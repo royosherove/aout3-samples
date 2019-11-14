@@ -64,14 +64,21 @@ describe('calculate 5 with Observable intervals', () => {
     });
 
     test('calculate5 with two intervals on observable can be asserted', () => {
-        const inputFn = () => ({x: 1, y: 2});
         let accumulator = 0;
+        const inputFn = () => ({x: 1, y: 2});
+
         Samples.calculate5(inputFn)
             .subscribe(result => accumulator += result);
 
         jest.advanceTimersToNextTimer();
         jest.advanceTimersToNextTimer();
         expect(accumulator).toBe(6);
+    });
+});
+describe('usesObservableThatCompletes', () => {
+    test('send a fake observable', () => {
+        expect(true).toBeFalsy();
+        //FIX THIS TEST
     });
 });
 

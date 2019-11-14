@@ -41,6 +41,13 @@ const calculate5 =  getInputsFn => {
         );
 };
 
+const usesObservableThatCompletes = async(obs) => {
+    let sum =0;
+    await obs.subscribe(val => sum += val);
+    return sum;
+};
+
+
 
 module.exports = {
     calculate1,
@@ -48,4 +55,5 @@ module.exports = {
     calculate3,
     calculate4,
     calculate5,
+    usesObservableThatCompletes,
 };
