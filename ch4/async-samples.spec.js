@@ -16,13 +16,15 @@ describe('monkey patching ', () => {
 
 describe('calculate1 - callbacks', () => {
     beforeEach(jest.clearAllTimers);
+    beforeEach(jest.useFakeTimers);
+
     test('fake timeout with callback', done => {
-        jest.useFakeTimers();
         Samples.calculate1(1, 2,
             result => expect(result).toBe(3) & done());
         jest.advanceTimersToNextTimer();
     });
 });
+
 describe('calculate2 - Promises', () => {
     beforeEach(jest.clearAllTimers);
     beforeEach(jest.useFakeTimers);
