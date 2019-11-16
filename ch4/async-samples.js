@@ -3,7 +3,7 @@ const {map} = require('rxjs/operators');
 
 const calculate1 = (x, y, resultCallback) => {
     setTimeout(() => resultCallback(x + y),
-        10000)
+        5000)
 };
 
 const calculate2 = (x, y) => {

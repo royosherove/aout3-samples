@@ -2,6 +2,18 @@ const {Observable, Subject} = require('rxjs');
 
 const Samples = require('./async-samples');
 
+describe('monkey patching ', () => {
+    let originalTimeOut;
+    beforeEach(() =>  originalTimeOut = setTimeout);
+    afterEach(() => setTimeout = originalTimeOut);
+
+    test('calculate1', (done) => {
+        setTimeout = (fn, ms) => fn();
+        Samples.calculate1(1, 2,
+            result => expect(result).toBe(3) & done());
+    });
+});
+
 describe('calculate1 - callbacks', () => {
     beforeEach(jest.clearAllTimers);
     test('fake timeout with callback', done => {
