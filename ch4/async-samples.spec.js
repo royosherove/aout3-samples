@@ -8,9 +8,11 @@ describe('monkey patching ', () => {
     afterEach(() => setTimeout = originalTimeOut);
 
     test('calculate1', (done) => {
-        setTimeout = (fn, ms) => fn();
-        Samples.calculate1(1, 2,
-            result => expect(result).toBe(3) & done());
+        setTimeout = (callback, ms) => callback();
+        Samples.calculate1(1, 2, result => {
+                expect(result).toBe(3);
+                done();
+            } );
     });
 });
 
@@ -24,18 +26,18 @@ describe('calculate1 - callbacks', () => {
         jest.advanceTimersToNextTimer();
     });
 });
-
-describe('calculate2 - Promises', () => {
-    beforeEach(jest.clearAllTimers);
-    beforeEach(jest.useFakeTimers);
-
-    test('fake timeout with Promise', done => {
-        Samples.calculate2(1, 2).then(
-            result =>  expect(result).toBe(3) & done());
-        jest.advanceTimersToNextTimer();
-    });
-});
-
+//
+// describe('calculate2 - Promises', () => {
+//     beforeEach(jest.clearAllTimers);
+//     beforeEach(jest.useFakeTimers);
+//
+//     test('fake timeout with Promise', done => {
+//         Samples.calculate2(1, 2).then(
+//             result =>  expect(result).toBe(3) & done());
+//         jest.advanceTimersToNextTimer();
+//     });
+// });
+//
 describe('calculate3 - Await', () => {
     beforeEach(jest.clearAllTimers);
     beforeEach(jest.useFakeTimers);
@@ -50,10 +52,10 @@ describe('calculate3 - Await', () => {
         const result = await Samples.calculate3(1, 2);
         expect(result).toBe(3)
         // done() is not needed
-        // jest.advanceTimersToNextTimer(); is not needed
+        // jest.advanceTimersToNextTimer() is not needed
     });
 });
-
+//
 describe('calculate with intervals', () => {
     beforeEach(jest.clearAllTimers);
     beforeEach(jest.useFakeTimers);

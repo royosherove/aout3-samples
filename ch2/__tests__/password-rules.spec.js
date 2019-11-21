@@ -53,7 +53,7 @@ describe('v4 one uppercase rule, with the fancy jest table input', () => {
   });
 });
 
-describe('v5 one uppercase rule, with vanila JS test.each', () => {
+describe('v5 one uppercase rule, with vanilla JS test.each', () => {
   const tests = {
     Abc: true,
     aBc: true,

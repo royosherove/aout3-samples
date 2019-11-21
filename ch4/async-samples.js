@@ -2,7 +2,7 @@ const {Observable} = require('rxjs');
 const {map} = require('rxjs/operators');
 
 const calculate1 = (x, y, resultCallback) => {
-    setTimeout(() => resultCallback(x + y),
+    setTimeout(() => {resultCallback(x+y)},
         5000)
 };
 
