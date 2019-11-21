@@ -3,10 +3,10 @@ const daysFrom = (from, to) => {
   return (ms / 1000) / 60 / 60 / 24; // secs * min * hrs
 };
 
-const configureFinder = (fromDateCallback = Date.now) =>
+const configureFinder = (fromDateFn = Date.now) =>
     (machines, maxDays) =>
         machines.filter(machine =>
-            daysFrom(fromDateCallback(), machine.lastBootTime) < maxDays);
+            daysFrom(fromDateFn(), machine.lastBootTime) < maxDays);
 
 module.exports = {
   configureFinder

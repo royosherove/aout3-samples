@@ -3,9 +3,9 @@ const daysFrom = (from, to) => {
   return (ms / 1000) / 60 / 60 / 24; // secs * min * hrs
 };
 
-const findRecentlyRebooted = (machines, maxDays, fromDateCallback = Date.now) =>
+const findRecentlyRebooted = (machines, maxDays, fromDateFn = Date.now) =>
   machines.filter(machine =>
-    daysFrom(fromDateCallback(), machine.lastBootTime) < maxDays);
+    daysFrom(fromDateFn(), machine.lastBootTime) < maxDays);
 
 module.exports = {
   findRecentlyRebooted
