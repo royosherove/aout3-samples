@@ -16,7 +16,7 @@ describe('findRecentlyRebooted', () => {
   beforeEach(jest.resetModules);
 
   test('given no machines, returns empty results', () => {
-    const someDate = new Date('01 01 2000');
+    const someDate = new Date(2000,0,1);
     fakeDataFromModule([]);
 
     const { findRecentlyRebooted } = require('../../machine-scanner4');
@@ -26,8 +26,8 @@ describe('findRecentlyRebooted', () => {
   });
 
   test('given one machine over the threshold, it is ignored', () => {
-    const fromDate = new Date('01 03 2000');
-    const rebootTwoDaysEarly = new Date('01 01 2000');
+    const fromDate = new Date(2000,0,3);
+    const rebootTwoDaysEarly = new Date(2000,0,1);
     const machines = [
       { lastBootTime: rebootTwoDaysEarly, name: 'machine1' }
       ];
@@ -40,8 +40,8 @@ describe('findRecentlyRebooted', () => {
   });
 
   test('given one of two machines under the threshold, it is found', () => {
-    const fromDate = new Date('01 03 2000');
-    const rebootTwoDaysEarly = new Date('01 01 2000');
+    const fromDate = new Date(2000,0,3);
+    const rebootTwoDaysEarly = new Date(2000,0,1);
     fakeDataFromModule([
       { lastBootTime: rebootTwoDaysEarly, name: 'ignored' },
       { lastBootTime: fromDate, name: 'found' }
@@ -54,7 +54,7 @@ describe('findRecentlyRebooted', () => {
   });
 
   test('given 1 machine less than threshold, returns its name and boot time', () => {
-    const fromDate = new Date('01 01 2000');
+    const fromDate = new Date(2000,0,1);
     const machines = [{ lastBootTime: fromDate, name: 'any-name' }];
     fakeDataFromModule(machines);
 

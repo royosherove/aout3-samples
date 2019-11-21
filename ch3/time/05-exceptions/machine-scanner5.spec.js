@@ -11,7 +11,7 @@ describe('findRecentlyRebooted', () => {
     dataModule.getAllMachines.mockImplementation(() => {
       throw 'fake error'
     });
-    const someDate = new Date('01 01 2000');
+    const someDate = new Date(2000,0,1);
 
     const result = findRecentlyRebooted(0, someDate);
 

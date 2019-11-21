@@ -2,9 +2,9 @@ const { machineScanner } = require('./machine-scanner3');
 describe('machineScanner', () => {
   describe('findRecentlyRebooted', () => {
     test('given 1 of 2 machines under the threshold, it is found', () => {
-      const fromDate = new Date('01 03 2000');
+      const fromDate = new Date(2000,0,3);
       const scanner = new machineScanner(fromDate);
-      const rebootTwoDaysEarly = new Date('01 01 2000');
+      const rebootTwoDaysEarly = new Date(2000,0,1);
       const machines = [
         { lastBootTime: rebootTwoDaysEarly, name: 'ignored' },
         { lastBootTime: fromDate, name: 'found' }];
@@ -22,9 +22,9 @@ const makeScanner = date => new machineScanner(date);
 describe('v2 machineScanner', () => {
   describe('findRecentlyRebooted', () => {
     test('given 1 of 2 machines under the threshold, it is found', () => {
-      const fromDate = new Date('01 03 2000');
+      const fromDate = new Date(2000,0,3);
       const scanner = makeScanner(fromDate);
-      const rebootTwoDaysEarly = new Date('01 01 2000');
+      const rebootTwoDaysEarly = new Date(2000,0,1);
       const machines = [
         { lastBootTime: rebootTwoDaysEarly, name: 'ignored' },
         { lastBootTime: fromDate, name: 'found' }];

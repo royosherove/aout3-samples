@@ -21,7 +21,7 @@ describe('v3 findRecentlyRebooted', () => {
 
   test('given one of two machines under the threshold, it is found', () => {
     const fromDate = new Date(2000,0,3);
-    const rebootTwoDaysEarly = new Date('01 01 2000');
+    const rebootTwoDaysEarly = new Date(2000,0,1);
     const machines = [
       { lastBootTime: rebootTwoDaysEarly, name: 'ignored' },
       { lastBootTime: fromDate, name: 'found' }

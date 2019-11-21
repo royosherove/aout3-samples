@@ -7,8 +7,8 @@ describe('findRebootedPerInterval', () => {
   test('findRebootedPerInterval, when found, triggers onFound callback', () => {
     //arrange
     const getFakeMachines = ()=> [
-      { lastBootTime: new Date('01 01 2000'), name: 'ignored' },
-      { lastBootTime: new Date('01 03 2000'), name: 'found' }];
+      { lastBootTime: new Date(2000,0,1), name: 'ignored' },
+      { lastBootTime: new Date(2000,0,3), name: 'found' }];
     let found = false;
     jest.useFakeTimers();
     findRebootedPerInterval(getFakeMachines,
