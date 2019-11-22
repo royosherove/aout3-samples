@@ -1,4 +1,4 @@
-class machineScanner {
+class MachineScanner {
   constructor (currentDate) {
     this.date = currentDate;
   }
@@ -15,5 +15,5 @@ class machineScanner {
 }
 
 module.exports = {
-  machineScanner
+   MachineScanner
 };

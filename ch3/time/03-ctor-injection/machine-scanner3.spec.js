@@ -1,9 +1,9 @@
-const { machineScanner } = require('./machine-scanner3');
+const { MachineScanner } = require('./machine-scanner3');
 describe('machineScanner', () => {
   describe('findRecentlyRebooted', () => {
     test('given 1 of 2 machines under the threshold, it is found', () => {
       const fromDate = new Date(2000,0,3);
-      const scanner = new machineScanner(fromDate);
+      const scanner = new MachineScanner(fromDate);
       const rebootTwoDaysEarly = new Date(2000,0,1);
       const machines = [
         { lastBootTime: rebootTwoDaysEarly, name: 'ignored' },
@@ -17,7 +17,7 @@ describe('machineScanner', () => {
   });
 });
 
-const makeScanner = date => new machineScanner(date);
+const makeScanner = date => new MachineScanner(date);
 
 describe('v2 machineScanner', () => {
   describe('findRecentlyRebooted', () => {
