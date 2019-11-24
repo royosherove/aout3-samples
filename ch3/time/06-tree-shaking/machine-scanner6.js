@@ -26,6 +26,7 @@ const replaceGetAllMachines = fn => getAllMachines = fn;
 
 module.exports = {
   findRecentlyRebooted,
+
   //dead tree - for testing only
   replaceGetAllMachines
 };

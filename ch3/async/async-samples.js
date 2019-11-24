@@ -5,6 +5,10 @@ const calculate1 = (x, y, resultCallback) => {
     setTimeout(() => {resultCallback(x+y)},
         5000)
 };
+const calculate01 = (x, y) => {
+    setTimeout(() => { }, 5000);
+    return x+y;
+};
 
 const calculate2 = (x, y) => {
     return new Promise((resolve, reject) => {
@@ -15,7 +19,9 @@ const calculate2 = (x, y) => {
 };
 
 const calculate3 = async (x, y) => {
-    await setTimeout(null,10000);
+    await setTimeout(()=>{
+        console.log('IN CALC 3');
+    },10000);
     return x + y;
 };
 
