@@ -1,5 +1,7 @@
 const {Observable} = require('rxjs');
 const {map} = require('rxjs/operators');
+const util = require('util');
+
 
 const calculate1 = (x, y, resultCallback) => {
     setTimeout(() => {resultCallback(x+y)},
@@ -14,16 +16,9 @@ const calculate2 = (x, y) => {
     return new Promise((resolve, reject) => {
         setTimeout(() => resolve(x + y),
             4000)
-
     });
 };
 
-const calculate3 = async (x, y) => {
-    await setTimeout(()=>{
-        console.log('IN CALC 3');
-    },10000);
-    return x + y;
-};
 
 const calculate4 =  (getInputsFn, resultFn) => {
     setInterval(() => {
@@ -53,7 +48,6 @@ const calculate6 = async(obs$) => {
 module.exports = {
     calculate1,
     calculate2,
-    calculate3,
     calculate4,
     calculate5,
     calculate6,

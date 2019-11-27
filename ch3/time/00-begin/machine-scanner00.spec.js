@@ -8,7 +8,8 @@ describe('findRecentlyRebooted', () => {
   });
 
   test('given one machine over the threshold, it is ignored', () => {
-    const twoDaysAgo = Date.now() - (2 * 1000 * 60 * 60 * 24);
+    const DAYS_IN_MS =  1000 * 60 * 60 * 24;
+    const twoDaysAgo = Date.now() - (2 * DAYS_IN_MS);
     const machines = [{ lastBootTime: twoDaysAgo, name: 'machine1' }];
 
     const result = findRecentlyRebooted(machines, 1);

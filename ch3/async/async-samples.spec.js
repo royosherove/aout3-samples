@@ -1,5 +1,6 @@
 const {Observable, Subject} = require('rxjs');
 const Samples = require('./async-samples');
+const util = require('util');
 
 describe('monkey patching ', () => {
     let originalTimeOut;
@@ -37,24 +38,6 @@ describe('calculate2 - Promises', () => {
     });
 });
 
-describe('calculate3 - Await', () => {
-    beforeEach(jest.clearAllTimers);
-    beforeEach(jest.useFakeTimers);
-
-    test('fake timeout with await v1', done => {
-        Samples.calculate3(1, 2).then(
-            result => expect(result).toBe(3) & done());
-        // jest.advanceTimersToNextTimer(); is not needed
-    });
-
-    test('fake timeout with await v2', async() => {
-        const result = await Samples.calculate3(1, 2);
-        expect(result).toBe(3)
-        // done() is not needed
-        // jest.advanceTimersToNextTimer() is not needed
-    });
-});
-//
 describe('calculate with intervals', () => {
     beforeEach(jest.clearAllTimers);
     beforeEach(jest.useFakeTimers);
