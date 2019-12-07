@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "ch1": "semistandard --fix && node ./ch1/custom-test-phase1.js && node ./ch1/custom-test-phase2.js && node ./ch1/custom-test-phase3.js"
+    "ch1": "semistandard --fix ./ch1 && node ./ch1/custom-test-phase1.js && node ./ch1/custom-test-phase2.js && node ./ch1/custom-test-phase3.js"
   },
   "repository": {
     "type": "git",
