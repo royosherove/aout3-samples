@@ -1,5 +1,3 @@
-// ch2/machine-scanner0.js
-
 const verifyPassword = (input, rules) => {
   const errors = [];
   rules.forEach(rule => {

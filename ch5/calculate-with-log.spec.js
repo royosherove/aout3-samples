@@ -26,7 +26,7 @@ describe('calculate2', () => {
         });
 
         it('calls the logger with sum', () => {
-            const mockLogger = {log: jest.fn()}
+            const mockLogger = {log: jest.fn()};
 
             Samples.calculate2(1, 2, mockLogger);
 

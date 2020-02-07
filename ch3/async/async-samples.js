@@ -7,10 +7,6 @@ const calculate1 = (x, y, resultCallback) => {
     setTimeout(() => {resultCallback(x+y)},
         5000)
 };
-const calculate01 = (x, y) => {
-    setTimeout(() => { }, 5000);
-    return x+y;
-};
 
 const calculate2 = (x, y) => {
     return new Promise((resolve, reject) => {
