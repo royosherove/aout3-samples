@@ -1,9 +1,9 @@
+const {MONDAY} = require("./password-verifier-time01");
 const {PasswordVerifier} = require("./password-verifier-time01");
 const {Verifier} = require("./password-verifier-time01");
 const {makeVerifier, SUNDAY} = require("./password-verifier-time01");
 
 describe('verifier', () => {
-
     test('on weekends, throws exceptions', () => {
         const alwaysSunday = () => SUNDAY;
         const verifyPassword = makeVerifier([], alwaysSunday);
@@ -28,4 +28,11 @@ describe('verifier', () => {
             .toThrow("It's the weekend!");
     });
 
+    test('on weekdays, with no rules, always passes', () => {
+        const alwaysMonday = () => MONDAY;
+        const verifier = new PasswordVerifier([], alwaysMonday);
+
+        const result = verifier.verify('anything');
+        expect(result.length).toBe(0);
+    });
 });
