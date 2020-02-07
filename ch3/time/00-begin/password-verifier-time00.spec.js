@@ -8,16 +8,16 @@ describe('verifier', () => {
     //test is always executed, but might not do anything
     test('on weekends, throws exceptions', () => {
         if ([SATURDAY, SUNDAY].includes(TODAY)) {
-            expect(verifyPassword('anything',[]))
-                .toThrowError(Error("It's the weekend, let me rest"));
+            expect(()=> verifyPassword('anything',[]))
+                .toThrowError("It's the weekend!");
         }
     });
 
     //test is not even executed on week days
     if ([SATURDAY, SUNDAY].includes(TODAY)) {
         test('on a weekend, throws an error', () => {
-            expect(verifyPassword('anything', []))
-                .toThrowError(Error("It's the weekend, let me rest"));
+            expect(()=> verifyPassword('anything', []))
+                .toThrow("It's the weekend!");
         });
     }
 });
