@@ -1,5 +1,7 @@
 const moment = require('moment');
-const {verifyPassword, verifyPassword2} = require("./password-verifier-time00");
+const {verifyPassword} = require("./password-verifier-time00");
+const {verifyPassword2} = require("./password-verifier-time00");
+const {verifyPassword3} = require("./password-verifier-time00");
 const SUNDAY = 0, SATURDAY = 6, MONDAY = 2;
 
 describe('verifier', () => {
@@ -22,16 +24,24 @@ describe('verifier', () => {
     }
 });
 
-describe('verifier2', () => {
+describe('verifier2 - dummy object', () => {
+    test('on weekends, throws exceptions', () => {
+        expect(()=> verifyPassword2('anything',[],SUNDAY ))
+            .toThrowError("It's the weekend!");
+    });
+});
+
+
+describe('verifier3 - dummy function', () => {
     test('on weekends, throws exceptions', () => {
         const alwaysSunday = () => SUNDAY;
-        expect(()=> verifyPassword2('anything',[], alwaysSunday))
+        expect(()=> verifyPassword3('anything',[], alwaysSunday))
             .toThrowError("It's the weekend!");
     });
     test('on week days, works fine', () => {
         const alwaysMonday = () => MONDAY;
 
-        const result = verifyPassword2('anything', [], alwaysMonday);
+        const result = verifyPassword3('anything', [], alwaysMonday);
 
         expect(result.length).toBe(0);
     });
