@@ -1,20 +1,12 @@
-const moment = require('moment');
 const SUNDAY = 0, MONDAY=1, TUESDAY=2, WEDNESDAY=3,THURSDAY=4,FRIDAY=5, SATURDAY = 6;
 
-// higher order function pattern
+// factory-higher order function pattern
 const makeVerifier = (rules, dayOfWeekFn) => {
     return function (input) {
         if ([SATURDAY, SUNDAY].includes(dayOfWeekFn())) {
             throw new Error("It's the weekend!");
         }
-        const errors = [];
-        rules.forEach(rule => {
-            const result = rule(input);
-            if (!result.passed) {
-                errors.push(`error ${result.reason}`);
-            }
-        });
-        return errors;
+        //more code goes here..
     };
 };
 
@@ -25,14 +17,7 @@ const Verifier = function(rules, dayOfWeekFn)
         if ([SATURDAY, SUNDAY].includes(dayOfWeekFn())) {
             throw new Error("It's the weekend!");
         }
-        const errors = [];
-        rules.forEach(rule => {
-            const result = rule(input);
-            if (!result.passed) {
-                errors.push(`error ${result.reason}`);
-            }
-        });
-        return errors;
+        //more code goes here..
     };
 };
 
@@ -49,12 +34,7 @@ class PasswordVerifier {
             throw new Error("It's the weekend!");
         }
         const errors = [];
-        this.rules.forEach(rule => {
-            const result = rule(input);
-            if (!result.passed) {
-                errors.push(`error ${result.reason}`);
-            }
-        });
+        //more code goes here..
         return errors;
     };
 }

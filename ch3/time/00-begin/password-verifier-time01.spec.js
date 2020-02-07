@@ -1,10 +1,13 @@
-const {MONDAY} = require("./password-verifier-time01");
-const {PasswordVerifier} = require("./password-verifier-time01");
+const {SUNDAY, MONDAY} = require("./password-verifier-time01");
+//factory method demo
+const {makeVerifier} = require("./password-verifier-time01");
+//constructor function demo
 const {Verifier} = require("./password-verifier-time01");
-const {makeVerifier, SUNDAY} = require("./password-verifier-time01");
+//class constructor demo
+const {PasswordVerifier} = require("./password-verifier-time01");
 
 describe('verifier', () => {
-    test('on weekends, throws exceptions', () => {
+    test('factory method: on weekends, throws exceptions', () => {
         const alwaysSunday = () => SUNDAY;
         const verifyPassword = makeVerifier([], alwaysSunday);
 
@@ -12,7 +15,7 @@ describe('verifier', () => {
             .toThrow("It's the weekend!");
     });
 
-    test('on weekends, throws exceptions, ctor function', () => {
+    test('constructor function: on weekends, throws exceptions, ctor function', () => {
         const alwaysSunday = () => SUNDAY;
         const verifier = new Verifier([], alwaysSunday);
 
@@ -20,7 +23,7 @@ describe('verifier', () => {
             .toThrow("It's the weekend!");
     });
 
-    test('on weekends, throws exceptions, ctor function', () => {
+    test('class constructor: on weekends, throws exceptions, ctor function', () => {
         const alwaysSunday = () => SUNDAY;
         const verifier = new PasswordVerifier([], alwaysSunday);
 
@@ -28,7 +31,7 @@ describe('verifier', () => {
             .toThrow("It's the weekend!");
     });
 
-    test('on weekdays, with no rules, always passes', () => {
+    test('class constructor: on weekdays, with no rules, always passes', () => {
         const alwaysMonday = () => MONDAY;
         const verifier = new PasswordVerifier([], alwaysMonday);
 
