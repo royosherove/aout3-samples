@@ -1,5 +1,10 @@
 // requiring the data injection helper from fake module
-const { fakeDataFromModule } = require('../../my-data-module');
+// const {  } = require('../../my-data-module');
+const fakeDataFromModule = fakeData => {
+  jest.doMock('../../my-data-module', () => ({
+    getAllMachines: () => fakeData
+  }));
+};
 
 jest.mock('../../my-data-module', () => ({
   // injecting a stub helper function:

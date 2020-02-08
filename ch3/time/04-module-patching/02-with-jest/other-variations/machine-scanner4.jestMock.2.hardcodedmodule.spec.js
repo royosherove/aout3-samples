@@ -1,6 +1,4 @@
-const { findRecentlyRebooted } = require('../../machine-scanner4');
-
-// happens once and globally
+// happens once and globally, has to come first
 jest.mock('../../my-data-module', () => ({
   getAllMachines: () => {
     const rebootTwoDaysEarly = new Date(2000,0,1);
@@ -11,6 +9,8 @@ jest.mock('../../my-data-module', () => ({
     ];
   }
 }));
+
+const { findRecentlyRebooted } = require('../../machine-scanner4');
 
 describe('findRecentlyRebooted', () => {
   beforeEach(() => jest.resetModules());

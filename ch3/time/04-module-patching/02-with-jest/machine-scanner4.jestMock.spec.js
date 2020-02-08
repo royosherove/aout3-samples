@@ -1,3 +1,6 @@
+// has to live up here
+jest.mock('../my-data-module');
+
 const dataModule = require('../my-data-module');
 const { findRecentlyRebooted } = require('../machine-scanner4');
 
@@ -5,8 +8,6 @@ const fakeDataFromModule = (fakeData) =>
     dataModule.getAllMachines.mockImplementation(() => fakeData);
 
 
-// has to live up here
-jest.mock('../my-data-module');
 
 describe('findRecentlyRebooted', () => {
   beforeEach(jest.resetAllMocks); //<- the cleanest way
