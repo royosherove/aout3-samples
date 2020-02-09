@@ -17,7 +17,7 @@ const requireAndCall_findRecentlyRebooted = (maxDays, someDate) => {
 };
 
 describe('4  sinon sandbox findRecentlyRebooted', () => {
-  beforeEach(resetAndRequireModules);
+  beforeEach(()=>resetAndRequireModules());
 
   test('given no machines, returns empty results', () => {
     const someDate = new Date(2000,0,1);
@@ -55,7 +55,7 @@ describe('4  sinon sandbox findRecentlyRebooted', () => {
   });
 
   test('given 1 machine less than threshold, returns its name and boot time', () => {
-    const fromDate = new Date('01 02 2000');
+    const fromDate = new Date('01-02-2000');
     fakeDataFromModule([
       { lastBootTime: new Date(2000,0,1), name: 'any-name' }
     ]);
