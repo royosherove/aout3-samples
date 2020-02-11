@@ -15,7 +15,6 @@ export class PasswordVerifier {
         if (isWeekened) {
             throw new Error("It's the weekend!")
         }
-
         return [];
     }
 }
