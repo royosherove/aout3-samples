@@ -1,6 +1,4 @@
-const SUNDAY = 0, MONDAY=1, TUESDAY=2, WEDNESDAY=3,THURSDAY=4,FRIDAY=5, SATURDAY = 6;
-
-//class with constructor injection pattern
+const SUNDAY = 0, MONDAY=1, SATURDAY = 6;
 class PasswordVerifier {
     constructor(rules, timeProvider) {
         this.rules = rules;
@@ -17,13 +15,7 @@ class PasswordVerifier {
     };
 }
 
-
-
-
-
 module.exports = {
-    //just to help remove some duplication from the tests
-    SUNDAY, MONDAY,TUESDAY,WEDNESDAY,THURSDAY,FRIDAY, SATURDAY,
-    //class with constructor injection pattern
+    SUNDAY, MONDAY, SATURDAY,
     PasswordVerifier
 };

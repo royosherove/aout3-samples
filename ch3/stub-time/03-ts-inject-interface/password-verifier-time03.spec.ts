@@ -1,5 +1,5 @@
 import {TimeProviderInterface} from "./time-provider-interface";
-import {PasswordVerifierTime03, SUNDAY} from "./password-verifier-time03";
+import {PasswordVerifier, SUNDAY} from "./password-verifier-time03";
 
 class FakeTimeProvider implements TimeProviderInterface{
     fakeDay: number;
@@ -8,15 +8,13 @@ class FakeTimeProvider implements TimeProviderInterface{
     }
 }
 
-describe('inject interface through constructor', () => {
-    describe('password verifier with interfaces', () => {
-        test('on weekends, throws exceptions', () => {
-            const stubTimeProvider = new FakeTimeProvider();
-            stubTimeProvider.fakeDay = SUNDAY;
-            const verifier = new PasswordVerifierTime03([], stubTimeProvider);
+describe('password verifier with interfaces', () => {
+    test('on weekends, throws exceptions', () => {
+        const stubTimeProvider = new FakeTimeProvider();
+        stubTimeProvider.fakeDay = SUNDAY;
+        const verifier = new PasswordVerifier([], stubTimeProvider);
 
-            expect(()=> verifier.verify('anything'))
-                .toThrow("It's the weekend!");
-        });
+        expect(()=> verifier.verify('anything'))
+            .toThrow("It's the weekend!");
     });
 });

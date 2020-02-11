@@ -1,8 +1,7 @@
 import {TimeProviderInterface} from "./time-provider-interface";
-
 export const SUNDAY = 0, SATURDAY=6;
 
-export class PasswordVerifierTime03 {
+export class PasswordVerifier {
     private _timeProvider: TimeProviderInterface;
 
     constructor(rules: any[], timeProvider: TimeProviderInterface) {
