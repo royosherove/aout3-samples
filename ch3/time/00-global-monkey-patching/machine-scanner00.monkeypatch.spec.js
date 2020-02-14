@@ -3,10 +3,10 @@ const { findRecentlyRebooted } = require('../00-begin/machine-scanner00');
 describe('v1 findRecentlyRebooted', () => {
   test('given 1 of 2 machines under threshold, it is found', () => {
     const originalNow = Date.now;
-    const fromDate = new Date(2000,0,3);
+    const fromDate = new Date(2000, 0, 3);
     Date.now = () => fromDate.getTime();
 
-    const rebootTwoDaysEarly = new Date(2000,0,1);
+    const rebootTwoDaysEarly = new Date(2000, 0, 1);
     const machines = [
       { lastBootTime: rebootTwoDaysEarly, name: 'ignored' },
       { lastBootTime: fromDate, name: 'found' }];
@@ -26,10 +26,10 @@ describe('v2 findRecentlyRebooted', () => {
   afterEach(() => Date.now = originalNow);
 
   test('given 1 of 2 machines under threshold, it is found', () => {
-    const fromDate = new Date(2000,0,3);
+    const fromDate = new Date(2000, 0, 3);
     Date.now = () => fromDate.getTime();
 
-    const rebootTwoDaysEarly = new Date(2000,0,1);
+    const rebootTwoDaysEarly = new Date(2000, 0, 1);
     const machines = [
       { lastBootTime: rebootTwoDaysEarly, name: 'ignored' },
       { lastBootTime: fromDate, name: 'found' }];
@@ -46,10 +46,10 @@ describe('v3 findRecentlyRebooted with jest fn', () => {
   afterEach(() => Date.now = originalNow);
 
   test('given 1 of 2 machines under threshold, it is found', () => {
-    const fromDate = new Date(2000,0,3);
+    const fromDate = new Date(2000, 0, 3);
     Date.now = jest.fn(() => fromDate.getTime());
 
-    const rebootTwoDaysEarly = new Date(2000,0,1);
+    const rebootTwoDaysEarly = new Date(2000, 0, 1);
     const machines = [
       { lastBootTime: rebootTwoDaysEarly, name: 'ignored' },
       { lastBootTime: fromDate, name: 'found' }];
@@ -65,11 +65,11 @@ describe('v4 findRecentlyRebooted with jest spyOn', () => {
   afterEach(() => jest.restoreAllMocks());
 
   test('given 1 of 2 machines under threshold, it is found', () => {
-    const fromDate = new Date(2000,0,3);
+    const fromDate = new Date(2000, 0, 3);
     Date.now = jest.spyOn(Date, 'now')
       .mockImplementation(() => fromDate.getTime());
 
-    const rebootTwoDaysEarly = new Date(2000,0,1);
+    const rebootTwoDaysEarly = new Date(2000, 0, 1);
     const machines = [
       { lastBootTime: rebootTwoDaysEarly, name: 'ignored' },
       { lastBootTime: fromDate, name: 'found' }];

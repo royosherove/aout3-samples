@@ -15,5 +15,5 @@ class MachineScanner {
 }
 
 module.exports = {
-   MachineScanner
+  MachineScanner
 };

@@ -27,8 +27,8 @@ const requireAndCall_findRecentlyRebooted = (maxDays, fromDate) => {
 // to run it:
 // 'node  ch3/time/04-module-patching/require-cache-patching/machine-scanner4.test-with-require-cache.js'
 check('given 1 of 2 machines under the threshold, it is found', () => {
-  const rebootTwoDaysEarly = new Date(2000,0,1);
-  const fromDate = new Date(2000,0,3);
+  const rebootTwoDaysEarly = new Date(2000, 0, 1);
+  const fromDate = new Date(2000, 0, 3);
   fakeDataFromModule([
     { lastBootTime: rebootTwoDaysEarly, name: 'ignored' },
     { lastBootTime: fromDate, name: 'found' }

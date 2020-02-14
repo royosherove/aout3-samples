@@ -22,8 +22,8 @@ describe('v2 one uppercase rule', () => {
   });
 
   test.each([
-            'Abc',
-            'aBc'
+    'Abc',
+    'aBc'
   ])
   ('given one uppercase, it passes', (input) => {
     const result = oneUpperCaseRule(input);

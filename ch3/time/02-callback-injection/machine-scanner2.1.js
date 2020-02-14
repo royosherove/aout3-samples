@@ -4,9 +4,9 @@ const daysFrom = (from, to) => {
 };
 
 const configureFinder = (fromDateFn = Date.now) =>
-    (machines, maxDays) =>
-        machines.filter(machine =>
-            daysFrom(fromDateFn(), machine.lastBootTime) < maxDays);
+  (machines, maxDays) =>
+    machines.filter(machine =>
+      daysFrom(fromDateFn(), machine.lastBootTime) < maxDays);
 
 module.exports = {
   configureFinder

@@ -1,9 +1,9 @@
-import moment from "moment";
+import moment from 'moment';
 
-const RealTimeProvider= () =>  {
-    this.getDay = () => moment().day()
+const RealTimeProvider = () => {
+  this.getDay = () => moment().day();
 };
 
 module.exports = {
-    RealTimeProvider
+  RealTimeProvider
 };

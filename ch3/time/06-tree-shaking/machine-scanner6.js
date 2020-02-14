@@ -15,18 +15,17 @@ const findRecentlyRebooted = (maxDays, fromDate) => {
       console.log(`${daysDiff} vs ${maxDays}`);
       return daysDiff < maxDays;
     });
-  }
-  catch (e) {
+  } catch (e) {
     return [];
   }
 };
 
-//Dead-Tree: For testing only
+// Dead-Tree: For testing only
 const replaceGetAllMachines = fn => getAllMachines = fn;
 
 module.exports = {
   findRecentlyRebooted,
 
-  //dead tree - for testing only
+  // dead tree - for testing only
   replaceGetAllMachines
 };

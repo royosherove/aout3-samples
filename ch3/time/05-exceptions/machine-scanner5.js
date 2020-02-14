@@ -15,8 +15,7 @@ const findRecentlyRebooted = (maxDays, fromDate) => {
       console.log(`${daysDiff} vs ${maxDays}`);
       return daysDiff < maxDays;
     });
-  }
-  catch (e) {
+  } catch (e) {
     return [];
   }
 };

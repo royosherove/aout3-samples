@@ -3,7 +3,7 @@ const { findRecentlyRebooted } = require('./machine-scanner1');
 // we are using hard coded time, also fromDate parameter
 describe('findRecentlyRebooted', () => {
   test('given no machines, returns empty results', () => {
-    const someDate = new Date(2000,0,1);
+    const someDate = new Date(2000, 0, 1);
 
     const result = findRecentlyRebooted([], 0, someDate);
 
@@ -11,8 +11,8 @@ describe('findRecentlyRebooted', () => {
   });
 
   test('given one machine over the threshold, it is ignored', () => {
-    const fromDate = new Date(2000,0,3);
-    const rebootTwoDaysEarly = new Date(2000,0,1);
+    const fromDate = new Date(2000, 0, 3);
+    const rebootTwoDaysEarly = new Date(2000, 0, 1);
     const machines = [
       { lastBootTime: rebootTwoDaysEarly, name: 'machine1' }];
 
@@ -22,8 +22,8 @@ describe('findRecentlyRebooted', () => {
   });
 
   test('given one of two machines under the threshold, it is found', () => {
-    const fromDate = new Date(2000,0,3);
-    const rebootTwoDaysEarly = new Date(2000,0,1);
+    const fromDate = new Date(2000, 0, 3);
+    const rebootTwoDaysEarly = new Date(2000, 0, 1);
     const machines = [
       { lastBootTime: rebootTwoDaysEarly, name: 'ignored' },
       { lastBootTime: fromDate, name: 'found' }];
@@ -35,7 +35,7 @@ describe('findRecentlyRebooted', () => {
   });
 
   test('given one machine less than threshold, returns its name and boot time', () => {
-    const fromDate = new Date(2000,0,1);
+    const fromDate = new Date(2000, 0, 1);
     const machines = [
       { lastBootTime: fromDate, name: 'any-name' }];
 
