@@ -1,4 +1,4 @@
-const log = require('./complicated-logger');
+const log = require('../complicated-logger');
 
 const verifyPassword = (input, rules) => {
   const failed = rules

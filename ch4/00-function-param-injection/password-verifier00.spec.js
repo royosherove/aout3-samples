@@ -16,16 +16,4 @@ describe('password verifier with logger', () => {
             expect(written).toMatch(/PASSED/)
         });
     });
-
-    describe('using jest.fn', () => {
-        it('calls the logger with PASS', () => {
-            const mockLog = {
-                info: jest.fn()
-            };
-
-            verifyPassword2('anything', [], mockLog);
-
-            expect(mockLog.info).toHaveBeenCalledWith(expect.stringMatching(/PASS/));
-        });
-    });
 });
