@@ -26,7 +26,10 @@
     "typescript": "^3.7.5"
   },
   "dependencies": {
+    "moment": "^2.24.0",
     "semistandard": "^13.0.1",
+    "testdouble": "^3.12.5",
+    "testdouble-jest": "^2.0.0",
     "winston": "^3.2.1"
   }
 }
