@@ -1,3 +1,4 @@
+//this dependency is impossible ot fake with traditional injection techniques
 const log = require('../complicated-logger');
 
 const verifyPassword = (input, rules) => {
@@ -7,9 +8,11 @@ const verifyPassword = (input, rules) => {
 
   console.log(failed);
   if (failed.count === 0) {
+    //this line is impossible to test with traditional injection techniques
     log.info('PASSED');
     return true;
   }
+  //this line is impossible to test with traditional injection techniques
   log.info('FAIL');
   return false;
 };

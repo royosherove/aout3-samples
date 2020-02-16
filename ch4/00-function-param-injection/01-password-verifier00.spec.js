@@ -1,4 +1,4 @@
-const {verifyPassword2} = require("./password-verifier00");
+const {verifyPassword2} = require("./00-password-verifier00");
 
 describe('password verifier with logger', () => {
     describe('when all rules pass', () => {
