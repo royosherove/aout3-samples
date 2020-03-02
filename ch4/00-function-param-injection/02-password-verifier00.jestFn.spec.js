@@ -1,15 +1,15 @@
 const sinon = require('sinon');
-const {verifyPassword2} = require("./00-password-verifier00");
+const { verifyPassword2 } = require('./00-password-verifier00');
 
 describe('password verifier with logger', () => {
-    describe('using jest.fn', () => {
-        it('calls the logger with PASS', () => {
-            const mockLog = { info: jest.fn() };
+  describe('using jest.fn', () => {
+    it('calls the logger with PASS', () => {
+      const mockLog = { info: jest.fn() };
 
-            verifyPassword2('anything', [], mockLog);
+      verifyPassword2('anything', [], mockLog);
 
-            expect(mockLog.info)
-                .toHaveBeenCalledWith(expect.stringMatching(/PASS/));
-        });
+      expect(mockLog.info)
+        .toHaveBeenCalledWith(expect.stringMatching(/PASS/));
     });
+  });
 });

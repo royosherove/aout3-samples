@@ -1,4 +1,5 @@
-import {ILogger, PasswordVerifier } from "./00-password-verifier";
+import {PasswordVerifier } from "./00-password-verifier";
+import {ILogger} from "./intefaces/logger";
 
 class FakeLogger implements ILogger {
     written:string;

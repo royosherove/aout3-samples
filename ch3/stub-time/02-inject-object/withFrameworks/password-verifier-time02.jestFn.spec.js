@@ -9,7 +9,7 @@ const makeVerifier = (rules, timeProvider) => {
 describe('verifier', () => {
   test('on weekends, throws exceptions, ctor function', () => {
     const stubGetDayFn = jest.fn(() => SUNDAY);
-    const verifier = makeVerifier([], {getDay: stubGetDayFn});
+    const verifier = makeVerifier([], { getDay: stubGetDayFn });
 
     expect(() => verifier.verify('anything'))
       .toThrow("It's the weekend!");
@@ -17,7 +17,7 @@ describe('verifier', () => {
 
   test('on weekdays, with no rules, always passes', () => {
     const stubGetDayFn = jest.fn(() => MONDAY);
-    const verifier = makeVerifier([], {getDay: stubGetDayFn});
+    const verifier = makeVerifier([], { getDay: stubGetDayFn });
 
     const result = verifier.verify('anything');
     expect(result.length).toBe(0);

@@ -1,5 +1,5 @@
-import {ILogger, PasswordVerifier} from "./00-password-verifier";
-import mock = jest.mock;
+import {PasswordVerifier} from "./00-password-verifier";
+import {ILogger} from "./intefaces/logger";
 const {stringMatching} = expect;
 
 
@@ -14,7 +14,8 @@ describe('password verifier with interfaces', () => {
 
             verifier.verify('anything');
 
-            expect(mockLog.info).toHaveBeenCalledWith(stringMatching(/PASS/));
+            expect(mockLog.info)
+                .toHaveBeenCalledWith(stringMatching(/PASS/));
         });
     });
     describe('partial faking', () => {
@@ -31,7 +32,8 @@ describe('password verifier with interfaces', () => {
 
             verifier.verify('anything');
 
-            expect(mockLog.info).toHaveBeenCalledWith(stringMatching(/PASS/));
+            expect(mockLog.info).
+                toHaveBeenCalledWith(stringMatching(/PASS/));
         });
     });
 });

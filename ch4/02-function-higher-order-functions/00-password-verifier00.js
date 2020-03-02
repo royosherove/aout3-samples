@@ -1,8 +1,8 @@
 const makeVerifier = (rules, logger) => {
   return (input) => {
     const failed = rules
-        .map(rule => rule(input))
-        .filter(result => result === false);
+      .map(rule => rule(input))
+      .filter(result => result === false);
 
     console.log(failed);
     if (failed.length === 0) {
@@ -11,7 +11,7 @@ const makeVerifier = (rules, logger) => {
     }
     logger.info('FAIL');
     return false;
-  }
+  };
 };
 
 module.exports = {

@@ -1,10 +1,10 @@
-import {ILogger} from "./intefaces/logger";
+import {RealLogger} from "./real-logger";
 
 export class PasswordVerifier {
     private _rules: any[];
-    private _logger: ILogger;
+    private _logger: RealLogger;
 
-    constructor(rules: any[], logger:ILogger) {
+    constructor(rules: any[], logger:RealLogger) {
         this._rules = rules;
         this._logger = logger;
     }
