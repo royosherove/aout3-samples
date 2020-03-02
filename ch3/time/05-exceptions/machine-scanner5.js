@@ -3,7 +3,7 @@ const { getAllMachines } = require('./my-data-module');
 const daysFrom = (from, to) => {
   const ms = from.getTime() - new Date(to).getTime();
   const diff = (ms / 1000) / 60 / 60 / 24; // secs * min * hrs
-  console.log(diff);
+  // console.log(diff);
   return diff;
 };
 

@@ -22,7 +22,7 @@ const verifyPassword2 = (input, rules,logger) => {
     .map(rule => rule(input))
     .filter(result => result === false);
 
-  console.log(failed);
+  // console.log(failed);
   if (failed.length === 0) {
     logger.info('PASSED');
     return true;
