@@ -1,5 +1,5 @@
 import {PasswordVerifier} from "./00-password-verifier";
-import {IComplicatedLogger} from "./intefaces/complicated-logger";
+import {IComplicatedLogger} from "./interfaces/complicated-logger";
 
 
 describe('password verifier with interfaces', () => {

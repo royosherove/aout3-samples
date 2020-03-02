@@ -1,5 +1,5 @@
 import {PasswordVerifier} from "./00-password-verifier";
-import {ILogger} from "./intefaces/logger";
+import {ILogger} from "./interfaces/logger";
 const {stringMatching} = expect;
 
 

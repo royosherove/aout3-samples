@@ -1,11 +1,12 @@
-import {IComplicatedLogger} from "./intefaces/complicated-logger";
+import {IComplicatedLogger} from "./interfaces/complicated-logger";
 import {Arg, Substitute} from "@fluffy-spoon/substitute";
-import {IMaintenanceWindow, PasswordVerifier3} from "./00-password-verifier3";
+import {PasswordVerifier3} from "./00-password-verifier3";
+import {MaintenanceWindow} from "./interfaces/maintenance-window";
 
 
 describe('password verifier with interfaces', () => {
         test('verify, with logger, calls logger', () => {
-            const stubMaintWindow = Substitute.for<IMaintenanceWindow>();
+            const stubMaintWindow = Substitute.for<MaintenanceWindow>();
             stubMaintWindow.isUnderMaintenance().returns(true);
             const mockLog = Substitute.for<IComplicatedLogger>();
             const verifier = new PasswordVerifier3([], mockLog, stubMaintWindow);

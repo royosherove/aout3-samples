@@ -1,5 +1,5 @@
 import {PasswordVerifier} from "./00-password-verifier";
-import {IComplicatedLogger} from "./intefaces/complicated-logger";
+import {IComplicatedLogger} from "./interfaces/complicated-logger";
 import {Arg, Substitute} from "@fluffy-spoon/substitute";
 import {PasswordVerifier2} from "./00-password-verifier2";
 

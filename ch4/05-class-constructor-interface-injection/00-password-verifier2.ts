@@ -1,5 +1,5 @@
-import {ILogger} from "./intefaces/logger";
-import {IComplicatedLogger} from "./intefaces/complicated-logger";
+import {ILogger} from "./interfaces/logger";
+import {IComplicatedLogger} from "./interfaces/complicated-logger";
 
 export class PasswordVerifier2 {
     private _rules: any[];

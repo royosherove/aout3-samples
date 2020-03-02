@@ -1,4 +1,4 @@
-import {ILogger} from "./intefaces/logger";
+import {ILogger} from "./interfaces/logger";
 
 export class PasswordVerifier {
     private _rules: any[];

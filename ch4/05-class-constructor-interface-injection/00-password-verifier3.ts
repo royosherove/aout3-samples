@@ -1,16 +1,12 @@
-import {ILogger} from "./intefaces/logger";
-import {IComplicatedLogger} from "./intefaces/complicated-logger";
-
-export interface IMaintenanceWindow {
-   isUnderMaintenance():boolean
-}
+import {IComplicatedLogger} from "./interfaces/complicated-logger";
+import {MaintenanceWindow} from "./interfaces/maintenance-window";
 
 export class PasswordVerifier3 {
     private _rules: any[];
     private _logger: IComplicatedLogger;
-    private _maintenanceWindow: IMaintenanceWindow;
+    private _maintenanceWindow: MaintenanceWindow;
 
-    constructor(rules: any[], logger:IComplicatedLogger, maintenanceWindow:IMaintenanceWindow) {
+    constructor(rules: any[], logger:IComplicatedLogger, maintenanceWindow:MaintenanceWindow) {
         this._rules = rules;
         this._logger = logger;
         this._maintenanceWindow = maintenanceWindow;
