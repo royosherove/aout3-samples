@@ -1,5 +1,5 @@
 // this dependency is impossible ot fake with traditional injection techniques
-const log = require('../complicated-logger');
+const log = require('./complicated-logger');
 
 const verifyPassword = (input, rules) => {
   const failed = rules
