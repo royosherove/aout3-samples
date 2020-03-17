@@ -9,9 +9,11 @@ const { PasswordVerifier } = require('./password-verifier-time01');
 describe('verifier', () => {
   test('factory method: on weekends, throws exceptions', () => {
     const alwaysSunday = () => SUNDAY;
-    const verifyPassword = makeVerifier([], alwaysSunday);
+    const context = {
+      verify: makeVerifier([], alwaysSunday)
+    };
 
-    expect(() => verifyPassword('anything'))
+    expect(() => context.verify('anything'))
       .toThrow("It's the weekend!");
   });
 

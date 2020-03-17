@@ -1,11 +1,35 @@
+const _ = require('lodash');
 const SUNDAY = 0; const MONDAY = 1; const TUESDAY = 2; const WEDNESDAY = 3; const THURSDAY = 4; const FRIDAY = 5; const SATURDAY = 6;
 
 // factory-higher order function pattern
+const verify = (rules, dayOfWeekFn, input) => {
+  if (arguments.length === 2) {
+    return function (input) {
+      return verify(rules, dayOfWeekFn, input);
+    };
+  }
+  if ([SATURDAY, SUNDAY].includes(dayOfWeekFn())) {
+    throw new Error("It's the weekend!");
+  }
+  //use the rules, luke
+  // more code goes here..
+};
+
+const verifyWithLodash = _.curry( (rules, dayOfWeekFn, input) => {
+  if ([SATURDAY, SUNDAY].includes(dayOfWeekFn())) {
+    throw new Error("It's the weekend!");
+  }
+  //use the rules, luke
+  // more code goes here..
+});
+
+
 const makeVerifier = (rules, dayOfWeekFn) => {
   return function (input) {
     if ([SATURDAY, SUNDAY].includes(dayOfWeekFn())) {
       throw new Error("It's the weekend!");
     }
+    //use the rules, luke
     // more code goes here..
   };
 };

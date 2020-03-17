@@ -1,5 +1,5 @@
-const sinon = require('sinon');
 const { verifyPassword2 } = require('./00-password-verifier00');
+const { stringMatching} = expect;
 
 describe('password verifier with logger', () => {
   describe('using jest.fn', () => {
@@ -9,7 +9,7 @@ describe('password verifier with logger', () => {
       verifyPassword2('anything', [], mockLog);
 
       expect(mockLog.info)
-        .toHaveBeenCalledWith(expect.stringMatching(/PASS/));
+        .toHaveBeenCalledWith(stringMatching(/PASS/));
     });
   });
 });
