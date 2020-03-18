@@ -16,9 +16,9 @@ const verify = (rules, dayOfWeekFn, input) => {
 };
 
 const verifyWithLodash = _.curry( (rules, dayOfWeekFn, input) => {
-  if ([SATURDAY, SUNDAY].includes(dayOfWeekFn())) {
-    throw new Error("It's the weekend!");
-  }
+    if ([SATURDAY, SUNDAY].includes(dayOfWeekFn())) {
+      throw new Error("It's the weekend!");
+    }
   //use the rules, luke
   // more code goes here..
 });
