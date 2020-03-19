@@ -1,20 +1,21 @@
 const {inject, verifyPassword, SATURDAY} = require('./password-verifier-time00-modular');
 
+const injectDate = (newDay) => {
+    const reset = inject({
+        moment: function () {
+            //we're faking the moment.js module's API here.
+            return {
+                day: () => newDay
+            }
+        }
+    });
+    return reset;
+};
+
 describe('verifyPassword', () => {
     describe('when its the weekend', () => {
         it('throws an error', () => {
-            const reset  = inject({
-                // note that we are
-                //storgly ties into the interface of the external dependency
-                // when that interface changes,
-                // we will have to change our tests as well.
-                // and that sucks for everyone.
-                moment: function(){
-                    return {
-                        day: () => SATURDAY
-                    }
-                }
-            });
+            const reset = injectDate(SATURDAY);
 
             expect(()=>verifyPassword('any input'))
                 .toThrowError("It's the weekend!");
