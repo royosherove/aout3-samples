@@ -1,4 +1,7 @@
-const { SUNDAY, MONDAY } = require('./password-verifier-time01');
+
+const {verify} = require('./password-verifier-time01');
+
+const {SATURDAY, SUNDAY, MONDAY } = require('./password-verifier-time01');
 // factory method demo
 const { makeVerifier } = require('./password-verifier-time01');
 // constructor function demo
@@ -15,6 +18,19 @@ describe('verifier', () => {
 
     expect(() => context.verify('anything'))
       .toThrow("It's the weekend!");
+  });
+
+  describe('currying', () => {
+    describe('sending only the frist two parameters', () => {
+      it('returns a curried function that takes the last one', () => {
+
+        const onlyInputFn = verify([], () => SATURDAY);
+
+        expect(() => onlyInputFn('any input'))
+            .toThrow(/weekend/);
+
+      });
+    });
   });
 
   test('constructor function: on weekends, throws exceptions, ctor function', () => {

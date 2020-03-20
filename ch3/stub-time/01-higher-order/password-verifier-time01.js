@@ -1,9 +1,9 @@
 const _ = require('lodash');
 const SUNDAY = 0; const MONDAY = 1; const TUESDAY = 2; const WEDNESDAY = 3; const THURSDAY = 4; const FRIDAY = 5; const SATURDAY = 6;
 
-// factory-higher order function pattern
+//curried function
 const verify = (rules, dayOfWeekFn, input) => {
-  if (arguments.length === 2) {
+  if (input === undefined) { //currying
     return function (input) {
       return verify(rules, dayOfWeekFn, input);
     };
@@ -76,5 +76,6 @@ module.exports = {
   Verifier,
 
   // class with constructor injection pattern
-  PasswordVerifier
+  PasswordVerifier,
+  verify
 };
