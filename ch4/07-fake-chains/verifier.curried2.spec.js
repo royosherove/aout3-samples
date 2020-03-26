@@ -1,11 +1,13 @@
 const {verifyPasswordCurried} = require("./verifier.curried");
 
 const makeFakeConfig = (replaceLogInfoFn) => {
-    return () => ({
-        logger: {
-            info: replaceLogInfoFn
-        }
-    })
+    return function () {
+        return {
+            logger: {
+                info: replaceLogInfoFn
+            }
+        };
+    }
 };
 
 
