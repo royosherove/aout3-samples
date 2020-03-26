@@ -6,7 +6,8 @@ const {stringMatching} = expect;
 describe('password verifier with interfaces', () => {
     describe('duck typing still works', () => {
         test('verify, with logger, calls logger', () => {
-            const mockLog = {
+
+            const mockLog: ILogger = {
                 info: jest.fn()
             };
 
@@ -18,22 +19,23 @@ describe('password verifier with interfaces', () => {
                 .toHaveBeenCalledWith(stringMatching(/PASS/));
         });
     });
-    describe('partial faking', () => {
-        class FakeLogger implements ILogger {
-            info(text: string) {
-            }
+});
+
+describe('Late Faking', () => {
+    class FakeLogger implements ILogger {
+        info(text: string) {
         }
+    }
 
-        test('verify, with logger, calls logger', () => {
-            const mockLog = new FakeLogger();
-            mockLog.info = jest.fn();
+    test('verify, with logger, calls logger', () => {
+        const mockLog = new FakeLogger();
+        mockLog.info = jest.fn();
 
-            const verifier = new PasswordVerifier([], mockLog);
+        const verifier = new PasswordVerifier([], mockLog);
 
-            verifier.verify('anything');
+        verifier.verify('anything');
 
-            expect(mockLog.info).
-                toHaveBeenCalledWith(stringMatching(/PASS/));
-        });
+        expect(mockLog.info).
+        toHaveBeenCalledWith(stringMatching(/PASS/));
     });
 });

@@ -1,19 +1,20 @@
-import {IComplicatedLogger} from "./interfaces/complicated-logger";
+const {getConfig} = require('./global-config');
 
-export class PasswordVerifier2 {
-    private _rules: any[];
-    private _logger: IComplicatedLogger;
+class PasswordVerifier {
+    _rules;
+    _logger;
 
-    constructor(rules: any[], logger:IComplicatedLogger) {
+    constructor(rules, getConfigFn) {
         this._rules = rules;
-        this._logger = logger;
+        this._logger = getConfigFn().log;
     }
 
-    verify(input: string):boolean{
+    verify(input) {
         const failed = this._rules
             .map(rule => rule(input))
             .filter(result => result === false);
 
+        console.log(failed);
         if (failed.length === 0) {
             this._logger.info('PASSED');
             return true;
@@ -23,4 +24,6 @@ export class PasswordVerifier2 {
     }
 }
 
-
+module.exports = {
+    PasswordVerifier
+};
