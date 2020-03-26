@@ -1,8 +1,8 @@
 // unit test: fake internal time lib
 // integration that gives me confidence on the connections for 3rd parties/
 // adapter :  simpler internal API
-// TODO: caveat: avoid running in parallel
-// TODO: will work with native modules
+// caveat: avoid running in parallel
+// will work with native modules
 const originalDependencies = {
   moment : require('moment'),
 };

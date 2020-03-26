@@ -1,4 +1,4 @@
-const {getConfig} = require('./global-config');
+const {getConfig} = require('../global-config');
 
 class PasswordVerifier {
     _rules;
