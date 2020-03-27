@@ -6,10 +6,10 @@ const verifyPasswordCurried = _.curry ( (rules, configFn, input) => {
         .filter(result => result === false);
 
     if (failed.length === 0) {
-        configFn().logger.info('PASSED');
+        configFn().logger.info('PASSED'); //<- api chain
         return true;
     }
-    configFn().logger.info('FAIL');
+    configFn().logger.info('FAIL'); // <- api chain
     return false;
 });
 

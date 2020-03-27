@@ -12,9 +12,9 @@ const makeFakeConfig = (replaceLogInfoFn) => {
 
 
 describe('verifier with fake chain of config and logger', () => {
-    test('verifier, with a curried config and logger fake chain, calls the logger', () => {
+    test('verifier, when passes, calls the logger correctly', () => {
         let writtenInfo;
-        const fakeConfig = makeFakeConfig( (text) => writtenInfo = text);
+        const fakeConfig = makeFakeConfig( text => writtenInfo = text);
 
         const curriedFn = verifyPasswordCurried([], fakeConfig);
 
