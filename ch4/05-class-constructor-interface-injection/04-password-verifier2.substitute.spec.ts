@@ -3,15 +3,14 @@ import {IComplicatedLogger} from "./interfaces/complicated-logger";
 import {Arg, Substitute} from "@fluffy-spoon/substitute";
 import {PasswordVerifier2} from "./00-password-verifier2";
 
+describe('wotking with substitute', () => {
+    test('verify, with logger, calls logger', () => {
+        const mockLog = Substitute.for<IComplicatedLogger>();
+        const verifier = new PasswordVerifier2([], mockLog);
 
-describe('password verifier with interfaces', () => {
-        test('verify, with logger, calls logger', () => {
-            const mockLog = Substitute.for<IComplicatedLogger>();
-            const verifier = new PasswordVerifier2([], mockLog);
+        verifier.verify('anything');
 
-            verifier.verify('anything');
-
-            mockLog.received()
-                .info(Arg.is(s=>s.includes('PASS')))
-        });
+        mockLog.received()
+            .info(Arg.is(s=>s.includes('PASS')))
+    });
 });

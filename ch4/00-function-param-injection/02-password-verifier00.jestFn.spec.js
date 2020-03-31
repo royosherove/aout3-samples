@@ -1,8 +1,8 @@
 const { verifyPassword2 } = require('./00-password-verifier00');
 const { stringMatching} = expect;
 
-describe('password verifier with logger', () => {
-  describe('using jest.fn', () => {
+describe('password verifier', () => {
+  describe('given logger and passing scenario', () => {
     it('calls the logger with PASS', () => {
       const mockLog = { info: jest.fn() };
 

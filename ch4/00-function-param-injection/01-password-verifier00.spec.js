@@ -1,7 +1,7 @@
 const { verifyPassword2 } = require('./00-password-verifier00');
 
-describe('password verifier with logger', () => {
-  describe('when all rules pass', () => {
+describe('password verifier', () => {
+  describe('given logger, and passing scenario', () => {
     it('calls the logger with PASSED', () => {
       let written = '';
       const mockLog = {

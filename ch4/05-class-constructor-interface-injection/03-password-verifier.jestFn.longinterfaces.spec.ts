@@ -4,8 +4,8 @@ import {PasswordVerifier2} from "./00-password-verifier2";
 import stringMatching = jasmine.stringMatching;
 
 
-describe('password verifier with interfaces', () => {
-    describe('with a complicated interface, life sucks more', () => {
+describe('working with long interfaces', () => {
+    describe('password verifier', () => {
         class FakeLogger implements IComplicatedLogger {
             debug(text: string, obj: any) {
             }
@@ -20,7 +20,7 @@ describe('password verifier with interfaces', () => {
             }
         }
 
-        test('verify, with logger, calls logger', () => {
+        test('verify, with logger and passing, calls logger with PASS', () => {
             const mockLog = new FakeLogger();
             mockLog.info = jest.fn();
             // mockLog.error = jest.fn();

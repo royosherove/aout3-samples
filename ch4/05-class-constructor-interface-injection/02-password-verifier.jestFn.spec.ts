@@ -3,9 +3,9 @@ import {ILogger} from "./interfaces/logger";
 const {stringMatching} = expect;
 
 
-describe('password verifier with interfaces', () => {
-    describe('duck typing still works', () => {
-        test('verify, with logger, calls logger', () => {
+describe('duck typing with strongly typed interfaces', () => {
+    describe('password verifier', () => {
+        test('with logger and passing, calls logger', () => {
 
             const mockLog: ILogger = {
                 info: jest.fn()

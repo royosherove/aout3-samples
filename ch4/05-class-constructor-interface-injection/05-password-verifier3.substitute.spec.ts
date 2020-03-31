@@ -4,16 +4,16 @@ import {PasswordVerifier3} from "./00-password-verifier3";
 import {MaintenanceWindow} from "./interfaces/maintenance-window";
 
 
-describe('password verifier with interfaces', () => {
-        test('verify, with logger, calls logger', () => {
-            const stubMaintWindow = Substitute.for<MaintenanceWindow>();
-            stubMaintWindow.isUnderMaintenance().returns(true);
-            const mockLog = Substitute.for<IComplicatedLogger>();
-            const verifier = new PasswordVerifier3([], mockLog, stubMaintWindow);
+describe('working with substitute part 2', () => {
+    test('verify, with logger, calls logger', () => {
+        const stubMaintWindow = Substitute.for<MaintenanceWindow>();
+        stubMaintWindow.isUnderMaintenance().returns(true);
+        const mockLog = Substitute.for<IComplicatedLogger>();
+        const verifier = new PasswordVerifier3([], mockLog, stubMaintWindow);
 
-            verifier.verify('anything');
+        verifier.verify('anything');
 
-            mockLog.received()
-                .info(Arg.is(s=>s.includes('Maintenance')))
-        });
+        mockLog.received()
+            .info(Arg.is(s=>s.includes('Maintenance')))
+    });
 });

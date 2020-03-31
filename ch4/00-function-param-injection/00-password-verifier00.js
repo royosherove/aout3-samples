@@ -1,4 +1,4 @@
-// this dependency is impossible ot fake with traditional injection techniques
+// this dependency is impossible to fake with traditional injection techniques
 const _ = require('lodash');
 const log = require('./complicated-logger');
 

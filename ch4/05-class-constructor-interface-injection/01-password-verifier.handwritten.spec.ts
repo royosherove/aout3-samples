@@ -7,14 +7,16 @@ class FakeLogger implements ILogger {
         this.written = text;
     }
 }
+describe('faking strongly typed interfaces', () => {
 
-describe('password verifier with interfaces', () => {
-    test('verify, with logger, calls logger', () => {
-        const mockLog = new FakeLogger();
-        const verifier = new PasswordVerifier([], mockLog);
+    describe('password verifier', () => {
+        test('verify, with logger, calls logger', () => {
+            const mockLog = new FakeLogger();
+            const verifier = new PasswordVerifier([], mockLog);
 
-        verifier.verify('anything');
+            verifier.verify('anything');
 
-        expect(mockLog.written).toMatch(/PASS/);
+            expect(mockLog.written).toMatch(/PASS/);
+        });
     });
 });
