@@ -5,7 +5,7 @@ import stringMatching = jasmine.stringMatching;
 
 describe('password verifier with interfaces', () => {
         test('verify, with logger, calls logger', () => {
-            const testableLog = new RealLogger();
+            const testableLog:RealLogger = new RealLogger();
             testableLog.info = jest.fn();
 
             const verifier = new PasswordVerifier([], testableLog);
