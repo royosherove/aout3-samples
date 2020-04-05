@@ -1,4 +1,4 @@
-const { verifyPassword, injectDependencies, resetDependencies } = require('./00-password-verifier00');
+const { verifyPassword, injectDependencies, resetDependencies } = require('./password-verifier-after');
 const { stringMatching} = expect;
 
 describe('password verifier', () => {
