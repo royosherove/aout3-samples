@@ -21,28 +21,33 @@ function verifyPasswordFluent(fluentObject){
 }
 
 describe('test somethign that uses the nested hierarchy fake chain', () => {
-    const fakeNested = {
-        config: {
-            settings: {canWork: () => true},
-            log: {info: sinon.stub()},
-        }
-    };
-    verifyPasswordHierarchy(fakeNested);
+    test('simple hierarchy', () => {
+        const fakeNested = {
+            config: {
+                settings: {canWork: () => true},
+                log: {info: sinon.stub()},
+            }
+        };
+        verifyPasswordHierarchy(fakeNested);
 
-    sinon.assert.calledWith(fakeNested.config.log.info, "am working!")
+        sinon.assert.calledWith(fakeNested.config.log.info, "am working!")
+    });
 });
 
 describe('test somethign that uses a fluent fake chain', () => {
-    const fakeNested = {
-        info: sinon.stub(),
-        canWork: ()=>true
-    };
-    fakeNested.config = ()=>fakeNested;
-    fakeNested.settings = ()=>fakeNested;
-    fakeNested.log = ()=>fakeNested;
+    test('fluent test', () => {
 
-    verifyPasswordFluent(fakeNested);
+        const fakeNested = {
+            info: sinon.stub(),
+            canWork: ()=>true
+        };
+        fakeNested.config = ()=>fakeNested;
+        fakeNested.settings = ()=>fakeNested;
+        fakeNested.log = ()=>fakeNested;
 
-    sinon.assert.calledWith(fakeNested.info, "am working!")
+        verifyPasswordFluent(fakeNested);
+
+        sinon.assert.calledWith(fakeNested.info, "am working!")
+    });
 });
 
