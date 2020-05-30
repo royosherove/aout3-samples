@@ -4,7 +4,6 @@ const { makeVerifier } = require('./00-password-verifier00');
 const { stringMatching } = expect;
 
 describe('function constructor injection', () => {
-
   describe('password verifier', () => {
     test('given logger and passing scenario, calls logger with PASSED', () => {
       const mockLog = { info: jest.fn() };
@@ -12,8 +11,7 @@ describe('function constructor injection', () => {
       verifier.verify('any input');
 
       expect(mockLog.info)
-          .toHaveBeenCalledWith(stringMatching(/PASS/));
+        .toHaveBeenCalledWith(stringMatching(/PASS/));
     });
   });
-
 });

@@ -7,6 +7,9 @@
     "test": "jest",
     "ch1": "semistandard --fix ./ch1 && node ./ch1/custom-test-phase1.js && node ./ch1/custom-test-phase2.js && node ./ch1/custom-test-phase3.js"
   },
+  "semistandard": {
+    "env": [ "jest" ]
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/royosherove/aout3-samples.git"
