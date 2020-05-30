@@ -1,6 +1,5 @@
 const _ = require('lodash');
 
-
 // (function tests() {
 //     // fixtures
 //     var fakeRepo = {
@@ -34,57 +33,53 @@ const _ = require('lodash');
 // }());
 //
 test('fetchUser1 - currying example 1', () => {
-    const fakeRepo = {
-        fetch: function (userId) {
-            return {id: userId, name: "Andrew"};
-        }
-    };
-    const preCOnfiguredFetch = fetchUser1(fakeRepo) ;
-    const user = preCOnfiguredFetch(1234);
-    // assert
-    expect(user.name).toBe('Andrew');
+  const fakeRepo = {
+    fetch: function (userId) {
+      return { id: userId, name: 'Andrew' };
+    }
+  };
+  const preCOnfiguredFetch = fetchUser1(fakeRepo);
+  const user = preCOnfiguredFetch(1234);
+  // assert
+  expect(user.name).toBe('Andrew');
 });
 
-function fetchUser1(userRepo, userId) {
-    if (arguments.length === 1) // currying
-        return function(userId) {
-            return fetchUser1(userRepo, userId);
-        };
-    return userRepo.fetch(userId);
+function fetchUser1 (userRepo, userId) {
+  if (arguments.length === 1) // currying
+  {
+    return function (userId) {
+      return fetchUser1(userRepo, userId);
+    };
+  }
+  return userRepo.fetch(userId);
 }
-
 
 //
-function fetchUser2({fetch}, userId) { // destructured function dependency
-    return arguments.length === 1 ?
-            uid => fetchUser2({fetch},uid) :
-            fetch(userId);
+function fetchUser2 ({ fetch }, userId) { // destructured function dependency
+  return arguments.length === 1
+    ? uid => fetchUser2({ fetch }, uid)
+    : fetch(userId);
 }
 
-
-
 test('fetchUser2', () => {
-    const fetch = userId => ({ id: userId, name: "Andrew" });
-    const preConfiguredFetchFn = fetchUser2({ fetch });
-    // act
-    const user = preConfiguredFetchFn(1234);
-    // assert
-    expect(user.name).toBe("Andrew");
+  const fetch = userId => ({ id: userId, name: 'Andrew' });
+  const preConfiguredFetchFn = fetchUser2({ fetch });
+  // act
+  const user = preConfiguredFetchFn(1234);
+  // assert
+  expect(user.name).toBe('Andrew');
 });
 
-////EXAMPLE 3
+/// /EXAMPLE 3
 const fetchUser3 = _.curry(function (userRepo, userId) {
-    return userRepo.fetch(userId);
+  return userRepo.fetch(userId);
 });
 
 test('fetchUser with lodash currying', () => {
-    const fakeRepo = { fetch: (id) => ({name: "some name"})};
+  const fakeRepo = { fetch: (id) => ({ name: 'some name' }) };
 
-    const preConfiguredFetch = fetchUser3(fakeRepo);
-    const result = preConfiguredFetch(1234);
+  const preConfiguredFetch = fetchUser3(fakeRepo);
+  const result = preConfiguredFetch(1234);
 
-    expect(result.name).toBe('some name');
-
+  expect(result.name).toBe('some name');
 });
-
-

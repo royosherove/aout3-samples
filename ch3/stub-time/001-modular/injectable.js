@@ -1,14 +1,13 @@
 const moduleInject = (originalDeps) => {
-    let dependecies ={};
-    const reset = () => Object.assign(dependecies, originalDeps);
+  const dependencies = {};
+  const inject = fakes => Object.assign(dependencies, fakes);
+  const reset = () => Object.assign(dependencies, originalDeps);
 
-    function inject(fakes) {
-        Object.assign(dependecies, fakes);
-        return reset;
-    }
-
-    return {dependecies, inject}
+  return {
+    dependencies,
+    inject,
+    reset
+  };
 };
 
 module.exports = moduleInject;
-

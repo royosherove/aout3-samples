@@ -1,8 +1,8 @@
-const {log} = require('./complicated-logger');
+const { log } = require('./complicated-logger');
 const _ = require('lodash');
 
 const verifyPassword = (input, rules) => {
-  const failed= rules
+  const failed = rules
     .map(rule => rule(input))
     .filter(result => result === false);
 
@@ -14,7 +14,7 @@ const verifyPassword = (input, rules) => {
   return false;
 };
 
-const verifyPasswordWithCurrying = _.curry ( (rules, logger, input) => {
+const verifyPasswordWithCurrying = _.curry((rules, logger, input) => {
   const failed = rules
     .map(rule => rule(input))
     .filter(result => result === false);
@@ -29,5 +29,5 @@ const verifyPasswordWithCurrying = _.curry ( (rules, logger, input) => {
 
 module.exports = {
   verifyPassword,
-  verifyPasswordWithCurrying,
+  verifyPasswordWithCurrying
 };

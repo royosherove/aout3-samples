@@ -30,7 +30,7 @@ const verifyPassword2 = (input, rules, logger) => {
   logger.info('FAIL');
   return false;
 };
-const verifyPassword3 = _.curry ( (rules, logger, input) => {
+const verifyPassword3 = _.curry((rules, logger, input) => {
   const failed = rules
     .map(rule => rule(input))
     .filter(result => result === false);

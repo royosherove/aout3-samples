@@ -3,19 +3,18 @@ const originalDependencies = {
   lodash: require('lodash')
 };
 
-let dependencies = {...originalDependencies};
+let dependencies = { ...originalDependencies };
 
 const resetDependencies = () => {
-  dependencies = {...originalDependencies};
+  dependencies = { ...originalDependencies };
 };
 
 const injectDependencies = (fakes) => {
-    Object.assign(dependencies, fakes);
+  Object.assign(dependencies, fakes);
 };
 
-
 const verifyPassword = (input, rules) => {
-  const failed= rules
+  const failed = rules
     .map(rule => rule(input))
     .filter(result => result === false);
 
@@ -27,7 +26,7 @@ const verifyPassword = (input, rules) => {
   return false;
 };
 
-const verifyPasswordWithCurrying = dependencies.lodash.curry ( (rules, logger, input) => {
+const verifyPasswordWithCurrying = dependencies.lodash.curry((rules, logger, input) => {
   const failed = rules
     .map(rule => rule(input))
     .filter(result => result === false);

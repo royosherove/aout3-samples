@@ -1,11 +1,10 @@
-const {inject, dependencies} = require('./injectable')({
-  ...require('moment')
-});
+const { inject, reset, dependencies } = require('./injectable')({ moment: require('moment') });
 
 const SUNDAY = 0; const SATURDAY = 6;
 
 const verifyPassword = (input, rules) => {
   const dayOfWeek = dependencies.moment().day();
+  console.log(dayOfWeek);
   if ([SATURDAY, SUNDAY].includes(dayOfWeek)) {
     throw Error("It's the weekend!");
   }
@@ -17,5 +16,6 @@ const verifyPassword = (input, rules) => {
 module.exports = {
   SATURDAY,
   verifyPassword,
-  inject
+  inject,
+  reset
 };

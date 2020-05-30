@@ -4,16 +4,16 @@
 // caveat: avoid running in parallel
 // will work with native modules
 const originalDependencies = {
-  moment : require('moment'),
+  moment: require('moment')
 };
 
-let dependencies = {...originalDependencies};
+let dependencies = { ...originalDependencies };
 
 const inject = (fakes) => {
   Object.assign(dependencies, fakes);
-  return function reset() {
-     dependencies = {...originalDependencies};
-  }
+  return function reset () {
+    dependencies = { ...originalDependencies };
+  };
 };
 
 const SUNDAY = 0; const SATURDAY = 6;
