@@ -4,7 +4,7 @@ const { stringMatching } = expect;
 describe('password verifier', () => {
   describe('given logger and passing scenario', () => {
     it('calls the logger with PASS', () => {
-      const mockLog = { info: jest.fn() };
+      const mockLog = { info: jest.fn(), debug:jest.fn() };
 
       verifyPassword2('anything', [], mockLog);
 

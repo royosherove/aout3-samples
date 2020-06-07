@@ -9,6 +9,7 @@ const verifyPassword2 = (input, rules, logger) => {
 
   if (failed.length === 0) {
     logger.info('PASSED');
+    logger.debug('PASSED');
     return true;
   }
   logger.info('FAIL');
