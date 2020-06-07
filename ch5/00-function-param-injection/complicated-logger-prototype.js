@@ -1,5 +1,6 @@
 const logger = ()=> { }
 logger.prototype= {}
+
 logger.prototype.info = (text) =>{
     console.log(`INFO: ${text}`);
 }
