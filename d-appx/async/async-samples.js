@@ -1,4 +1,4 @@
-const { Observable } = require('rxjs');
+const { Observable, interval } = require('rxjs');
 const { map } = require('rxjs/operators');
 const util = require('util');
 
@@ -22,7 +22,7 @@ const calculate4 = (getInputsFn, resultFn) => {
 };
 
 const calculate5 = getInputsFn => {
-  return Observable.interval(10000)
+  return interval(10000)
     .pipe(
       map(() => {
         const { x, y } = getInputsFn();
