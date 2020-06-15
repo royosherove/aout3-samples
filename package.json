@@ -31,6 +31,7 @@
     "jasmine-auto-spies": "^5.4.0",
     "jest": "^24.9.0",
     "nock": "^12.0.3",
+    "prettier": "2.0.5",
     "rxjs": "^6.5.5",
     "sinon": "^8.1.1",
     "ts-jest": "^25.2.0",
