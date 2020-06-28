@@ -9,7 +9,8 @@ const configs = require("./configuration-service");
 describe("password verifier", () => {
   afterEach(jest.resetAllMocks);
 
-  test('with info log level and no rules, it calls the logger with PASSED', () => {
+  test(`with info log level and no rules, 
+          it calls the logger with PASSED`, () => {
     configs.getLogLevel.mockReturnValue("info");
 
     verifyPassword("anything", []);
@@ -17,7 +18,8 @@ describe("password verifier", () => {
     expect(logger.info).toHaveBeenCalledWith(stringMatching(/PASS/));
   });
 
-  test('with debug log level and no rules, it calls the logger with PASSED', () => {
+  test(`with debug log level and no rules, 
+          it calls the logger with PASSED`, () => {
       configs.getLogLevel.mockReturnValue("debug");
 
       verifyPassword("anything", []);

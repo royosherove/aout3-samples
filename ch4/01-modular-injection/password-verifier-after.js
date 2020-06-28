@@ -1,5 +1,7 @@
+
 const originalDependencies = {
   log: require('./complicated-logger'),
+  configs: require('./configuration-service'),
   lodash: require('lodash')
 };
 
@@ -13,35 +15,29 @@ const injectDependencies = (fakes) => {
   Object.assign(dependencies, fakes);
 };
 
+const log = (text) =>{
+  if (dependencies.configs.getLogLevel() === "info") {
+    dependencies.log.info(text);
+  }
+  if (dependencies.configs.getLogLevel() === "debug") {
+    dependencies.log.debug(text);
+  }
+}
 const verifyPassword = (input, rules) => {
   const failed = rules
     .map(rule => rule(input))
     .filter(result => result === false);
 
   if (failed.length === 0) {
-    dependencies.log.info('PASSED');
+    log('PASSED');
     return true;
   }
-  dependencies.log.info('FAIL');
+  log('FAIL');
   return false;
 };
 
-const verifyPasswordWithCurrying = dependencies.lodash.curry((rules, logger, input) => {
-  const failed = rules
-    .map(rule => rule(input))
-    .filter(result => result === false);
-
-  if (failed.length === 0) {
-    logger.info('PASSED');
-    return true;
-  }
-  logger.info('FAIL');
-  return false;
-});
-
 module.exports = {
   verifyPassword,
-  verifyPasswordWithCurrying,
   injectDependencies,
   resetDependencies
 };
