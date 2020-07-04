@@ -3,7 +3,6 @@ const {
   injectDependencies,
   resetDependencies,
 } = require("./password-verifier-injectable");
-const { stringMatching } = expect;
 
 describe("password verifier", () => {
   afterEach(resetDependencies);
