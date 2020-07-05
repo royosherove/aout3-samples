@@ -18,6 +18,9 @@ describe("working with long interfaces", () => {
     test("verify, with logger and passing, calls logger with PASS", () => {
       const mockLog = new FakeLogger();
       mockLog.info = jest.fn();
+      mockLog.error = jest.fn();
+      mockLog.warn = jest.fn();
+      mockLog.debug = jest.fn();
 
       ///inject the mock..
       const verifier = new PasswordVerifier2([], mockLog);
