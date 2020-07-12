@@ -34,6 +34,7 @@
     "prettier": "2.0.5",
     "rxjs": "^6.5.5",
     "sinon": "^8.1.1",
+    "substitute": "^0.7.1",
     "ts-jest": "^25.2.0",
     "typescript": "^3.7.5",
     "unmock": "^0.3.18"
