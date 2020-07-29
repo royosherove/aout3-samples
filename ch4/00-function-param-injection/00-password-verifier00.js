@@ -8,7 +8,7 @@ const verifyPassword = (input, rules) => {
     .filter((result) => result === false);
 
   console.log(failed);
-  if (failed.length() === 0) {
+  if (failed.length === 0) {
     // this line is impossible to test with traditional injection techniques
     log.info("PASSED");
     return true;
