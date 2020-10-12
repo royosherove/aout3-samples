@@ -2,6 +2,12 @@ const fetch = require("node-fetch");
 
 const isWebsiteAliveWithCallback = (cb) => {
   fetch("http://example.com")
+    .then((resp) => {
+      if (!resp.ok) {
+        throw Error(resp.statusText);
+      }
+      return resp;
+    })
     .then((resp) => resp.text())
     .then((text) => {
       if (text.includes("illustrative")) {

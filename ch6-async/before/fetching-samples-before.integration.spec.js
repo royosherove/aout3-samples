@@ -1,4 +1,4 @@
-const samples = require("./fetching-samples1");
+const samples = require("./fetching-samples-before");
 
 test("integration test: fetching with callback", (done) => {
   samples.isWebsiteAliveWithCallback((result) => {
