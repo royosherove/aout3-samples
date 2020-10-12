@@ -37,14 +37,15 @@
     "substitute": "^0.7.1",
     "ts-jest": "^25.2.0",
     "typescript": "^3.7.5",
-    "unmock": "^0.3.18"
+    "unmock": "^0.3.18",
+    "testdouble": "^3.12.5",
+    "testdouble-jest": "^2.0.0"
   },
   "dependencies": {
     "lodash": "^4.17.15",
     "moment": "^2.24.0",
+    "node-fetch": "^2.6.1",
     "semistandard": "^13.0.1",
-    "testdouble": "^3.12.5",
-    "testdouble-jest": "^2.0.0",
     "winston": "^3.2.1"
   }
 }

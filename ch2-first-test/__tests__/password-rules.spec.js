@@ -15,6 +15,7 @@ describe('one uppercase rule', () => {
   });
 });
 
+//parameterized
 describe('v2 one uppercase rule', () => {
   test('given no uppercase, it fails', () => {
     const result = oneUpperCaseRule('abc');
@@ -24,13 +25,13 @@ describe('v2 one uppercase rule', () => {
   test.each([
     'Abc',
     'aBc'
-  ])
-  ('given one uppercase, it passes', (input) => {
+  ])('given one uppercase, it passes', (input) => {
     const result = oneUpperCaseRule(input);
     expect(result.passed).toEqual(true);
   });
 });
 
+//parameterized
 describe('v3 one uppercase rule', () => {
   test.each([['Abc', true],
     ['aBc', true],
