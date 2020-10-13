@@ -37,5 +37,5 @@ const onFetchError = (err) => {
 
 module.exports = {
   isWebsiteAliveWithCallback,
-  onFetchFinished: onFetchSuccess,
+  onFetchSuccess,
 };

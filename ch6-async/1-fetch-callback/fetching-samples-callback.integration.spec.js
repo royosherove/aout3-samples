@@ -1,6 +1,6 @@
 const samples = require("./fetching-samples-callback");
 
-test("integration test: fetching with callback", (done) => {
+test("isWebsiteAlive with real website returns true", (done) => {
   samples.isWebsiteAliveWithCallback((result) => {
     expect(result).toBe(true);
     done();

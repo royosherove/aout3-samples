@@ -1,6 +1,8 @@
-const samples = require("../2-fetch-await/fetching-samples-await");
+const samples = require("./fetching-samples-callback");
 
-test("integration test: fetching with async await", () => {
-  const result = samples.onFetchSuccess("illustrative");
-  expect(result).toBe(true);
+test("When website fetch content matches, returns true", (done) => {
+  samples.onFetchSuccess("illustrative", (result) => {
+    expect(result).toBe(true);
+    done();
+  });
 });
