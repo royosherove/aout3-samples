@@ -1,22 +1,35 @@
-import { INetworkAdapter } from "./INetworkAdapter";
+import { INetworkAdapter, NetworkAdapterFetchResults } from "./INetworkAdapter";
+export interface WebsiteAliveResult {
+  success: boolean;
+  status: string;
+}
 
-export const isWebsiteAlive = async (network: INetworkAdapter) => {
-  const result = await network.fetchUrlText("http://example.com");
-  if (result.ok) {
-    const text = result.text;
-    return onFetchSuccess(text);
+export const isWebsiteAlive = async (
+  network: INetworkAdapter
+): Promise<WebsiteAliveResult> => {
+  let netResult: NetworkAdapterFetchResults;
+  try {
+    netResult = await network.fetchUrlText("http://example.com");
+    if (!netResult.ok) {
+      throw netResult.text;
+    }
+    const text = netResult.text;
+    return processNetSuccess(text);
+  } catch (err) {
+    return processNetFail(err);
   }
-  onFetchError(result.text);
-  return false;
 };
 
 //Entry Point
-export const onFetchSuccess = (text) => {
-  return text.includes("illustrative");
+export const processNetSuccess = (text): WebsiteAliveResult => {
+  const included = text.includes("illustrative");
+  if (included) {
+    return { success: true, status: "ok" };
+  }
+  return { success: false, status: "missing text" };
 };
 
 //Entry Point
-export const onFetchError = (err) => {
-  console.log(err);
-  //more behaviors
+export const processNetFail = (err): WebsiteAliveResult => {
+  return { success: false, status: err };
 };

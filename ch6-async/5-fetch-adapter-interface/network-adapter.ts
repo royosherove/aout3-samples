@@ -6,8 +6,8 @@ export class NetworkAdapter implements INetworkAdapter {
     const resp = await fetch(url);
     if (resp.ok) {
       const text = await resp.text();
-      return { ok: true, text: text };
+      return Promise.resolve({ ok: true, text: text });
     }
-    return { ok: false, text: resp.statusText };
+    return Promise.reject({ ok: false, text: resp.statusText });
   }
 }
