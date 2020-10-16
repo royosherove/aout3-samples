@@ -16,7 +16,7 @@ export const isWebsiteAlive = async (
     const text = netResult.text;
     return processNetSuccess(text);
   } catch (err) {
-    return processNetFail(err);
+    throw processNetFail(err);
   }
 };
 

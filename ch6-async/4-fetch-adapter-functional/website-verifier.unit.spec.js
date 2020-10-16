@@ -15,6 +15,7 @@ describe("unit test website verifier", () => {
     });
     const result = await webverifier.isWebsiteAlive(stubNetwork);
     expect(result.success).toBe(true);
+    expect(result.status).toBe("ok");
   });
 
   test("with bad content, returns false", async () => {
@@ -24,14 +25,20 @@ describe("unit test website verifier", () => {
     });
     const result = await webverifier.isWebsiteAlive(stubNetwork);
     expect(result.success).toBe(false);
+    expect(result.status).toBe("missing text");
   });
 
-  test("with bad url or network, returns false", async () => {
+  test("with bad url or network, throws", async () => {
     const stubNetwork = makeStubNetworkWithResult({
       ok: false,
-      text: "any text",
+      text: "some error",
     });
-    const result = await webverifier.isWebsiteAlive(stubNetwork);
-    expect(result.success).toBe(false);
+    try {
+      await webverifier.isWebsiteAlive(stubNetwork);
+      fail("promise.rejext expected");
+    } catch (err) {
+      expect(err.success).toBe(false);
+      expect(err.status).toBe("some error");
+    }
   });
 });

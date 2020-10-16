@@ -35,6 +35,6 @@ const onFetchError = (err, callback) => {
 
 module.exports = {
   isWebsiteAliveWithCallback,
-  onFetchSuccess,
-  onFetchError,
+  processFetchSuccess: onFetchSuccess,
+  processFetchError: onFetchError,
 };

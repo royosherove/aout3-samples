@@ -11,4 +11,5 @@ test("real website with correct content, returns true (callbacks)", (done) => {
 test("real website with correct content, returns true (await)", async () => {
   const result = await samples.isWebsiteAliveWithAsyncAwait();
   expect(result.success).toBe(true);
+  expect(result.status).toBe("ok");
 });

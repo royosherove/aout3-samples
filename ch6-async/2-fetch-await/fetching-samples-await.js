@@ -1,12 +1,17 @@
 const fetch = require("node-fetch");
 
 const isWebsiteAliveWithAsyncAwait = async () => {
-  const resp = await fetch("http://example.com");
-  if (resp.ok) {
-    const text = await resp.text();
-    return processFetchContent(text);
+  try {
+    const resp = await fetch("http://example.com");
+    if (!resp.ok) {
+      throw resp.statusText;
+    } else {
+      const text = await resp.text();
+      return processFetchContent(text);
+    }
+  } catch (err) {
+    throw processFetchError(err);
   }
-  return processFetchError(resp.statusText);
 };
 
 //Entry Point

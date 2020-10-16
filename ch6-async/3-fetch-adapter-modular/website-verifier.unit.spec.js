@@ -1,12 +1,12 @@
 jest.mock("./network-adapter"); // must be first line
-const fakeNetwork = require("./network-adapter");
+const stubNetwork = require("./network-adapter");
 const webverifier = require("./website-verifier");
 
 describe("unit test website verifier", () => {
   beforeEach(jest.resetAllMocks);
 
   test("with good content, returns true", async () => {
-    fakeNetwork.fetchUrlText.mockReturnValue({
+    stubNetwork.fetchUrlText.mockReturnValue({
       ok: true,
       text: "illustrative",
     });
@@ -16,7 +16,7 @@ describe("unit test website verifier", () => {
   });
 
   test("with bad content, returns false", async () => {
-    fakeNetwork.fetchUrlText.mockReturnValue({
+    stubNetwork.fetchUrlText.mockReturnValue({
       ok: true,
       text: "<span>hello world</span>",
     });
@@ -25,13 +25,17 @@ describe("unit test website verifier", () => {
     expect(result.status).toBe("missing text");
   });
 
-  test("with bad url or network, returns false", async () => {
-    fakeNetwork.fetchUrlText.mockReturnValue({
+  test("with bad url or network, throws", async () => {
+    stubNetwork.fetchUrlText.mockReturnValue({
       ok: false,
-      text: "error text",
+      text: "some network error",
     });
-    const result = await webverifier.isWebsiteAlive();
-    expect(result.success).toBe(false);
-    expect(result.status).toBe("error text");
+    try {
+      await webverifier.isWebsiteAlive(stubNetwork);
+      fail("promise.rejext expected");
+    } catch (err) {
+      expect(err.success).toBe(false);
+      expect(err.status).toBe("some network error");
+    }
   });
 });

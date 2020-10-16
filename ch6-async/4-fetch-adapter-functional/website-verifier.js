@@ -4,7 +4,7 @@ const isWebsiteAlive = async (network) => {
     const text = result.text;
     return onFetchSuccess(text);
   }
-  return onFetchError(result.text);
+  return Promise.reject(onFetchError(result.text));
 };
 
 //Entry Point

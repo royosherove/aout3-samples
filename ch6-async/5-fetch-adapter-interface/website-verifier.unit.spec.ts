@@ -31,13 +31,17 @@ describe("unit test website verifier", () => {
     expect(result.status).toBe("missing text");
   });
 
-  test("with bad url or network, returns false", async () => {
+  test("with bad url or network, throws", async () => {
     const stubNetwork = makeStubNetworkWithResult({
       ok: false,
       text: "fake network error",
     });
-    const result = await isWebsiteAlive(stubNetwork);
-    expect(result.success).toBe(false);
-    expect(result.status).toBe("fake network error");
+    try {
+      await isWebsiteAlive(stubNetwork);
+      fail("expected promise.reject via simulated network error");
+    } catch (err) {
+      expect(err.success).toBe(false);
+      expect(err.status).toBe("fake network error");
+    }
   });
 });
