@@ -1,6 +1,6 @@
 const samples = require("./fetching-samples-before");
 
-test("real website with correct content, returns true (callbacks)", (done) => {
+test("NETWORK REQUIRED (callback): website with correct content, returns true", (done) => {
   samples.isWebsiteAliveWithCallback((result) => {
     expect(result.success).toBe(true);
     expect(result.status).toBe("ok");
@@ -8,7 +8,7 @@ test("real website with correct content, returns true (callbacks)", (done) => {
   });
 });
 
-test("real website with correct content, returns true (await)", async () => {
+test("NETWORK REQUIRED (await): website with correct content, returns true", async () => {
   const result = await samples.isWebsiteAliveWithAsyncAwait();
   expect(result.success).toBe(true);
   expect(result.status).toBe("ok");
