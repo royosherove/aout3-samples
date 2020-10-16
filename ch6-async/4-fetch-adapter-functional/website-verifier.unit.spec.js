@@ -14,7 +14,7 @@ describe("unit test website verifier", () => {
       text: "illustrative",
     });
     const result = await webverifier.isWebsiteAlive(stubNetwork);
-    expect(result).toBe(true);
+    expect(result.success).toBe(true);
   });
 
   test("with bad content, returns false", async () => {
@@ -23,7 +23,7 @@ describe("unit test website verifier", () => {
       text: "unexpected content",
     });
     const result = await webverifier.isWebsiteAlive(stubNetwork);
-    expect(result).toBe(false);
+    expect(result.success).toBe(false);
   });
 
   test("with bad url or network, returns false", async () => {
@@ -32,6 +32,6 @@ describe("unit test website verifier", () => {
       text: "any text",
     });
     const result = await webverifier.isWebsiteAlive(stubNetwork);
-    expect(result).toBe(false);
+    expect(result.success).toBe(false);
   });
 });

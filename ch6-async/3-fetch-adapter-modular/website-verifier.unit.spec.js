@@ -11,24 +11,27 @@ describe("unit test website verifier", () => {
       text: "illustrative",
     });
     const result = await webverifier.isWebsiteAlive();
-    expect(result).toBe(true);
+    expect(result.success).toBe(true);
+    expect(result.status).toBe("ok");
   });
 
   test("with bad content, returns false", async () => {
     fakeNetwork.fetchUrlText.mockReturnValue({
       ok: true,
-      text: "unexpected content",
+      text: "<span>hello world</span>",
     });
     const result = await webverifier.isWebsiteAlive();
-    expect(result).toBe(false);
+    expect(result.success).toBe(false);
+    expect(result.status).toBe("missing text");
   });
 
   test("with bad url or network, returns false", async () => {
     fakeNetwork.fetchUrlText.mockReturnValue({
       ok: false,
-      text: "any text",
+      text: "error text",
     });
     const result = await webverifier.isWebsiteAlive();
-    expect(result).toBe(false);
+    expect(result.success).toBe(false);
+    expect(result.status).toBe("error text");
   });
 });
