@@ -7,20 +7,20 @@ const throwOnInvalidResponse = (resp) => {
   return resp;
 };
 
-const isWebsiteAliveWithCallback = (callback) => {
+const isWebsiteAlive = (callback) => {
   fetch("http://example.com")
     .then(throwOnInvalidResponse)
     .then((resp) => resp.text())
     .then((text) => {
-      onFetchSuccess(text, callback);
+      processFetchSuccess(text, callback);
     })
     .catch((err) => {
-      onFetchError(callback, err);
+      processFetchError(callback, err);
     });
 };
 
 //Entry Point
-const onFetchSuccess = (text, callback) => {
+const processFetchSuccess = (text, callback) => {
   if (text.includes("illustrative")) {
     callback({ success: true, status: "ok" });
   } else {
@@ -29,12 +29,12 @@ const onFetchSuccess = (text, callback) => {
 };
 
 //Entry Point
-const onFetchError = (err, callback) => {
+const processFetchError = (err, callback) => {
   callback({ success: false, status: err });
 };
 
 module.exports = {
-  isWebsiteAliveWithCallback,
-  processFetchSuccess: onFetchSuccess,
-  processFetchError: onFetchError,
+  isWebsiteAlive,
+  processFetchSuccess,
+  processFetchError,
 };

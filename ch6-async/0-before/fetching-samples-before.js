@@ -28,7 +28,6 @@ const isWebsiteAliveWithAsyncAwait = async () => {
   try {
     const resp = await fetch("http://example.com");
     if (!resp.ok) {
-      //how can we simulate a non ok response?
       throw resp.statusText;
     }
     const text = await resp.text();
@@ -36,7 +35,6 @@ const isWebsiteAliveWithAsyncAwait = async () => {
     if (included) {
       return { success: true, status: "ok" };
     }
-    // how can we simulate different website content?
     throw "text missing";
   } catch (err) {
     throw { success: false, status: err };

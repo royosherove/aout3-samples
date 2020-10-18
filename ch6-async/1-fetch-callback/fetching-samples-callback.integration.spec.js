@@ -1,7 +1,7 @@
 const samples = require("./fetching-samples-callback");
 
 test("isWebsiteAlive with real website returns true", (done) => {
-  samples.isWebsiteAliveWithCallback((result) => {
+  samples.isWebsiteAlive((result) => {
     expect(result.success).toBe(true);
     done();
   });

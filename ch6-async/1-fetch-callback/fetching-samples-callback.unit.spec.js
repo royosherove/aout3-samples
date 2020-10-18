@@ -4,6 +4,7 @@ describe("Website alive checking", () => {
   test("When website fetch content matches, returns true", () => {
     samples.processFetchSuccess("illustrative", (result) => {
       expect(result.success).toBe(true);
+      expect(result.status).toBe("ok");
     });
   });
   test("When website fetch content does not match, returns false", () => {

@@ -1,6 +1,6 @@
 const fetch = require("node-fetch");
 
-const isWebsiteAliveWithAsyncAwait = async () => {
+const isWebsiteAlive = async () => {
   try {
     const resp = await fetch("http://example.com");
     if (!resp.ok) {
@@ -29,7 +29,7 @@ const processFetchError = (err) => {
 };
 
 module.exports = {
-  isWebsiteAliveWithAsyncAwait,
+  isWebsiteAlive,
   processFetchContent,
   processFetchError,
 };
