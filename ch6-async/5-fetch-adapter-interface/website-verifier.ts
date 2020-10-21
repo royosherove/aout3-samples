@@ -20,8 +20,7 @@ export const isWebsiteAlive = async (
   }
 };
 
-//Entry Point
-export const processNetSuccess = (text): WebsiteAliveResult => {
+const processNetSuccess = (text): WebsiteAliveResult => {
   const included = text.includes("illustrative");
   if (included) {
     return { success: true, status: "ok" };
@@ -29,7 +28,6 @@ export const processNetSuccess = (text): WebsiteAliveResult => {
   return { success: false, status: "missing text" };
 };
 
-//Entry Point
-export const processNetFail = (err): WebsiteAliveResult => {
+const processNetFail = (err): WebsiteAliveResult => {
   return { success: false, status: err };
 };
