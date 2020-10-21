@@ -7,7 +7,6 @@ const isWebsiteAlive = async (network) => {
   return Promise.reject(onFetchError(result.text));
 };
 
-//Entry Point
 const onFetchSuccess = (text) => {
   const included = text.includes("illustrative");
   if (included) {
@@ -16,13 +15,10 @@ const onFetchSuccess = (text) => {
   return { success: false, status: "missing text" };
 };
 
-//Entry Point
 const onFetchError = (err) => {
   return { success: false, status: err };
 };
 
 module.exports = {
   isWebsiteAlive,
-  onFetchSuccess,
-  onFetchError,
 };

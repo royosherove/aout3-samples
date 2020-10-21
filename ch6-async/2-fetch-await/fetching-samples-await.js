@@ -3,14 +3,17 @@ const fetch = require("node-fetch");
 const isWebsiteAlive = async () => {
   try {
     const resp = await fetch("http://example.com");
-    if (!resp.ok) {
-      throw resp.statusText;
-    } else {
-      const text = await resp.text();
-      return processFetchContent(text);
-    }
+    throwIfResponseNotOK(resp);
+    const text = await resp.text();
+    return processFetchContent(text);
   } catch (err) {
     throw processFetchError(err);
+  }
+};
+
+const throwIfResponseNotOK = (resp) => {
+  if (!resp.ok) {
+    throw resp.statusText;
   }
 };
 

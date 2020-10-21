@@ -13,7 +13,6 @@ const isWebsiteAlive = async () => {
   }
 };
 
-//Entry Point
 const processFetchSuccess = (text) => {
   const included = text.includes("illustrative");
   if (included) {
@@ -22,13 +21,10 @@ const processFetchSuccess = (text) => {
   return { success: false, status: "missing text" };
 };
 
-//Entry Point
 const processFetchFail = (err) => {
   return { success: false, status: err };
 };
 
 module.exports = {
   isWebsiteAlive,
-  onFetchSuccess: processFetchSuccess,
-  onFetchError: processFetchFail,
 };

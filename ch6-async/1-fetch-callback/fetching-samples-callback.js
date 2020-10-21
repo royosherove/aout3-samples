@@ -1,12 +1,5 @@
 const fetch = require("node-fetch");
 
-const throwOnInvalidResponse = (resp) => {
-  if (!resp.ok) {
-    throw Error(resp.statusText);
-  }
-  return resp;
-};
-
 const isWebsiteAlive = (callback) => {
   fetch("http://example.com")
     .then(throwOnInvalidResponse)
@@ -17,6 +10,13 @@ const isWebsiteAlive = (callback) => {
     .catch((err) => {
       processFetchError(callback, err);
     });
+};
+
+const throwOnInvalidResponse = (resp) => {
+  if (!resp.ok) {
+    throw Error(resp.statusText);
+  }
+  return resp;
 };
 
 //Entry Point
