@@ -21,7 +21,10 @@ describe("calculate1 - with jest", () => {
   beforeEach(jest.useFakeTimers);
 
   test("fake timeout with callback", (done) => {
-    Samples.calculate1(1, 2, (result) => expect(result).toBe(3) & done());
+    Samples.calculate1(1, 2, (result) => {
+      expect(result).toBe(3);
+      done();
+    });
     jest.advanceTimersToNextTimer();
   });
 });
@@ -31,7 +34,10 @@ describe("calculate2 - Promises", () => {
   beforeEach(jest.useFakeTimers);
 
   test("fake timeout with Promise", (done) => {
-    Samples.calculate2(1, 2).then((result) => expect(result).toBe(3) & done());
+    Samples.calculate2(1, 2).then((result) => {
+      expect(result).toBe(3);
+      done()
+    });
     jest.advanceTimersToNextTimer();
   });
 });
@@ -60,7 +66,10 @@ describe("calculate 5 with Observable intervals", () => {
   test("calculate5 with single interval on observable can be asserted", (done) => {
     const inputFn = () => ({ x: 1, y: 2 });
     Samples.calculate5(inputFn).subscribe(
-      (result) => expect(result).toBe(3) & done()
+      (result) => {
+        expect(result).toBe(3);
+        done()
+      }
     );
 
     jest.advanceTimersToNextTimer();
