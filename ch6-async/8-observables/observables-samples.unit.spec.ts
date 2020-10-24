@@ -1,16 +1,14 @@
 import {ingredients, pizzaCookBook$} from "./observables-samples";
-import {VirtualTimeScheduler} from "rxjs";
 
 describe('delayed observable',()=>{
   test('this test takes 5 seconds',(done)=>{
     const obs = pizzaCookBook$();
-    const maxItems = ingredients.length;
     let found =0;
     console.log('BEFORE')
     obs.subscribe(val => {
       console.log(val)
       found++;
-      if (found === maxItems) {
+      if (found === ingredients.length) {
         done();
       }
     });
@@ -22,7 +20,6 @@ describe('with fake timers', () => {
 
   test('this test has fake timers', (done) => {
     const obs = pizzaCookBook$();
-    const maxItems = ingredients.length;
     let found = 0;
     console.log('BEFORE')
     obs.subscribe(val => {
@@ -34,7 +31,7 @@ describe('with fake timers', () => {
     jest.advanceTimersToNextTimer();
     jest.advanceTimersToNextTimer();
     jest.advanceTimersToNextTimer();
-    expect(found).toBe(maxItems);
+    expect(found).toBe(ingredients.length);
     done();
   });
 });
