@@ -1,9 +1,10 @@
 const samples = require("./fetching-samples-before");
 
 test("NETWORK REQUIRED (callback): website with correct content, returns true", (done) => {
-  samples.isWebsiteAliveWithCallback((result) => {
-    expect(result.success).toBe(true);
+  samples.isWebsiteAliveWithCallback((err, result) => {
+    expect(err).toBeNull();
     expect(result.status).toBe("ok");
+    expect(result.success).toBe(true);
     done();
   });
 });

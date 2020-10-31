@@ -13,31 +13,31 @@ const isWebsiteAliveWithCallback = (callback) => {
     .then((response) => response.text())
     .then((text) => {
       if (text.includes("illustrative")) {
-        callback({ success: true, status: "ok" });
+        callback(null, { success: true, status: "ok" });
       } else {
         //how can we test this path?
-        callback({ success: false, status: "text missing" });
+        throw new Error("text missing");
       }
     })
     .catch((err) => {
       //how can we test this exit point?
-      callback({ success: false, status: err });
+      callback(err);
     });
 };
 const isWebsiteAliveWithAsyncAwait = async () => {
   try {
     const resp = await fetch("http://example.com");
     if (!resp.ok) {
-      throw resp.statusText;
+      throw new Error(resp.statusText);
     }
     const text = await resp.text();
     const included = text.includes("illustrative");
     if (included) {
       return { success: true, status: "ok" };
     }
-    throw "text missing";
+    throw new Error("text missing");
   } catch (err) {
-    throw { success: false, status: err };
+    throw err;
   }
 };
 
