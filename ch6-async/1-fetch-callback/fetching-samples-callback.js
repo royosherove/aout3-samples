@@ -8,7 +8,7 @@ const isWebsiteAlive = (callback) => {
       processFetchSuccess(text, callback);
     })
     .catch((err) => {
-      processFetchError(callback, err);
+      processFetchError(err, callback);
     });
 };
 
@@ -22,15 +22,15 @@ const throwOnInvalidResponse = (resp) => {
 //Entry Point
 const processFetchSuccess = (text, callback) => {
   if (text.includes("illustrative")) {
-    callback({ success: true, status: "ok" });
+    callback(null, { success: true, status: "ok" });
   } else {
-    callback({ success: false, status: "missing text" });
+    callback(new Error("missing text"));
   }
 };
 
 //Entry Point
 const processFetchError = (err, callback) => {
-  callback({ success: false, status: err });
+  callback(err);
 };
 
 module.exports = {
