@@ -24,7 +24,7 @@ const isWebsiteAliveWithCallback = (callback) => {
       callback(err);
     });
 };
-const isWebsiteAliveWithAsyncAwait = async () => {
+const isWebsiteAliveWithPromises = async () => {
   try {
     const resp = await fetch("http://example.com");
     if (!resp.ok) {
@@ -43,5 +43,5 @@ const isWebsiteAliveWithAsyncAwait = async () => {
 
 module.exports = {
   isWebsiteAliveWithCallback,
-  isWebsiteAliveWithAsyncAwait,
+  isWebsiteAliveWithPromises,
 };

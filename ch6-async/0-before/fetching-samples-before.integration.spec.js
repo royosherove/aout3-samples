@@ -10,7 +10,7 @@ test("NETWORK REQUIRED (callback): website with correct content, returns true", 
 });
 
 test("NETWORK REQUIRED (await): website with correct content, returns true", (done) => {
-  samples.isWebsiteAliveWithAsyncAwait().then((result) => {
+  samples.isWebsiteAliveWithPromises().then((result) => {
     expect(result.success).toBe(true);
     expect(result.status).toBe("ok");
     done();
@@ -18,7 +18,7 @@ test("NETWORK REQUIRED (await): website with correct content, returns true", (do
 });
 
 test("NETWORK REQUIRED2 (await): website with correct content, returns true", async () => {
-  const result = await samples.isWebsiteAliveWithAsyncAwait();
+  const result = await samples.isWebsiteAliveWithPromises();
   expect(result.success).toBe(true);
   expect(result.status).toBe("ok");
 });

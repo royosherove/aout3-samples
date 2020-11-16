@@ -1,4 +1,4 @@
-const samples = require("./fetching-samples-await");
+const samples = require("./fetching-samples-promises");
 
 test("isWebsiteAlive with real website returns true", async () => {
   const result = await samples.isWebsiteAlive();

@@ -1,4 +1,4 @@
-const samples = require("./fetching-samples-await");
+const samples = require("./fetching-samples-promises");
 
 describe("website up check", () => {
   test("on fetch success with good content, returns true", () => {
@@ -12,8 +12,8 @@ describe("website up check", () => {
     expect(result.status).toBe("missing text");
   });
   test("on fetch fail, returns error text and false", () => {
-    const result = samples.processFetchError("error text");
-    expect(result.success).toBe(false);
-    expect(result.status).toBe("error text");
+    expect(() => samples.processFetchError("error text")).toThrowError(
+      "error text"
+    );
   });
 });

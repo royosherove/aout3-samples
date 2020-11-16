@@ -7,7 +7,7 @@ const isWebsiteAlive = async () => {
     const text = await resp.text();
     return processFetchContent(text);
   } catch (err) {
-    throw processFetchError(err);
+    processFetchError(err);
   }
 };
 
@@ -28,7 +28,7 @@ const processFetchContent = (text) => {
 
 //Entry Point
 const processFetchError = (err) => {
-  return { success: false, status: err };
+  throw err;
 };
 
 module.exports = {
