@@ -1,0 +1,12 @@
+{
+  "products": [
+    {
+      "name": "product A",
+      "description": "it's a nice product"
+    },
+    {
+      "name": "product B",
+      "description": "it's an acceptable product"
+    }
+  ]
+}
