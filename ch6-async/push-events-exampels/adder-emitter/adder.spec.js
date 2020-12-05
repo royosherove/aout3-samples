@@ -1,4 +1,4 @@
-const { Adder } = require("./event-based-module");
+const { Adder } = require("./adder");
 describe("events based module", () => {
   describe("add", () => {
     it("generates addition event when called", (done) => {

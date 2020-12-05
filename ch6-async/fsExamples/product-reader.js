@@ -2,7 +2,7 @@ const fs = require("fs");
 const path = require("path");
 
 const getAllProductsCallback = (errCallback, callback) => {
-  const filePath = path.join(__dirname, "data/products.json");
+  const filePath = path.resolve(__dirname, "products.json");
   fs.readFile(filePath, (err, data) => {
     if (err) {
       errCallback(err);
