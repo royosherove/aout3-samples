@@ -13,7 +13,7 @@ const getAllProductsCallback = (errCallback, callback) => {
 };
 
 const getAllProductsWithPromise = async () => {
-  const filePath = path.join(__dirname, "data/products.json");
+  const filePath = path.join(__dirname, "products.json");
   const result = await fs.promises.readFile(filePath);
   return JSON.parse(result.toString());
 };
