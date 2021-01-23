@@ -13,12 +13,13 @@ const loadHtml = (fileRelativePath) => {
 };
 
 describe("index helper", () => {
-  test("button click triggers changing the result on the page", () => {
+  test("vanilla button click triggers changing the result on the page", () => {
     loadHtml("index.html");
     window.dispatchEvent(new Event("load"));
 
     const button = document.getElementById("myButton");
-    const resultDiv = document.getElementById("result");
+    const resultDiv = document.getElementById("myResult");
+    // console.log(document.documentElement.innerHTML);
 
     button.click();
 
