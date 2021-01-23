@@ -13,7 +13,7 @@ const loadHtml = (fileRelativePath) => {
 };
 
 describe("index helper", () => {
-  test(" button click triggers change the result on the page", () => {
+  test("button click triggers changing the result on the page", () => {
     loadHtml("index.html");
     window.dispatchEvent(new Event("load"));
 
