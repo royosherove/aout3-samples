@@ -12,12 +12,12 @@ const loadHtml = (fileRelativePath) => {
   document.documentElement.innerHTML = innerHTML;
 };
 
-function loadHtmlAndGetUIElements() {
+const loadHtmlAndGetUIElements = () => {
   loadHtml("index.html");
   const button = document.getElementById("myButton");
   const resultDiv = document.getElementById("myResult");
   return { window, button, resultDiv };
-}
+};
 
 describe("index helper", () => {
   test("vanilla button click triggers changing the result on the page", () => {

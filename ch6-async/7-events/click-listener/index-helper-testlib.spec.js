@@ -14,11 +14,11 @@ const loadHtml = (fileRelativePath) => {
   return document.documentElement;
 };
 
-function loadHtmlAndGetUIElements() {
+const loadHtmlAndGetUIElements = () => {
   const docElem = loadHtml("index.html");
   const button = getByText(docElem, "click me", { exact: false });
   return { window, docElem, button };
-}
+};
 
 describe("index helper", () => {
   test("vanilla button click triggers changing the result on the page", () => {
