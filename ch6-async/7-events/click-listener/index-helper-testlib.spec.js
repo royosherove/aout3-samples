@@ -21,7 +21,7 @@ const loadHtmlAndGetUIElements = () => {
 };
 
 describe("index helper", () => {
-  test("vanilla button click triggers changing the result on the page", () => {
+  test("dom test lib button click triggers change in page", () => {
     const { window, docElem, button } = loadHtmlAndGetUIElements();
     fireEvent.load(window);
 
