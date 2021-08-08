@@ -3,13 +3,13 @@ import { SpecialApp } from "./specialApp";
 
 describe("Test Dependence", () => {
   describe("loginUser with loggedInUser", () => {
-    it("can only login once per user", () => {
+    test("A: no user, login fails", () => {
       const app = new SpecialApp();
       const result = app.loginUser("a", "abc");
       expect(result).toBe(false);
     });
 
-    it("can only each user once", () => {
+    test("B: can only cache each user once", () => {
       getUserCache().addUser({
         key: "a",
         password: "abc",
@@ -23,7 +23,7 @@ describe("Test Dependence", () => {
       ).toThrowError("already exists");
     });
 
-    it("can only login once per user", () => {
+    test("C: user exists, login succeeds", () => {
       const app = new SpecialApp();
       const result = app.loginUser("a", "abc");
       expect(result).toBe(true);

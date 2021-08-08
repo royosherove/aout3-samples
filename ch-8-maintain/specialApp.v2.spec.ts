@@ -11,14 +11,14 @@ const makeSpecialApp = () => new SpecialApp();
 describe("Test Dependence v2", () => {
   beforeEach(() => getUserCache().reset());
   describe("user cache", () => {
-    it("can only add cache use once", () => {
+    test("B: can only cache each user once", () => {
       addDefaultUser();
 
       expect(() => addDefaultUser()).toThrowError("already exists");
     });
   });
   describe("loginUser with loggedInUser", () => {
-    it("user exists, login succeeds", () => {
+    test("A: user exists, login succeeds", () => {
       addDefaultUser();
       const app = makeSpecialApp();
 
@@ -26,7 +26,7 @@ describe("Test Dependence v2", () => {
       expect(result).toBe(true);
     });
 
-    it("user missing, login fails", () => {
+    test("C: no user , login fails", () => {
       const app = makeSpecialApp();
 
       const result = app.loginUser("a", "abc");
