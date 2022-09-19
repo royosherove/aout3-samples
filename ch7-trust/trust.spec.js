@@ -39,6 +39,7 @@ describe("makeGreeting", () => {
 
   it("returns correct greeting for name 2", () => {
     const result = trust.makeGreeting("abc");
+    //this test is supposed to fail
     expect(result).toBe("hello abc");
   });
 });

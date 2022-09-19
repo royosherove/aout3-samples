@@ -1,5 +1,5 @@
 /**
- * @jest-environment jest-environment-jsdom-sixteen
+ * @jest-environment jest-environment-jsdom
  */
 //(the above is required for window events)
 const fs = require("fs");

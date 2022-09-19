@@ -1,6 +1,5 @@
 import { IComplicatedLogger } from "./interfaces/complicated-logger";
 import { PasswordVerifier2 } from "./00-password-verifier2";
-import stringMatching = jasmine.stringMatching;
 
 describe("working with long interfaces", () => {
   describe("password verifier", () => {
@@ -16,7 +15,7 @@ describe("working with long interfaces", () => {
       verifier.verify("anything");
 
       expect(mockLog.info).toHaveBeenCalledWith(
-        stringMatching(/PASS/),
+        expect.stringMatching(/PASS/),
         "verify"
       );
     });

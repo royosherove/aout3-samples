@@ -1,6 +1,5 @@
 import {PasswordVerifier} from "./00-password-verifier";
 import {RealLogger} from "./real-logger";
-import stringMatching = jasmine.stringMatching;
 
 
 describe('password verifier with interfaces', () => {
@@ -12,7 +11,7 @@ describe('password verifier with interfaces', () => {
             verifier.verify('any input');
 
             expect(testableLog.info)
-                .toHaveBeenCalledWith(stringMatching(/PASS/));
+                .toHaveBeenCalledWith(expect.stringMatching(/PASS/));
         });
 
         test('another variation with jest.spy', () => {
@@ -23,6 +22,6 @@ describe('password verifier with interfaces', () => {
             verifier.verify('any input');
 
             expect(infoFn)
-                .toHaveBeenCalledWith(stringMatching(/PASS/));
+                .toHaveBeenCalledWith(expect.stringMatching(/PASS/));
         });
 });
