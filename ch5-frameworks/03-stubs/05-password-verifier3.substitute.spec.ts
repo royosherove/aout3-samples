@@ -7,7 +7,7 @@ const makeVerifierWithNoRules = (log, maint) =>
   new PasswordVerifier3([], log, maint);
 
 describe("working with substitute part 2", () => {
-  test("verify, with logger, calls logger", () => {
+  test("verify, during maintanance, calls logger", () => {
     const stubMaintWindow = Substitute.for<MaintenanceWindow>();
     stubMaintWindow.isUnderMaintenance().returns(true);
     const mockLog = Substitute.for<IComplicatedLogger>();
@@ -18,7 +18,7 @@ describe("working with substitute part 2", () => {
     mockLog.received().info("Under Maintenance", "verify");
   });
 
-  test("verify, with logger, calls logger", () => {
+  test("verify, outside maintanance, calls logger", () => {
     const stubMaintWindow = Substitute.for<MaintenanceWindow>();
     stubMaintWindow.isUnderMaintenance().returns(false);
     const mockLog = Substitute.for<IComplicatedLogger>();
