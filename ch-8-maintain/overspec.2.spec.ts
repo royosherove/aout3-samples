@@ -1,7 +1,7 @@
 import { PasswordVerifier5 } from "./00-password-verifier5";
 
 describe("verifier 5", () => {
-  describe("overcpecify outputs", () => {
+  describe("overspecify outputs", () => {
     test("overspecify order and schema", () => {
       const pv5 = new PasswordVerifier5([(input) => input.includes("abc")]);
       const results = pv5.verify(["a", "ab", "abc", "abcd"]);
