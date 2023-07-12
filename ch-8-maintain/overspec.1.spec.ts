@@ -3,7 +3,7 @@ import { Substitute } from "@fluffy-spoon/substitute";
 import { IComplicatedLogger } from "./interfaces/complicated-logger";
 
 describe("verifier 4", () => {
-  describe("overcpecify protected function call", () => {
+  describe("overspecify protected function call", () => {
     test("checkfailedFules is called", () => {
       const pv4 = new PasswordVerifier4(
         [],
